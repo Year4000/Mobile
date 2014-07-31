@@ -76,13 +76,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="main.xml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="main.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="41" selection-start="417" selection-end="417" vertical-scroll-proportion="0.47928995" vertical-offset="0" max-vertical-offset="342">
+            <state line="13" column="0" selection-start="452" selection-end="452" vertical-scroll-proportion="-4.3333335" vertical-offset="0" max-vertical-offset="342">
+              <folding>
+                <element signature="e#401#419#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="21" column="1" selection-start="217" selection-end="217" vertical-scroll-proportion="0.99473685" vertical-offset="0" max-vertical-offset="486">
               <folding />
             </state>
           </provider>
@@ -484,10 +495,10 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32988048" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32988048" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24940239" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3287037" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3287037" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -523,7 +534,9 @@
       </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="41" selection-start="417" selection-end="417" vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="342">
-          <folding />
+          <folding>
+            <element signature="e#401#419#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -532,7 +545,16 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="41" selection-start="417" selection-end="417" vertical-scroll-proportion="0.47928995" vertical-offset="0" max-vertical-offset="342">
+        <state line="13" column="0" selection-start="452" selection-end="452" vertical-scroll-proportion="-4.3333335" vertical-offset="0" max-vertical-offset="342">
+          <folding>
+            <element signature="e#401#419#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="1" selection-start="217" selection-end="217" vertical-scroll-proportion="0.99473685" vertical-offset="0" max-vertical-offset="486">
           <folding />
         </state>
       </provider>
