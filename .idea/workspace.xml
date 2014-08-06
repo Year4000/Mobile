@@ -78,22 +78,106 @@
     <leaf>
       <file leaf-file-name="main.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="26" selection-start="437" selection-end="437" vertical-scroll-proportion="-3.3333333" vertical-offset="0" max-vertical-offset="360">
+              <folding />
+            </state>
+          </provider>
           <provider editor-type-id="android-designer">
             <state />
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Server.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/year4000/android/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="452" selection-end="452" vertical-scroll-proportion="-4.3333335" vertical-offset="0" max-vertical-offset="342">
+            <state line="18" column="0" selection-start="513" selection-end="513" vertical-scroll-proportion="-12.96" vertical-offset="0" max-vertical-offset="486">
               <folding>
-                <element signature="e#401#419#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ServersActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/net/year4000/android/ServersActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="56" column="72" selection-start="1872" selection-end="1872" vertical-scroll-proportion="2.087912" vertical-offset="248" max-vertical-offset="2232">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1359#1983#0" expanded="true" />
+                <element signature="e#1972#1973#0" expanded="true" />
+                <element signature="e#2057#2280#0" expanded="true" />
+                <element signature="e#2269#2270#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="strings.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="29" selection-start="80" selection-end="80" vertical-scroll-proportion="-1.44" vertical-offset="0" max-vertical-offset="180">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="1" selection-start="217" selection-end="217" vertical-scroll-proportion="0.99473685" vertical-offset="0" max-vertical-offset="486">
+            <state line="18" column="4" selection-start="203" selection-end="203" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServersListDeserializer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/year4000/android/ServersListDeserializer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="0" selection-start="832" selection-end="832" vertical-scroll-proportion="-14.4" vertical-offset="54" max-vertical-offset="558">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#547#555#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServersList.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/net/year4000/android/ServersList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="5" column="4" selection-start="86" selection-end="86" vertical-scroll-proportion="-3.6" vertical-offset="0" max-vertical-offset="306">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="servers.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/res/menu/servers.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="7" selection-start="375" selection-end="375" vertical-scroll-proportion="-6.48" vertical-offset="0" max-vertical-offset="270">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="27" selection-start="606" selection-end="606" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
+              <folding>
+                <element signature="e#420#438#0" expanded="true" />
+                <element signature="e#559#577#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pom.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="0" selection-start="733" selection-end="733" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="1260">
               <folding />
             </state>
           </provider>
@@ -109,9 +193,24 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/res/layout/main.xml" />
         <option value="$PROJECT_DIR$/android-app/src/com/year4000/android/MyActivity.java" />
         <option value="$PROJECT_DIR$/src/com/year4000/android/MyActivity.java" />
+        <option value="$PROJECT_DIR$/src/net/year4000/android/Metadata.java" />
+        <option value="$PROJECT_DIR$/src/net/year4000/android/MyActivity.java" />
+        <option value="$PROJECT_DIR$/src/net/year4000/android/Tag.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/res/menu/posts.xml" />
+        <option value="$PROJECT_DIR$/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/net/year4000/android/PostsActivity.java" />
+        <option value="$PROJECT_DIR$/res/layout/main.xml" />
+        <option value="$PROJECT_DIR$/src/net/year4000/android/JsonParser.java" />
+        <option value="$PROJECT_DIR$/src/net/year4000/android/Post.java" />
+        <option value="$PROJECT_DIR$/src/net/year4000/android/ServersListDeserializer.java" />
+        <option value="$PROJECT_DIR$/src/net/year4000/android/Server.java" />
+        <option value="$PROJECT_DIR$/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/net/year4000/android/ServersList.java" />
+        <option value="$PROJECT_DIR$/src/net/year4000/android/ServersActivity.java" />
       </list>
     </option>
   </component>
@@ -159,9 +258,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="65" />
-    <option name="y" value="-4" />
+    <option name="y" value="24" />
     <option name="width" value="1301" />
-    <option name="height" value="772" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -189,8 +288,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -206,6 +305,106 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="android-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="year4000" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="year4000" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="year4000" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="menu" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="year4000" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="year4000" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="year4000" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="libs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -225,6 +424,9 @@
     <property name="dynamic.classpath" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/libs" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/android-app" />
     </key>
@@ -453,8 +655,8 @@
     </configuration>
     <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Android Application.year4000" />
-      <item index="1" class="java.lang.String" itemvalue="Android Tests.All Tests" />
-      <item index="2" class="java.lang.String" itemvalue="Maven.year4000 [deploy]" />
+      <item index="1" class="java.lang.String" itemvalue="Maven.year4000 [deploy]" />
+      <item index="2" class="java.lang.String" itemvalue="Android Tests.All Tests" />
     </list>
     <recent_temporary>
       <list size="1">
@@ -476,8 +678,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
-    <editor active="false" />
+    <frame x="65" y="24" width="1301" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -485,24 +687,24 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32988048" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287037" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287037" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287037" sideWeight="0.16095617" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287037" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287037" sideWeight="0.8390438" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32988048" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13944224" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24940239" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3287037" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25617284" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287037" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287037" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -528,34 +730,272 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/net/year4000/android/MyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="41" selection-start="417" selection-end="417" vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="342">
+        <state line="14" column="0" selection-start="348" selection-end="348" vertical-scroll-proportion="0.0" vertical-offset="252" max-vertical-offset="414">
           <folding>
-            <element signature="e#401#419#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/year4000/android/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="405" selection-end="405" vertical-scroll-proportion="0.0" vertical-offset="432" max-vertical-offset="540">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/year4000/android/ServersActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="47" selection-start="1238" selection-end="1238" vertical-scroll-proportion="0.0" vertical-offset="723" max-vertical-offset="2124">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1359#1983#0" expanded="true" />
+            <element signature="e#1972#1973#0" expanded="true" />
+            <element signature="e#2057#2280#0" expanded="true" />
+            <element signature="e#2269#2270#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="34" selection-start="511" selection-end="511" vertical-scroll-proportion="0.0" vertical-offset="108" max-vertical-offset="468">
+          <folding>
+            <element signature="e#420#438#0" expanded="true" />
+            <element signature="e#559#577#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/android/android/4.1.1.4/android-4.1.1.4-sources.jar!/android/os/StrictMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="0" selection-start="4812" selection-end="4812" vertical-scroll-proportion="0.0" vertical-offset="1152" max-vertical-offset="1260">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="0" selection-start="733" selection-end="733" vertical-scroll-proportion="0.0" vertical-offset="414" max-vertical-offset="1260">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="0" selection-start="452" selection-end="452" vertical-scroll-proportion="0.0" vertical-offset="234" max-vertical-offset="342">
+          <folding />
+        </state>
+      </provider>
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/year4000/android/MyActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="452" selection-end="452" vertical-scroll-proportion="-4.3333335" vertical-offset="0" max-vertical-offset="342">
+        <state line="21" column="0" selection-start="571" selection-end="571" vertical-scroll-proportion="0.0" vertical-offset="408" max-vertical-offset="1278">
           <folding>
-            <element signature="e#401#419#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/android/android/4.1.1.4/android-4.1.1.4-sources.jar!/android/os/StrictMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="0" selection-start="4812" selection-end="4812" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1260">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/jdk1.8.0_05/jre/lib/rt.jar!/java/net/InetAddress.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="173" column="0" selection-start="7729" selection-end="7729" vertical-scroll-proportion="0.0" vertical-offset="3114" max-vertical-offset="3222" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="25" selection-start="732" selection-end="732" vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="1242">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="41" selection-start="417" selection-end="417" vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="342">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10260" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable-hdpi/ic_launcher.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/drawable-ldpi/ic_launcher.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/android/android/4.1.1.4/android-4.1.1.4-sources.jar!/android/os/Handler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="42" column="0" selection-start="3700" selection-end="3700" vertical-scroll-proportion="0.7057221" vertical-offset="497" max-vertical-offset="864" />
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/jdk1.8.0_05/jre/lib/rt.jar!/java/net/InetAddress.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="173" column="0" selection-start="7729" selection-end="7729" vertical-scroll-proportion="0.0" vertical-offset="2837" max-vertical-offset="3204" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gen/net/year4000/android/R.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="19" selection-start="171" selection-end="171" vertical-scroll-proportion="0.30821916" vertical-offset="0" max-vertical-offset="292">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.IdeaIC13/system/compile-server/year4000_bdf5c5f1/targets/java-production/year4000/android/generated_sources/aapt/net/year4000/android/R.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="13" selection-start="226" selection-end="226" vertical-scroll-proportion="0.23606557" vertical-offset="0" max-vertical-offset="414" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.IdeaIC13/system/compile-server/year4000_bdf5c5f1/targets/java-production/year4000/android/generated_sources/build_config/net/year4000/android/BuildConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="13" selection-start="95" selection-end="95" vertical-scroll-proportion="0.16363636" vertical-offset="0" max-vertical-offset="330" />
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/google/android/android/4.1.1.4/android-4.1.1.4-sources.jar!/android/os/StrictMode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="64" column="0" selection-start="4812" selection-end="4812" vertical-scroll-proportion="0.68421054" vertical-offset="918" max-vertical-offset="1260">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="0" selection-start="733" selection-end="733" vertical-scroll-proportion="0.0" vertical-offset="54" max-vertical-offset="1260">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/jdk1.8.0_05/jre/lib/rt.jar!/java/lang/Runnable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="9" selection-start="207" selection-end="207" vertical-scroll-proportion="0.35492957" vertical-offset="0" max-vertical-offset="355">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="27" selection-start="606" selection-end="606" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="468">
+          <folding>
+            <element signature="e#420#438#0" expanded="true" />
+            <element signature="e#559#577#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/menu/servers.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="7" selection-start="375" selection-end="375" vertical-scroll-proportion="-6.48" vertical-offset="0" max-vertical-offset="270">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="26" selection-start="437" selection-end="437" vertical-scroll-proportion="-3.3333333" vertical-offset="0" max-vertical-offset="360">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/jdk1.8.0_05/jre/lib/rt.jar!/java/io/FileInputStream.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="0" selection-start="1677" selection-end="1677" vertical-scroll-proportion="0.7057221" vertical-offset="497" max-vertical-offset="864">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/jdk1.8.0_05/jre/lib/rt.jar!/java/io/FileReader.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="0" selection-start="489" selection-end="489" vertical-scroll-proportion="0.53950953" vertical-offset="0" max-vertical-offset="367">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/year4000/android/ServersListDeserializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="0" selection-start="832" selection-end="832" vertical-scroll-proportion="-14.4" vertical-offset="54" max-vertical-offset="558">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#547#555#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="29" selection-start="80" selection-end="80" vertical-scroll-proportion="-1.44" vertical-offset="0" max-vertical-offset="180">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="1" selection-start="217" selection-end="217" vertical-scroll-proportion="0.99473685" vertical-offset="0" max-vertical-offset="486">
+        <state line="18" column="4" selection-start="203" selection-end="203" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/year4000/android/ServersList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="4" selection-start="86" selection-end="86" vertical-scroll-proportion="-3.6" vertical-offset="0" max-vertical-offset="306">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/year4000/android/MyActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="7" selection-start="38" selection-end="38" vertical-scroll-proportion="0.09549072" vertical-offset="0" max-vertical-offset="414">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/year4000/android/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="513" selection-end="513" vertical-scroll-proportion="-12.96" vertical-offset="0" max-vertical-offset="486">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/year4000/android/ServersActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="56" column="72" selection-start="1872" selection-end="1872" vertical-scroll-proportion="2.087912" vertical-offset="248" max-vertical-offset="2232">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1359#1983#0" expanded="true" />
+            <element signature="e#1972#1973#0" expanded="true" />
+            <element signature="e#2057#2280#0" expanded="true" />
+            <element signature="e#2269#2270#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

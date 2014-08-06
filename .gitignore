@@ -15,8 +15,14 @@ gen/
 # Local configuration file (sdk path, etc)
 local.properties
 
-#out files
+# out files
 out/
+target/
 
-#idea files
+# idea files
 .idea/
+
+# temp files
+*~
+*.tmp
+
