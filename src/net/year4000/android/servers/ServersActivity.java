@@ -57,16 +57,6 @@ public class ServersActivity extends Activity {
                 ExpListItems = SetStandardGroups();
                 ExpAdapter = new ExpandListAdapter(ServersActivity.this, ExpListItems);
                 ExpandList.setAdapter(ExpAdapter);
-                //test info pulled from API and place in textview
-                /*text = (TextView)findViewById(R.id.text);
-                String testList = "";
-                for (Server server : posts.servers) {
-                    if ("".equals(testList))
-                        testList = server.name + " " + server.group.get("display");
-                    else
-                        testList = testList + "\n" + server.name + " " + server.group.get("display");
-                }
-                text.setText(testList);*/
             }
         });
     }

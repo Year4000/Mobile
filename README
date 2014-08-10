@@ -1,0 +1,10 @@
+
+// Maven Compile and Build with Android
+in order to compile with android you need a few extra terminal commands
+it is not enough to simply run mvn install you must also tell android to deploy the app
+
+    To compile and build use:
+        mvn clean install android:deploy
+
+    To compile, build and run use:
+        mvn clean install android:deploy android:run
