@@ -1,4 +1,4 @@
-package net.year4000.android;
+package net.year4000.android.servers;
 
 import com.google.gson.JsonObject;
 import com.google.gson.annotations.SerializedName;
