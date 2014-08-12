@@ -22,14 +22,16 @@
                   android:layout_height="fill_parent"
                   android:padding="1dp"
                   android:layout_gravity="center"
-                  android:background="#ffffff">
+                  android:background="#ffffff"
+                  android:theme="@android:style/Theme.Translucent">
         <LinearLayout android:layout_width="350dp"
                       android:layout_height="fill_parent"
                       android:padding="10dp"
                       android:layout_gravity="center"
-                      android:background="#777777">
+                      android:background="#777777"
+                      android:theme="@android:style/Theme.Translucent">
                 <ExpandableListView
-                        android:layout_width="fill_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/serversListView"
                         android:layout_gravity="center_horizontal"
