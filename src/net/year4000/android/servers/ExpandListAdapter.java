@@ -1,8 +1,11 @@
 package net.year4000.android.servers;
 
 import java.util.ArrayList;
+import android.app.Activity;
+import android.os.Bundle;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +14,7 @@ import android.widget.TextView;
 import net.year4000.android.R;
 
 public class ExpandListAdapter extends BaseExpandableListAdapter {
-
+    public static final String EXTRA_NAME = "name";
     private Context context;
     private ArrayList<ExpandListGroup> groups;
     public ExpandListAdapter(Context context, ArrayList<ExpandListGroup> groups) {
@@ -39,9 +42,9 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
         return childPosition;
     }
 
-    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View view,
+    public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View view,
                              ViewGroup parent) {
-        ExpandListChild child = (ExpandListChild) getChild(groupPosition, childPosition);
+        final ExpandListChild child = (ExpandListChild) getChild(groupPosition, childPosition);
         if (view == null) {
             LayoutInflater infalInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             view = infalInflater.inflate(R.layout.expandlist_child_item, null);
@@ -49,6 +52,13 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
         TextView tv = (TextView) view.findViewById(R.id.serverListChild);
         tv.setText(child.getName().toString());
         tv.setTag(child.getTag());
+        tv.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                Intent i = new Intent(context.getApplicationContext(), DisplayServer.class);
+                i.putExtra(EXTRA_NAME, child.getName());
+                context.startActivity(i);
+            }
+        });
         // TODO Auto-generated method stub
         return view;
     }
