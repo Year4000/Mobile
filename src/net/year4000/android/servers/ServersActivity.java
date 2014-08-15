@@ -85,7 +85,7 @@ public class ServersActivity extends Activity {
         }
         @Override
         protected void onPreExecute() {
-            dialog.setMessage("Communicating...");
+            dialog.setMessage("Loading Server Info...");
             dialog.show();
         }
 
