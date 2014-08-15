@@ -18,11 +18,4 @@ public class Server {
 
     public Server() {}
 
-    public Server(Server other) {
-        this.name = other.name;
-        this.group = other.group;
-        this.status = other.status;
-        this.vers = other.vers;
-        this.favicon = other.favicon;
-    }
 }
