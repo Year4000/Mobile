@@ -4,6 +4,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import android.app.ProgressDialog;
 import android.widget.ExpandableListView;
 import android.widget.*;
 import com.google.gson.*;
@@ -26,14 +30,13 @@ public class ServersActivity extends Activity {
     private ExpandListAdapter ExpAdapter;
     private ArrayList<ExpandListGroup> ExpListItems;
     private ExpandableListView ExpandList;
-    TextView text;
     private static final String TAG = "ServersActivity";
     private ServersList posts;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.servers_activity);
-        PostFetcher fetcher = new PostFetcher();
+        PostFetcher fetcher = new PostFetcher(ServersActivity.this);
         fetcher.execute();
 
     }
@@ -73,6 +76,18 @@ public class ServersActivity extends Activity {
     private class PostFetcher extends AsyncTask<Void, Void, String> {
         private static final String TAG = "PostFetcher";
         public static final String SERVER_URL = "https://api.year4000.net/servers/";
+        private ProgressDialog dialog;
+        private Activity context;
+
+        public PostFetcher(Activity mainActivity) {
+            this.context = mainActivity;
+            dialog = new ProgressDialog(context);
+        }
+        @Override
+        protected void onPreExecute() {
+            dialog.setMessage("Communicating...");
+            dialog.show();
+        }
 
         @Override
         protected String doInBackground(Void... params) {
@@ -115,37 +130,52 @@ public class ServersActivity extends Activity {
             return null;
         }
 
+        @Override
+        protected void onPostExecute(String result) {
+            dialog.dismiss();
+        }
+
     }
 
     public ArrayList<ExpandListGroup> SetStandardGroups() {
         ArrayList<ExpandListGroup> list = new ArrayList<ExpandListGroup>();
         ArrayList<ExpandListChild> list2 = new ArrayList<ExpandListChild>();
 
-        ExpandListGroup gru1 = new ExpandListGroup();
-        gru1.setName("Survival Games");
-        gru1.setItems(list2, posts, "\"us-sg\"");
-        list.add(gru1);
+        Map<String, String> servers = getGroups();// pull a hashmap from api.year4000.net;
 
-        ExpandListGroup gru2 = new ExpandListGroup();
-        gru2.setName("PVP");
-        gru2.setItems(list2, posts, "\"us-pvp\"");
-        list.add(gru2);
+        for(Map.Entry<String, String> entry : servers.entrySet()) {
+            String key = entry.getKey();
+            String value = entry.getValue();
 
-        ExpandListGroup gru3 = new ExpandListGroup();
-        gru3.setName("HUB");
-        gru3.setItems(list2, posts, "\"us-hubs\"");
-        list.add(gru3);
+            ExpandListGroup listGroup = new ExpandListGroup();
+            listGroup.setName(value);
+            listGroup.setItems(list2, posts, key);
+            list.add(listGroup);
+        }
 
-        ExpandListGroup gru4 = new ExpandListGroup();
-        gru4.setName("Skywars");
-        gru4.setItems(list2, posts, "\"us-skywars\"");
-        list.add(gru4);
+        ExpandListGroup listGroup = new ExpandListGroup();
+        listGroup.setName("Network");
+        list2 = new ArrayList<ExpandListChild>();
+        ExpandListChild child = new ExpandListChild();
+        child.setName("View Network");
+        child.setTag(null);
+        list2.add(child);
+        listGroup.setItems(list2);
+        list.add(listGroup);
 
-        ExpandListGroup gru5 = new ExpandListGroup();
-        gru5.setName("Network");
-        list.add(gru5);
+        return list;
+    }
 
-            return list;
+    public Map<String, String> getGroups() {
+        Map<String, String> newList = new HashMap<String, String>();
+
+        for (Server server : posts.servers) {
+            if (!newList.containsKey(server.group.get("name").toString()))
+                newList.put(server.group.get("name").toString(),
+                        server.group.get("display").toString());
+        }
+
+        return newList;
     }
 
 }
