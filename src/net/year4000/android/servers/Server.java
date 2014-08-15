@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class Server {
 
-
     @SerializedName("name")
     public String name;
     @SerializedName("group")
@@ -15,7 +14,15 @@ public class Server {
     @SerializedName("version")
     public JsonObject vers; // name + protocol
     @SerializedName("favicon")
-    public String favicon; // data
+    public JsonObject favicon; // data
 
     public Server() {}
+
+    public Server(Server other) {
+        this.name = other.name;
+        this.group = other.group;
+        this.status = other.status;
+        this.vers = other.vers;
+        this.favicon = other.favicon;
+    }
 }
