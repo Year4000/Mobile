@@ -31,6 +31,14 @@
                           android:background="#777777"
                           android:theme="@android:style/Theme.Translucent">
 
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:id="@+id/servPlayers"
+                          android:layout_gravity="center_horizontal"
+                          android:textSize="23sp"
+                          android:padding="10dp"
+                          android:textColor="#ffffff"/>
+
             </LinearLayout>
         </LinearLayout>
 </LinearLayout>
