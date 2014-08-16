@@ -1,40 +1,25 @@
 package net.year4000.android.servers;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
+import lombok.Getter;
+
+@Getter
 public class ExpandListGroup {
+    private String name;
+    private List<ExpandListChild> items = new ArrayList<ExpandListChild>();
 
-    private String Name;
-    private ArrayList<ExpandListChild> Items;
+    public ExpandListGroup(Map.Entry<String, String> entry) {
+        name = entry.getValue();
 
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        this.Name = name;
-    }
-
-    public ArrayList<ExpandListChild> getItems() {
-        return Items;
-    }
-
-    public void setItems(ArrayList<ExpandListChild> Items, ServersList posts, String id) {
-        Items = new ArrayList<ExpandListChild>();
-        for (Server server : posts.servers) {
-            if (server.getGroup().getName().equals(id))
-                if(!server.getGroup().getName().startsWith(".")) {
-                ExpandListChild child = new ExpandListChild();
-                child.setName(server.getName());
-                child.setTag(null);
-                Items.add(child);
-            }
+        for (Server server : APIManager.get().getServersByGroupName(name)) {
+            items.add(new ExpandListChild(server));
         }
-        this.Items = Items;
     }
 
-    public void setItems(ArrayList<ExpandListChild> Items) {
-        this.Items = Items;
+    public void setItems(List<ExpandListChild> items) {
+        this.items = items;
     }
-
 }

@@ -1,24 +1,14 @@
 package net.year4000.android.servers;
 
+import lombok.Data;
 
+@Data
 public class ExpandListChild {
-    private String Name;
-    private String Tag;
+    private String name;
+    private String tag;
 
-    public String getName() {
-        return Name;
+    public ExpandListChild(Server server) {
+        name = server.getName();
+        tag = server.getGroup().getDisplay();
     }
-
-    public void setName(String Name) {
-        this.Name = Name;
-    }
-
-    public String getTag() {
-        return Tag;
-    }
-
-    public void setTag(String Tag) {
-        this.Tag = Tag;
-    }
-
 }

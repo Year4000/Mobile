@@ -3,7 +3,7 @@
           package="net.year4000.android"
           android:versionCode="1"
           android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="18"/>
+    <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="18"/>
 
     <!--important! needed to communicate with JSON API-->
     <uses-permission android:name="android.permission.INTERNET"/>
