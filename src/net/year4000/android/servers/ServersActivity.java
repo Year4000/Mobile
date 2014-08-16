@@ -12,7 +12,6 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 import net.year4000.android.R;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -54,7 +53,16 @@ public class ServersActivity extends Activity {
 
     public void setNetworkView() {
         TextView net = (TextView)findViewById(R.id.networkView);
-        net.setText("Network");
+        Map<String, Server> servers = APIManager.get().getServers();
+        int max = 0;
+        int online = 0;
+        for (Server server : servers.values()) {
+            if (server.isOnline()) {
+                max += server.getStatus().getPlayers().getMax();
+                online += server.getStatus().getPlayers().getOnline();
+            }
+        }
+        net.setText("Network " + String.format(" (%d/%d)", online, max));
         net.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,23 +105,12 @@ public class ServersActivity extends Activity {
 
     public List<ExpandListGroup> SetStandardGroups() {
         List<ExpandListGroup> list = new ArrayList<ExpandListGroup>();
-        //ArrayList<ExpandListChild> list2 = new ArrayList<ExpandListChild>();
 
         Map<String, String> servers = APIManager.get().getGroups();
 
         for (Map.Entry<String, String> entry : servers.entrySet()) {
             list.add(new ExpandListGroup(entry));
         }
-
-        /*ExpandListGroup listGroup = new ExpandListGroup();
-        listGroup.setName("Network");
-        list2 = new ArrayList<ExpandListChild>();
-        ExpandListChild child = new ExpandListChild();
-        child.setName("View Network");
-        child.setTag(null);
-        list2.add(child);
-        listGroup.setItems(list2);
-        list.add(listGroup);*/
 
         return list;
     }
