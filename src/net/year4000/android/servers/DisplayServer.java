@@ -38,7 +38,7 @@ public class DisplayServer extends Activity {
 
                 TextView text = (TextView)findViewById(R.id.servPlayers);
                 if (server == null || !server.isOnline()) {
-                    text.setText("Server Offline");
+                    text.setText(Html.fromHtml("Server Offline"));
                 }
                 else {
                     Server.Players players = server.getStatus().getPlayers();
@@ -76,17 +76,12 @@ public class DisplayServer extends Activity {
         colors.put("§l", "</span><span style='color:#fff;'>");
         colors.put("§m", "</span><span style='color:#fff;'>");
         colors.put("§r", "</span><span style='color:#fff;'>");
-        colors.put("WAITING", "</span><span style='color:#ff5;'>WAITING</span>");
-        colors.put("STARTING", "</span><span style='color:#0a0;'>STARTING</span>");
-        colors.put("PLAYING", "</span><span style='color:#5f5;'>PLAYING</span>");
-        colors.put("ENDING", "</span><span style='color:#f55;'>ENDING</span>");
         for(Map.Entry<String, String> entry : colors.entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
             des = des.replace(key, value);
         }
-
-        return des;
+        return ("<span>" + des + "</span>");
     }
 
     private class PostFetcher extends AsyncTask<Void, Void, String> {
