@@ -1,40 +1,61 @@
 package net.year4000.android.servers;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.Setter;
+
+@Data
+@Setter(AccessLevel.NONE)
 public class ExpandListGroup {
+    private String name;
+    private String playerCount;
+    private List<ExpandListChild> items = new ArrayList<ExpandListChild>();
 
-    private String Name;
-    private ArrayList<ExpandListChild> Items;
+    public ExpandListGroup(Map.Entry<String, String> entry) {
+        name = entry.getValue();
 
-    public String getName() {
-        return Name;
+        for (Server server : APIManager.get().getServersByGroupName(entry.getKey())) {
+            items.add(new ExpandListChild(server));
+        }
+
+        updatePlayerCount();
     }
 
-    public void setName(String name) {
-        this.Name = name;
+    public String updatePlayerCount() {
+        return playerCount = String.format(" (%d/%d)", getTotalOnline(), getTotalMax());
     }
 
-    public ArrayList<ExpandListChild> getItems() {
-        return Items;
-    }
+    /** The max total of player capacity in this group */
+    public int getTotalMax() {
+        int max = 0;
 
-    public void setItems(ArrayList<ExpandListChild> Items, ServersList posts, String id) {
-        Items = new ArrayList<ExpandListChild>();
-        for (Server server : posts.servers) {
-            if (server.group.get("name").toString().equals(id))
-                if(!server.group.get("name").toString().startsWith(".")) {
-                ExpandListChild child = new ExpandListChild();
-                child.setName(server.name);
-                child.setTag(null);
-                Items.add(child);
+        for (ExpandListChild server : items) {
+            if (server.getServer().isOnline()) {
+                max += server.getServer().getStatus().getPlayers().getMax();
             }
         }
-        this.Items = Items;
+
+        return max;
     }
 
-    public void setItems(ArrayList<ExpandListChild> Items) {
-        this.Items = Items;
-    }
+    /** The total of online players in this group */
+    public int getTotalOnline() {
+        int totalOnline = 0;
 
+        for (ExpandListChild item : items) {
+            Server server = item.getServer();
+            if (server.isOnline()) {
+                int sample = server.isSample() ? server.getStatus().getPlayers().getSample().size() : 0;
+                int online = server.getStatus().getPlayers().getOnline();
+
+                totalOnline += sample > online ? sample : online;
+            }
+        }
+
+        return totalOnline;
+    }
 }

@@ -5,8 +5,7 @@
                   android:background="@drawable/bg"
                   android:textAlignment="center"
                   android:orientation="vertical"
-                  android:paddingBottom="50dp">
-
+                  android:paddingBottom="20dp">
         <TextView
                 android:id="@+id/servInfoHead"
                 android:layout_width="wrap_content"
@@ -14,7 +13,7 @@
                 android:text=""
                 android:textAlignment="center"
                 android:textColor="#ffffff"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="20dp"
                 android:textSize="35sp"
                 android:layout_gravity="center_horizontal"
                 android:paddingBottom="20dp"/>
@@ -22,13 +21,11 @@
                       android:layout_height="fill_parent"
                       android:padding="1dp"
                       android:layout_gravity="center"
-                      android:background="#ffffff"
                       android:theme="@android:style/Theme.Translucent">
             <LinearLayout android:layout_width="350dp"
                           android:layout_height="fill_parent"
                           android:padding="10dp"
                           android:layout_gravity="center"
-                          android:background="#777777"
                           android:theme="@android:style/Theme.Translucent">
 
                 <TextView android:layout_width="wrap_content"

@@ -1,24 +1,32 @@
 package net.year4000.android.servers;
 
+import lombok.AccessLevel;
+import lombok.Data;
+import lombok.Setter;
 
+@Data
+@Setter(AccessLevel.NONE)
 public class ExpandListChild {
-    private String Name;
-    private String Tag;
+    private String name;
+    private String tag;
+    private String playerStats;
+    private Server server;
 
-    public String getName() {
-        return Name;
+    public ExpandListChild(Server server) {
+        this.server = server;
+        name = server.getName();
+        tag = server.getGroup().getDisplay();
+
+        updatePlayerCount();
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public String updatePlayerCount() {
+        if (server.isOnline()) {
+            Server.Players players = server.getStatus().getPlayers();
+            return playerStats = String.format("(%d/%d)", players.getOnline(), players.getMax());
+        }
+        else {
+            return playerStats = "Offline";
+        }
     }
-
-    public String getTag() {
-        return Tag;
-    }
-
-    public void setTag(String Tag) {
-        this.Tag = Tag;
-    }
-
 }

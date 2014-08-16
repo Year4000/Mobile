@@ -1,9 +1,5 @@
 package net.year4000.android.servers;
 
-import java.util.ArrayList;
-import android.app.Activity;
-import android.os.Bundle;
-
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -11,29 +7,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
+
 import net.year4000.android.R;
+
+import java.util.List;
 
 public class ExpandListAdapter extends BaseExpandableListAdapter {
     public static final String EXTRA_NAME = "name";
     private Context context;
-    private ArrayList<ExpandListGroup> groups;
-    public ExpandListAdapter(Context context, ArrayList<ExpandListGroup> groups) {
+    private List<ExpandListGroup> groups;
+
+    public ExpandListAdapter(Context context, List<ExpandListGroup> groups) {
         this.context = context;
         this.groups = groups;
     }
 
-    public void addItem(ExpandListChild item, ExpandListGroup group) {
-        if (!groups.contains(group)) {
-            groups.add(group);
-        }
-        int index = groups.indexOf(group);
-        ArrayList<ExpandListChild> ch = groups.get(index).getItems();
-        ch.add(item);
-        groups.get(index).setItems(ch);
-    }
     public Object getChild(int groupPosition, int childPosition) {
-        // TODO Auto-generated method stub
-        ArrayList<ExpandListChild> chList = groups.get(groupPosition).getItems();
+        List<ExpandListChild> chList = groups.get(groupPosition).getItems();
         return chList.get(childPosition);
     }
 
@@ -42,15 +32,16 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
         return childPosition;
     }
 
-    public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View view,
-                             ViewGroup parent) {
+    public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View view, ViewGroup parent) {
         final ExpandListChild child = (ExpandListChild) getChild(groupPosition, childPosition);
+
         if (view == null) {
             LayoutInflater infalInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             view = infalInflater.inflate(R.layout.expandlist_child_item, null);
         }
+
         TextView tv = (TextView) view.findViewById(R.id.serverListChild);
-        tv.setText(child.getName().toString());
+        tv.setText(child.getName() + " " + child.updatePlayerCount());
         tv.setTag(child.getTag());
         tv.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
@@ -59,30 +50,24 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
                 context.startActivity(i);
             }
         });
-        // TODO Auto-generated method stub
+
         return view;
     }
 
     public int getChildrenCount(int groupPosition) {
-        // TODO Auto-generated method stub
-        ArrayList<ExpandListChild> chList = groups.get(groupPosition).getItems();
-
-        return chList.size();
+        return groups.get(groupPosition).getItems().size();
 
     }
 
     public Object getGroup(int groupPosition) {
-        // TODO Auto-generated method stub
         return groups.get(groupPosition);
     }
 
     public int getGroupCount() {
-        // TODO Auto-generated method stub
         return groups.size();
     }
 
     public long getGroupId(int groupPosition) {
-        // TODO Auto-generated method stub
         return groupPosition;
     }
 
@@ -94,21 +79,20 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
             view = inf.inflate(R.layout.expandlist_group_item, null);
         }
         TextView tv = (TextView) view.findViewById(R.id.servListGroup);
-        tv.setText(group.getName());
-        // TODO Auto-generated method stub
+        tv.setText(group.getName() + " " + group.updatePlayerCount());
+
         return view;
     }
 
     public boolean hasStableIds() {
-        // TODO Auto-generated method stub
+
         return true;
     }
 
     public boolean isChildSelectable(int arg0, int arg1) {
-        // TODO Auto-generated method stub
+
         return true;
     }
-
 }
 
 

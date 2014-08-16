@@ -4,8 +4,6 @@
               android:layout_height="55dip"
               android:background="#ffffff"
               android:orientation="vertical" >
-
-
     <TextView
             android:id="@+id/serverListChild"
             android:layout_width="fill_parent"

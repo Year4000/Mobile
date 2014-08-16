@@ -21,11 +21,25 @@
             <version>4.1.1.4</version>
             <scope>provided</scope>
         </dependency>
+        <!-- Guava: Google's common utils for Java -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>17.0</version>
+            <scope>compile</scope>
+        </dependency>
         <!--  Gson: Java to Json conversion -->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.2.4</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- Lombok: Generate getters and setters at compile -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.14.4</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
@@ -44,14 +58,14 @@
             <plugin>
                 <groupId>com.jayway.maven.plugins.android.generation2</groupId>
                 <artifactId>android-maven-plugin</artifactId>
-                <version>3.6.0</version>
+                <version>3.9.0-rc.3</version>
                 <configuration>
                     <androidManifestFile>AndroidManifest.xml</androidManifestFile>
                     <resourceDirectory>res</resourceDirectory>
                     <sdk>
                         <!-- the path to the android sdk -->
                         <path>/home/shaday/Downloads/adt-bundle-linux-x86_64-20140321/sdk</path>
-                        <platform>19</platform>
+                        <platform>20</platform>
                     </sdk>
                     <emulator>
                         <!-- the name of the avd device to use for starting the emulator -->
@@ -63,8 +77,11 @@
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <!-- version 2.3 defaults to java 1.5, so no further configuration needed-->
-                <version>2.3</version>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
