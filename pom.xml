@@ -28,6 +28,13 @@
             <version>2.2.4</version>
             <scope>compile</scope>
         </dependency>
+        <!-- Lombok: Generate getters and setters at compile -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.12.6</version>
+            <scope>compile</scope>
+        </dependency>
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
