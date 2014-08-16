@@ -2,10 +2,8 @@ package net.year4000.android.servers;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Html;
 import android.widget.TextView;
 import com.google.common.base.Joiner;
 import net.year4000.android.R;
@@ -18,8 +16,7 @@ public class NetworkDisplay extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display_network_info);
         TextView head = (TextView)findViewById(R.id.netInfoHead);
-        head.setText("Network");
-        Intent intent = getIntent();
+        head.setText("Year4000 Network");
         PostFetcher fetcher = new PostFetcher(NetworkDisplay.this);
         fetcher.execute();
     }
@@ -28,25 +25,29 @@ public class NetworkDisplay extends Activity{
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-
                 TextView text = (TextView)findViewById(R.id.netPlayers);
-                Map servers = APIManager.get().getServers();
-
-                /*
-                if (server == null || !server.isOnline()) {
-                    text.setText(Html.fromHtml("Server Offline"));
-                }
-                else {
-                    Server.Players players = server.getStatus().getPlayers();
-                    text.append(Html.fromHtml(formatDescription(server.getStatus().getDescription())) + "\n");
-                    text.append(String.format("Players (%d/%d) \n", players.getOnline(), players.getMax()));
-
-                    if (server.isSample()) {
-                        text.append(Joiner.on(", ").join(players.getPlayerNames()));
-                    }
-                }*/
+                text.append(setTextView());
             }
         });
+    }
+
+    public String setTextView() {
+        Map<String, Server> servers = APIManager.get().getServers();
+        StringBuilder samplesBuild = new StringBuilder();
+        String samples;
+        int max = 0;
+        int online = 0;
+        for (Server server : servers.values()) {
+            if (server.isOnline()) {
+                max += server.getStatus().getPlayers().getMax();
+                online += server.getStatus().getPlayers().getOnline();
+            }
+            if (server.isSample()) {
+                samplesBuild.append(Joiner.on(", ").join(server.getStatus().getPlayers().getPlayerNames()));
+            }
+        }
+        samples = samplesBuild.toString();
+        return ("Players " + String.format(" (%d/%d)", online, max) + "\n" + samples);
     }
 
 private class PostFetcher extends AsyncTask<Void, Void, String> {
