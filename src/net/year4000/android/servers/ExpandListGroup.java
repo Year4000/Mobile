@@ -14,7 +14,7 @@ public class ExpandListGroup {
     public ExpandListGroup(Map.Entry<String, String> entry) {
         name = entry.getValue();
 
-        for (Server server : APIManager.get().getServersByGroupName(name)) {
+        for (Server server : APIManager.get().getServersByGroupName(entry.getValue())) {
             items.add(new ExpandListChild(server));
         }
     }
