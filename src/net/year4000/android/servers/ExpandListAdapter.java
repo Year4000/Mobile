@@ -22,16 +22,6 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
         this.groups = groups;
     }
 
-    public void addItem(ExpandListChild item, ExpandListGroup group) {
-        if (!groups.contains(group)) {
-            groups.add(group);
-        }
-        int index = groups.indexOf(group);
-        List<ExpandListChild> ch = groups.get(index).getItems();
-        ch.add(item);
-        groups.get(index).setItems(ch);
-    }
-
     public Object getChild(int groupPosition, int childPosition) {
         List<ExpandListChild> chList = groups.get(groupPosition).getItems();
         return chList.get(childPosition);
@@ -51,7 +41,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
         }
 
         TextView tv = (TextView) view.findViewById(R.id.serverListChild);
-        tv.setText(child.getName());
+        tv.setText(child.getName() + " " + child.updatePlayerCount());
         tv.setTag(child.getTag());
         tv.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
@@ -89,7 +79,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
             view = inf.inflate(R.layout.expandlist_group_item, null);
         }
         TextView tv = (TextView) view.findViewById(R.id.servListGroup);
-        tv.setText(group.getName());
+        tv.setText(group.getName() + " " + group.updatePlayerCount());
 
         return view;
     }

@@ -7,6 +7,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.google.common.base.Joiner;
+
 import net.year4000.android.R;
 
 public class DisplayServer extends Activity {
@@ -30,14 +32,18 @@ public class DisplayServer extends Activity {
             public void run() {
                 Server server = APIManager.get().getServers().get(chosen);
 
-                TextView players = (TextView)findViewById(R.id.servPlayers);
-                if (server.getStatus() == null) {
-                    players.setText("Server Offline");
+                TextView text = (TextView)findViewById(R.id.servPlayers);
+                if (server == null || !server.isOnline()) {
+                    text.setText("Server Offline");
                 }
                 else {
-                    players.setText("Players: (" + server.getStatus().getPlayers().getOnline() +
-                            " / " + server.getStatus().getPlayers().getMax()  +
-                            ") \n " + server.getStatus().getDescription());
+                    Server.Players players = server.getStatus().getPlayers();
+                    text.append(server.getStatus().getDescription() + "\n");
+                    text.append(String.format("Players (%d/%d) \n", players.getOnline(), players.getMax()));
+
+                    if (server.isSample()) {
+                        text.append(Joiner.on(", ").join(players.getPlayerNames()));
+                    }
                 }
             }
         });
@@ -62,14 +68,13 @@ public class DisplayServer extends Activity {
         @Override
         protected String doInBackground(Void... params) {
             APIManager.get().pullAPI();
-            serverList();
-
-            return "";
+            return null;
         }
 
         @Override
         protected void onPostExecute(String result) {
             dialog.dismiss();
+            serverList();
         }
     }
 }

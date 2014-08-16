@@ -6,7 +6,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.ExpandableListView;
-import android.widget.Toast;
 
 import net.year4000.android.R;
 
@@ -68,14 +67,13 @@ public class ServersActivity extends Activity {
         protected String doInBackground(Void... params) {
             APIManager.get().pullAPI();
             ExpListItems = SetStandardGroups();
-            serverList();
-
-            return "";
+            return null;
         }
 
         @Override
         protected void onPostExecute(String result) {
             dialog.dismiss();
+            serverList();
         }
 
     }
