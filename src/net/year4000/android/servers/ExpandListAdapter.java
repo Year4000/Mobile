@@ -50,7 +50,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
             view = infalInflater.inflate(R.layout.expandlist_child_item, null);
         }
         TextView tv = (TextView) view.findViewById(R.id.serverListChild);
-        tv.setText(child.getName().toString());
+        tv.setText(child.getName());
         tv.setTag(child.getTag());
         tv.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){

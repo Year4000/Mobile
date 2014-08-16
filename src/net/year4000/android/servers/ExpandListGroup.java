@@ -22,10 +22,10 @@ public class ExpandListGroup {
     public void setItems(ArrayList<ExpandListChild> Items, ServersList posts, String id) {
         Items = new ArrayList<ExpandListChild>();
         for (Server server : posts.servers) {
-            if (server.group.get("name").toString().equals(id))
-                if(!server.group.get("name").toString().startsWith(".")) {
+            if (server.getGroup().getName().equals(id))
+                if(!server.getGroup().getName().startsWith(".")) {
                 ExpandListChild child = new ExpandListChild();
-                child.setName(server.name);
+                child.setName(server.getName());
                 child.setTag(null);
                 Items.add(child);
             }

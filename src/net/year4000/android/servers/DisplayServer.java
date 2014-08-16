@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import net.year4000.android.MyActivity;
 import net.year4000.android.R;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -49,8 +51,8 @@ public class DisplayServer extends Activity{
             @Override
             public void run() {
                 TextView players = (TextView)findViewById(R.id.servPlayers);
-                players.setText("Players: (" + selectedServer.status.getAsJsonObject("players").get("online").toString()+
-                                    " / " + selectedServer.status.getAsJsonObject("players").get("max").toString() +
+                players.setText("Players: (" + selectedServer.getStatus().getPlayers().getOnline() +
+                                    " / " + selectedServer.getStatus().getPlayers().getMax()  +
                                         ")");
             }
         });
@@ -58,7 +60,7 @@ public class DisplayServer extends Activity{
 
     public void getSelectedServer(ServersList posts, String name) {
         for(Server server : posts.servers) {
-            if(server.name.equals(name))
+            if(server.getName().equals(name))
                selectedServer = server;
         }
     }
@@ -107,10 +109,7 @@ public class DisplayServer extends Activity{
                         //Read the server response and attempt to parse it as JSON
                         Reader reader = new InputStreamReader(content);
 
-                        GsonBuilder gsonBuilder = new GsonBuilder();
-                        gsonBuilder.registerTypeAdapter(ServersList.class, new ServersListDeserializer());
-                        Gson gson = gsonBuilder.create();
-                        posts = gson.fromJson(reader, ServersList.class);
+                        posts = MyActivity.GSON.fromJson(reader, ServersList.class);
                         content.close();
 
                         serverList(posts);

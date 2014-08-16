@@ -10,8 +10,8 @@ import java.util.Map;
 import android.app.ProgressDialog;
 import android.widget.ExpandableListView;
 import android.widget.*;
-import com.google.gson.*;
-import com.google.gson.GsonBuilder;
+
+import net.year4000.android.MyActivity;
 import net.year4000.android.R;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -83,6 +83,7 @@ public class ServersActivity extends Activity {
             this.context = mainActivity;
             dialog = new ProgressDialog(context);
         }
+
         @Override
         protected void onPreExecute() {
             dialog.setMessage("Loading Server Info...");
@@ -100,7 +101,7 @@ public class ServersActivity extends Activity {
                 HttpResponse response = client.execute(post);
                 StatusLine statusLine = response.getStatusLine();
 
-                if(statusLine.getStatusCode() == 200) {
+                if (statusLine.getStatusCode() == 200) {
                     HttpEntity entity = response.getEntity();
                     InputStream content = entity.getContent();
 
@@ -108,10 +109,7 @@ public class ServersActivity extends Activity {
                         //Read the server response and attempt to parse it as JSON
                         Reader reader = new InputStreamReader(content);
 
-                        GsonBuilder gsonBuilder = new GsonBuilder();
-                        gsonBuilder.registerTypeAdapter(ServersList.class, new ServersListDeserializer());
-                        Gson gson = gsonBuilder.create();
-                        posts = gson.fromJson(reader, ServersList.class);
+                        posts = MyActivity.GSON.fromJson(reader, ServersList.class);
                         content.close();
 
                         serverList(posts);
@@ -119,14 +117,16 @@ public class ServersActivity extends Activity {
                         Log.e(TAG, "Failed to parse JSON due to: " + ex);
                         failedLoadingServers();
                     }
-                } else {
+                }
+                else {
                     Log.e(TAG, "Server responded with status code: " + statusLine.getStatusCode());
                     failedLoadingServers();
                 }
-            } catch(Exception ex) {
+            } catch (Exception ex) {
                 Log.e(TAG, "Failed to send HTTP POST request due to: " + ex);
                 failedLoadingServers();
             }
+
             return null;
         }
 
@@ -141,9 +141,9 @@ public class ServersActivity extends Activity {
         ArrayList<ExpandListGroup> list = new ArrayList<ExpandListGroup>();
         ArrayList<ExpandListChild> list2 = new ArrayList<ExpandListChild>();
 
-        Map<String, String> servers = getGroups();// pull a hashmap from api.year4000.net;
+        Map<String, String> servers = getGroups(); // pull a hashmap from api.year4000.net;
 
-        for(Map.Entry<String, String> entry : servers.entrySet()) {
+        for (Map.Entry<String, String> entry : servers.entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
 
@@ -170,12 +170,11 @@ public class ServersActivity extends Activity {
         Map<String, String> newList = new HashMap<String, String>();
 
         for (Server server : posts.servers) {
-            if (!newList.containsKey(server.group.get("name").toString()))
-                newList.put(server.group.get("name").toString(),
-                        server.group.get("display").toString());
+            if (!newList.containsKey(server.getGroup().getName())) {
+                newList.put(server.getGroup().getName(), server.getGroup().getDisplay());
+            }
         }
 
         return newList;
     }
-
 }
