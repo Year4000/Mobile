@@ -6,6 +6,7 @@
               android:textAlignment="center"
               android:orientation="vertical"
               android:paddingBottom="20dp">
+
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -17,33 +18,37 @@
             android:textSize="28sp"
             android:layout_gravity="center_horizontal"
             android:paddingBottom="20dp"/>
+
     <LinearLayout android:layout_width="350dp"
                   android:layout_height="wrap_content"
                   android:padding="10dp"
                   android:layout_gravity="center"
                   android:orientation="vertical"
                   android:theme="@android:style/Theme.Translucent">
-            <ExpandableListView
-                    android:layout_width="fill_parent"
-                    android:layout_height="0dp"
-                    android:id="@+id/serversListView"
-                    android:layout_gravity="center_horizontal"
-                    android:dividerHeight="3dp"
-                    android:layout_marginBottom="10dp"
-                    android:drawSelectorOnTop="false"
-                    android:layout_weight="1"/>
+
+        <ExpandableListView
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:id="@+id/serversListView"
+                android:layout_gravity="center_horizontal"
+                android:dividerHeight="3dp"
+                android:layout_marginBottom="10dp"
+                android:drawSelectorOnTop="false"
+                android:layout_weight="1"/>
+
         <LinearLayout android:layout_gravity="center|fill"
                       android:background="#ffffff"
                       android:padding="1dp"
                       android:layout_width="fill_parent"
                       android:layout_height="fill_parent"
                       android:orientation="vertical">
-            <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#1e6dc8"
-                    android:fadingEdge="horizontal"
-                    android:layout_gravity="center" >
+
+            <LinearLayout android:layout_width="fill_parent"
+                          android:layout_height="wrap_content"
+                          android:background="#1e6dc8"
+                          android:fadingEdge="horizontal"
+                          android:layout_gravity="center" >
+
                 <TextView android:layout_width="fill_parent"
                           android:layout_height="wrap_content"
                           android:clickable="true"

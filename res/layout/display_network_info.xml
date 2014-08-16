@@ -17,11 +17,7 @@
             android:textSize="35sp"
             android:layout_gravity="center_horizontal"
             android:paddingBottom="20dp"/>
-    <LinearLayout android:layout_width="350dp"
-                  android:layout_height="fill_parent"
-                  android:padding="1dp"
-                  android:layout_gravity="center"
-                  android:theme="@android:style/Theme.Translucent">
+
         <LinearLayout android:layout_width="350dp"
                       android:layout_height="fill_parent"
                       android:padding="10dp"
@@ -36,6 +32,5 @@
                       android:padding="10dp"
                       android:textColor="#ffffff"/>
 
-        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
