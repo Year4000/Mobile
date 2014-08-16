@@ -77,14 +77,14 @@ public class APIManager {
 
     /** Grab the set of servers with the group name */
     public List<Server> getServersByGroupName(String name) {
-        List<Server> newSet = new ArrayList<Server>();
+        List<Server> newList = new ArrayList<Server>();
 
         for (Server server : servers.values()) {
             if (server.getGroup().getName().equals(name)) {
-                newSet.add(server);
+                newList.add(server);
             }
         }
 
-        return newSet;
+        return newList;
     }
 }

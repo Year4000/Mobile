@@ -1,5 +1,7 @@
 package net.year4000.android.servers;
 
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +16,7 @@ public class ExpandListGroup {
     public ExpandListGroup(Map.Entry<String, String> entry) {
         name = entry.getValue();
 
-        for (Server server : APIManager.get().getServersByGroupName(entry.getValue())) {
+        for (Server server : APIManager.get().getServersByGroupName(entry.getKey())) {
             items.add(new ExpandListChild(server));
         }
     }

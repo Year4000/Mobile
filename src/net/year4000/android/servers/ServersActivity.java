@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 import net.year4000.android.R;
 
@@ -41,7 +42,6 @@ public class ServersActivity extends Activity {
             @Override
             public void run() {
                 ExpandList = (ExpandableListView) findViewById(R.id.serversListView);
-                ExpListItems = SetStandardGroups();
                 ExpAdapter = new ExpandListAdapter(ServersActivity.this, ExpListItems);
                 ExpandList.setAdapter(ExpAdapter);
             }
@@ -67,6 +67,7 @@ public class ServersActivity extends Activity {
         @Override
         protected String doInBackground(Void... params) {
             APIManager.get().pullAPI();
+            ExpListItems = SetStandardGroups();
             serverList();
 
             return "";
