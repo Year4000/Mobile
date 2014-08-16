@@ -6,6 +6,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <manifest.versionName>1.0.0</manifest.versionName>
     </properties>
 
     <groupId>net.year4000</groupId>
@@ -40,7 +41,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.14.4</version>
-            <scope>compile</scope>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>commons-io</groupId>
@@ -54,17 +55,49 @@
         <finalName>${project.name}</finalName>
         <sourceDirectory>src</sourceDirectory>
 
+        <resources>
+            <!-- Filter the vars in the AndroidManifest -->
+            <resource>
+                <directory>${basedir}</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>AndroidManifest.xml</include>
+                </includes>
+                <targetPath>${basedir}/target/</targetPath>
+            </resource>
+            <!-- Include the git.properties inside of the apk -->
+            <resource>
+                <directory>${basedir}</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>git.properties</include>
+                </includes>
+                <targetPath>${basedir}/target/classes</targetPath>
+            </resource>
+        </resources>
+
         <plugins>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>resources</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>com.jayway.maven.plugins.android.generation2</groupId>
                 <artifactId>android-maven-plugin</artifactId>
                 <version>3.9.0-rc.3</version>
                 <configuration>
-                    <androidManifestFile>AndroidManifest.xml</androidManifestFile>
-                    <resourceDirectory>res</resourceDirectory>
+                    <androidManifestFile>${basedir}/target/AndroidManifest.xml</androidManifestFile>
+                    <resourceDirectory>${basedir}/res/</resourceDirectory>
                     <sdk>
                         <!-- the path to the android sdk -->
-                        <path>/home/shaday/Downloads/adt-bundle-linux-x86_64-20140321/sdk</path>
+                        <path>/home/shaday/Downloads/adt-bundle-linux-x86_64-20140321/sdk/</path>
                         <platform>20</platform>
                     </sdk>
                     <emulator>
@@ -81,6 +114,26 @@
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>pl.project13.maven</groupId>
+                <artifactId>git-commit-id-plugin</artifactId>
+                <version>2.1.9</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+                <configuration>
+                    <dotGitDirectory>${basedir}/.git</dotGitDirectory>
+                    <generateGitPropertiesFile>true</generateGitPropertiesFile>
+                    <generateGitPropertiesFilename>git.properties</generateGitPropertiesFilename>
+                    <failOnNoGitDirectory>false</failOnNoGitDirectory>
                 </configuration>
             </plugin>
         </plugins>

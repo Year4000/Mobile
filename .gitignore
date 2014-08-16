@@ -16,6 +16,7 @@ gen/
 local.properties
 project.properties
 build.properties
+git.properties
 build.xml
 libs/
 
