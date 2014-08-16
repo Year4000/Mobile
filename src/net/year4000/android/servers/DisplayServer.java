@@ -38,7 +38,7 @@ public class DisplayServer extends Activity {
 
                 TextView text = (TextView)findViewById(R.id.servPlayers);
                 if (server == null || !server.isOnline()) {
-                    text.setText(Html.fromHtml("Server Offline"));
+                    text.setText("Server Offline");
                 }
                 else {
                     Server.Players players = server.getStatus().getPlayers();
