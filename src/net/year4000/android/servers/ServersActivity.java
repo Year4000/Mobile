@@ -2,13 +2,17 @@ package net.year4000.android.servers;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 import android.widget.ExpandableListView;
 
+import android.widget.TextView;
 import net.year4000.android.R;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +47,19 @@ public class ServersActivity extends Activity {
                 ExpandList = (ExpandableListView) findViewById(R.id.serversListView);
                 ExpAdapter = new ExpandListAdapter(ServersActivity.this, ExpListItems);
                 ExpandList.setAdapter(ExpAdapter);
+                setNetworkView();
+            }
+        });
+    }
+
+    public void setNetworkView() {
+        TextView net = (TextView)findViewById(R.id.networkView);
+        net.setText("Network");
+        net.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ServersActivity.this, NetworkDisplay.class);
+                startActivity(i);
             }
         });
     }
