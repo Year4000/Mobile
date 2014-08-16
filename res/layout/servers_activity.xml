@@ -18,30 +18,42 @@
             android:layout_gravity="center_horizontal"
             android:paddingBottom="20dp"/>
     <LinearLayout android:layout_width="350dp"
-                  android:layout_height="fill_parent"
-                  android:padding="1dp"
+                  android:layout_height="wrap_content"
+                  android:padding="10dp"
                   android:layout_gravity="center"
+                  android:orientation="vertical"
                   android:theme="@android:style/Theme.Translucent">
-        <LinearLayout android:layout_width="350dp"
+            <ExpandableListView
+                    android:layout_width="fill_parent"
+                    android:layout_height="0dp"
+                    android:id="@+id/serversListView"
+                    android:layout_gravity="center_horizontal"
+                    android:dividerHeight="3dp"
+                    android:layout_marginBottom="10dp"
+                    android:drawSelectorOnTop="false"
+                    android:layout_weight="1"/>
+        <LinearLayout android:layout_gravity="center|fill"
+                      android:background="#ffffff"
+                      android:padding="1dp"
+                      android:layout_width="fill_parent"
                       android:layout_height="fill_parent"
-                      android:padding="10dp"
-                      android:layout_gravity="center"
-                      android:orientation="vertical"
-                      android:theme="@android:style/Theme.Translucent">
-                <ExpandableListView
-                        android:layout_width="fill_parent"
-                        android:layout_height="0dp"
-                        android:id="@+id/serversListView"
-                        android:layout_gravity="center_horizontal"
-                        android:dividerHeight="3dp"
-                        android:layout_marginBottom="10dp"
-                        android:drawSelectorOnTop="false"
-                        android:layout_weight="1"/>
+                      android:orientation="vertical">
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#1e6dc8"
+                    android:fadingEdge="horizontal"
+                    android:layout_gravity="center" >
                 <TextView android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:id="@+id/networkView"
-                        android:layout_gravity="center_horizontal"/>
+                          android:layout_height="wrap_content"
+                          android:clickable="true"
+                          android:id="@+id/networkView"
+                          android:layout_gravity="center_horizontal"
+                          android:layout_marginLeft="15dp"
+                          android:textColor="#ffffff"
+                          android:padding="20dp"
+                          android:textSize="25dip"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
