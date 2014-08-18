@@ -5,7 +5,9 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.TextView;
+
 import com.google.common.base.Joiner;
+
 import net.year4000.android.R;
 
 import java.util.Map;
@@ -45,11 +47,11 @@ public class NetworkDisplay extends Activity{
             }
 
             if (server.isSample()) {
-                samplesBuild.append(Joiner.on(", ").join(server.getStatus().getPlayers().getPlayerNames()));
+                samplesBuild.append(", ").append(Joiner.on(", ").join(server.getStatus().getPlayers().getPlayerNames()));
             }
         }
 
-        samples = samplesBuild.toString();
+        samples = samplesBuild.toString().substring(2); // remove first comma and space
         return ("Players " + String.format(" (%d/%d)", online, max) + "\n" + samples);
     }
 
