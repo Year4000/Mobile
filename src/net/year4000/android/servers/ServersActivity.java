@@ -59,7 +59,7 @@ public class ServersActivity extends Activity {
         for (Server server : servers.values()) {
             if (server.isOnline()) {
                 max += server.getStatus().getPlayers().getMax();
-                online += server.getStatus().getPlayers().getOnline();
+                online += server.getStatus().getPlayers().getTrueOnline();
             }
         }
         net.setText("Network " + String.format(" (%d/%d)", online, max));

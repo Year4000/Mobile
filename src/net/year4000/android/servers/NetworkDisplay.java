@@ -37,15 +37,18 @@ public class NetworkDisplay extends Activity{
         String samples;
         int max = 0;
         int online = 0;
+
         for (Server server : servers.values()) {
             if (server.isOnline()) {
                 max += server.getStatus().getPlayers().getMax();
-                online += server.getStatus().getPlayers().getOnline();
+                online += server.getStatus().getPlayers().getTrueOnline();
             }
+
             if (server.isSample()) {
                 samplesBuild.append(Joiner.on(", ").join(server.getStatus().getPlayers().getPlayerNames()));
             }
         }
+
         samples = samplesBuild.toString();
         return ("Players " + String.format(" (%d/%d)", online, max) + "\n" + samples);
     }
