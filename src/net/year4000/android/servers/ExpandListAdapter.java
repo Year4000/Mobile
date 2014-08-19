@@ -49,10 +49,21 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
             return view;
         }
 
-        TextView tv = (TextView) view.findViewById(R.id.serverListChild);
-        tv.setText(child.getName() + " " + child.updatePlayerCount());
-        tv.setTag(child.getTag());
-        tv.setOnClickListener(new View.OnClickListener() {
+        TextView tvName = (TextView) view.findViewById(R.id.serverListChild);
+        tvName.setText(child.getName());
+        tvName.setTag(child.getTag());
+        tvName.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent i = new Intent(context.getApplicationContext(), DisplayServer.class);
+                i.putExtra(EXTRA_NAME, child.getName());
+                context.startActivity(i);
+            }
+        });
+
+        TextView tvPlayers = (TextView) view.findViewById(R.id.serverListChildPlayers);
+        tvPlayers.setText(child.updatePlayerCount());
+        tvPlayers.setTag(child.getTag());
+        tvPlayers.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent i = new Intent(context.getApplicationContext(), DisplayServer.class);
                 i.putExtra(EXTRA_NAME, child.getName());
@@ -87,9 +98,19 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
         }
 
         if (groupPosition == 0) {
-            TextView tv = (TextView) view.findViewById(R.id.servListGroup);
-            tv.setText(setNetworkView());
-            tv.setOnClickListener(new View.OnClickListener() {
+            TextView tvGroup = (TextView) view.findViewById(R.id.servListGroup);
+            tvGroup.setText("Network");
+            tvGroup.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i = new Intent(context, NetworkDisplay.class);
+                    context.startActivity(i);
+                }
+            });
+
+            TextView tvPlayers = (TextView) view.findViewById(R.id.servListGroupPlayers);
+            tvPlayers.setText(setNetworkPlayersView());
+            tvPlayers.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent i = new Intent(context, NetworkDisplay.class);
@@ -100,15 +121,17 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
             return view;
         } else {
             ExpandListGroup group = (ExpandListGroup) getGroup(groupPosition);
-            TextView tv = (TextView) view.findViewById(R.id.servListGroup);
-            tv.setText(group.getName() + " " + group.updatePlayerCount());
+            TextView tvGroup = (TextView) view.findViewById(R.id.servListGroup);
+            tvGroup.setText(group.getName());
+            TextView tvPlayers = (TextView) view.findViewById(R.id.servListGroupPlayers);
+            tvPlayers.setText(group.updatePlayerCount());
         }
 
         return view;
     }
 
-    public String setNetworkView() {
-        String net;
+    public String setNetworkPlayersView() {
+        String netPlayers;
         Map<String, Server> servers = APIManager.get().getServers();
         int max = 0;
         int online = 0;
@@ -120,7 +143,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
             }
         }
 
-        return net = "Network " + String.format(" (%d/%d)", online, max);
+        return netPlayers = String.format(" (%d/%d)", online, max);
     }
 
     public boolean hasStableIds() {
