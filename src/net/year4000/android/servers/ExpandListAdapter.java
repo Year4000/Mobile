@@ -17,14 +17,14 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
     public static final String EXTRA_NAME = "name";
     private Context context;
     private List<ExpandListGroup> groups;
-    private LayoutInflater infalInflater;
+    private LayoutInflater layoutInflater;
     private ExpandListGroup network;
 
     public ExpandListAdapter(Context context, List<ExpandListGroup> groups) {
         this.context = context;
         groups.add(0, network);
         this.groups = groups;
-        this.infalInflater = LayoutInflater.from(context);
+        this.layoutInflater = LayoutInflater.from(context);
     }
 
     public Object getChild(int groupPosition, int childPosition) {
@@ -41,8 +41,8 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
         final ExpandListChild child = (ExpandListChild) getChild(groupPosition, childPosition);
 
         if (view == null) {
-            infalInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            view = infalInflater.inflate(R.layout.expandlist_child_item, null);
+            layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = layoutInflater.inflate(R.layout.expandlist_child_item, null);
         }
 
         if (groupPosition == 0) {
@@ -82,7 +82,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
     public View getGroupView(int groupPosition, boolean isLastChild, View view,
                              ViewGroup parent) {
         if (view == null) {
-            LayoutInflater inf = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+            LayoutInflater inf = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inf.inflate(R.layout.expandlist_group_item, null);
         }
 
@@ -98,7 +98,8 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
             });
 
             return view;
-        } else {
+        }
+        else {
             ExpandListGroup group = (ExpandListGroup) getGroup(groupPosition);
             TextView tv = (TextView) view.findViewById(R.id.servListGroup);
             tv.setText(group.getName() + " " + group.updatePlayerCount());
@@ -108,7 +109,6 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
     }
 
     public String setNetworkView() {
-        String net;
         Map<String, Server> servers = APIManager.get().getServers();
         int max = 0;
         int online = 0;
@@ -120,7 +120,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
             }
         }
 
-        return net = "Network " + String.format(" (%d/%d)", online, max);
+        return String.format("Network (%d/%d)", online, max);
     }
 
     public boolean hasStableIds() {

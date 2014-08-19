@@ -74,12 +74,14 @@ public class DisplayServer extends Activity {
         colors.put("§l", "</span><span style='color:#fff;'>");
         colors.put("§m", "</span><span style='color:#fff;'>");
         colors.put("§r", "</span><span style='color:#fff;'>");
-        for(Map.Entry<String, String> entry : colors.entrySet()) {
+
+        for (Map.Entry<String, String> entry : colors.entrySet()) {
             String key = entry.getKey();
             String value = entry.getValue();
             des = des.replace(key, value);
         }
-        return ("<span>" + des + "</span>");
+
+        return "<span>" + des + "</span>";
     }
 
     private class PostFetcher extends AsyncTask<Void, Void, String> {
