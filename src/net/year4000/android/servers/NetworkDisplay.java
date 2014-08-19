@@ -53,10 +53,8 @@ public class NetworkDisplay extends Activity{
 
         samples = samplesBuild.toString();
 
-        if (samples.length() > 2) // if there are players online
-            samples = samples.substring(2); // remove first comma and space
-
-        return ("Players " + String.format(" (%d/%d)", online, max) + "\n" + samples);
+        return 2 > samples.length() ? "No active players" : "Players " +
+                    String.format(" (%d/%d)", online, max) + "\n" + samples.substring(2);
     }
 
 private class PostFetcher extends AsyncTask<Void, Void, String> {
