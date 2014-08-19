@@ -2,14 +2,11 @@ package net.year4000.android.servers;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
 import android.widget.ExpandableListView;
 
-import android.widget.TextView;
 import net.year4000.android.R;
 
 import java.util.ArrayList;
@@ -46,30 +43,19 @@ public class ServersActivity extends Activity {
                 ExpandList = (ExpandableListView) findViewById(R.id.serversListView);
                 ExpAdapter = new ExpandListAdapter(ServersActivity.this, ExpListItems);
                 ExpandList.setAdapter(ExpAdapter);
-                setNetworkView();
             }
         });
     }
 
-    public void setNetworkView() {
-        TextView net = (TextView)findViewById(R.id.networkView);
-        Map<String, Server> servers = APIManager.get().getServers();
-        int max = 0;
-        int online = 0;
-        for (Server server : servers.values()) {
-            if (server.isOnline()) {
-                max += server.getStatus().getPlayers().getMax();
-                online += server.getStatus().getPlayers().getOnline();
-            }
+    public List<ExpandListGroup> SetStandardGroups() {
+        List<ExpandListGroup> list = new ArrayList<ExpandListGroup>();
+        Map<String, String> servers = APIManager.get().getGroups();
+
+        for (Map.Entry<String, String> entry : servers.entrySet()) {
+            list.add(new ExpandListGroup(entry));
         }
-        net.setText("Network " + String.format(" (%d/%d)", online, max));
-        net.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(ServersActivity.this, NetworkDisplay.class);
-                startActivity(i);
-            }
-        });
+
+        return list;
     }
 
     private class PostFetcher extends AsyncTask<Void, Void, String> {
@@ -101,17 +87,5 @@ public class ServersActivity extends Activity {
             serverList();
         }
 
-    }
-
-    public List<ExpandListGroup> SetStandardGroups() {
-        List<ExpandListGroup> list = new ArrayList<ExpandListGroup>();
-
-        Map<String, String> servers = APIManager.get().getGroups();
-
-        for (Map.Entry<String, String> entry : servers.entrySet()) {
-            list.add(new ExpandListGroup(entry));
-        }
-
-        return list;
     }
 }
