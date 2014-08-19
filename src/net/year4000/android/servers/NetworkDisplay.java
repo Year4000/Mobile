@@ -51,7 +51,11 @@ public class NetworkDisplay extends Activity{
             }
         }
 
-        samples = samplesBuild.toString().substring(2); // remove first comma and space
+        samples = samplesBuild.toString();
+
+        if (samples.length() > 2) // if there are players online
+            samples = samples.substring(2); // remove first comma and space
+
         return ("Players " + String.format(" (%d/%d)", online, max) + "\n" + samples);
     }
 
