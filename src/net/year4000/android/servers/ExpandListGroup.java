@@ -48,11 +48,9 @@ public class ExpandListGroup {
 
         for (ExpandListChild item : items) {
             Server server = item.getServer();
-            if (server.isOnline()) {
-                int sample = server.isSample() ? server.getStatus().getPlayers().getSample().size() : 0;
-                int online = server.getStatus().getPlayers().getOnline();
 
-                totalOnline += sample > online ? sample : online;
+            if (server.isOnline()) {
+                totalOnline += server.getStatus().getPlayers().getTrueOnline();
             }
         }
 

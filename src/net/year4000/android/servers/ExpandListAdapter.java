@@ -116,7 +116,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
         for (Server server : servers.values()) {
             if (server.isOnline()) {
                 max += server.getStatus().getPlayers().getMax();
-                online += server.getStatus().getPlayers().getOnline();
+                online += server.getStatus().getPlayers().getTrueOnline();
             }
         }
 

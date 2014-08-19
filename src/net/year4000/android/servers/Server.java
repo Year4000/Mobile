@@ -68,6 +68,13 @@ public class Server {
 
             return names;
         }
+
+        /** Get the true size to the player count */
+        public int getTrueOnline() {
+            // we need to check both as our plugins changes
+            // the online count and sample to do cool stuff
+            return isSample() && sample.size() > online ? sample.size() : online;
+        }
     }
 
     @Data

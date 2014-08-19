@@ -47,12 +47,25 @@ public class ServersActivity extends Activity {
         });
     }
 
+<<<<<<< HEAD
     public List<ExpandListGroup> SetStandardGroups() {
         List<ExpandListGroup> list = new ArrayList<ExpandListGroup>();
         Map<String, String> servers = APIManager.get().getGroups();
 
         for (Map.Entry<String, String> entry : servers.entrySet()) {
             list.add(new ExpandListGroup(entry));
+=======
+    public void setNetworkView() {
+        TextView net = (TextView)findViewById(R.id.networkView);
+        Map<String, Server> servers = APIManager.get().getServers();
+        int max = 0;
+        int online = 0;
+        for (Server server : servers.values()) {
+            if (server.isOnline()) {
+                max += server.getStatus().getPlayers().getMax();
+                online += server.getStatus().getPlayers().getTrueOnline();
+            }
+>>>>>>> 8dc53fa3cbf6ee55ea7def653e1fffb0c0b79fc3
         }
 
         return list;
