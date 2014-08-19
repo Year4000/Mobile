@@ -15,9 +15,9 @@ import java.util.Map;
 
 public class ServersActivity extends Activity {
     /** Called when the activity is first created. */
-    private ExpandListAdapter ExpAdapter;
-    private List<ExpandListGroup> ExpListItems;
-    private ExpandableListView ExpandList;
+    private ExpandListAdapter expAdapter;
+    private List<ExpandListGroup> expListItems;
+    private ExpandableListView expandList;
     private static final String TAG = "ServersActivity";
 
     @Override
@@ -40,14 +40,14 @@ public class ServersActivity extends Activity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                ExpandList = (ExpandableListView) findViewById(R.id.serversListView);
-                ExpAdapter = new ExpandListAdapter(ServersActivity.this, ExpListItems);
-                ExpandList.setAdapter(ExpAdapter);
+                expandList = (ExpandableListView) findViewById(R.id.serversListView);
+                expAdapter = new ExpandListAdapter(ServersActivity.this, expListItems);
+                expandList.setAdapter(expAdapter);
             }
         });
     }
 
-    public List<ExpandListGroup> SetStandardGroups() {
+    public List<ExpandListGroup> setStandardGroups() {
         List<ExpandListGroup> list = new ArrayList<ExpandListGroup>();
         Map<String, String> servers = APIManager.get().getGroups();
 
@@ -77,7 +77,7 @@ public class ServersActivity extends Activity {
         @Override
         protected String doInBackground(Void... params) {
             APIManager.get().pullAPI();
-            ExpListItems = SetStandardGroups();
+            expListItems = setStandardGroups();
             return null;
         }
 

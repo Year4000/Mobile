@@ -142,6 +142,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
                 online += server.getStatus().getPlayers().getTrueOnline();
             }
         }
+
         return String.format("(%d/%d)", online, max);
     }
 
