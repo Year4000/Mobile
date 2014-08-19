@@ -45,9 +45,7 @@ public class DisplayServer extends Activity {
                     text.append(Html.fromHtml(formatDescription(server.getStatus().getDescription())) + "\n");
                     text.append(String.format("Players (%d/%d) \n", players.getOnline(), players.getMax()));
 
-                    if (server.isSample()) {
-                        text.append(Joiner.on(", ").join(players.getPlayerNames()));
-                    }
+                    text.append(server.isSample() ? Joiner.on(", ").join(players.getPlayerNames()) : "No active players");
                 }
             }
         });
