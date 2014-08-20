@@ -28,7 +28,7 @@ public class NetworkDisplay extends Activity{
             @Override
             public void run() {
                 TextView text = (TextView)findViewById(R.id.netPlayers);
-                text.append(setTextView());
+                text.setText(setTextView());
             }
         });
     }
@@ -53,36 +53,36 @@ public class NetworkDisplay extends Activity{
 
         samples = samplesBuild.toString();
 
-        return 2 > samples.length() ? "No active players" : String.format("Players (%d/%d) \n %s", online, max, samples.substring(2));
+        return 2 > samples.length() ? "No active players" : String.format("Players (%d/%d)\n%s", online, max, samples.substring(2));
     }
 
-private class PostFetcher extends AsyncTask<Void, Void, String> {
-    private static final String TAG = "PostFetcher";
-    private ProgressDialog dialog;
-    private Activity context;
+    private class PostFetcher extends AsyncTask<Void, Void, String> {
+        private static final String TAG = "PostFetcher";
+        private ProgressDialog dialog;
+        private Activity context;
 
-    public PostFetcher(Activity mainActivity) {
-        this.context = mainActivity;
-        dialog = new ProgressDialog(context);
-    }
+        public PostFetcher(Activity mainActivity) {
+            this.context = mainActivity;
+            dialog = new ProgressDialog(context);
+        }
 
-    @Override
-    protected void onPreExecute() {
-        dialog.setMessage("Updating Server Info...");
-        dialog.show();
-    }
+        @Override
+        protected void onPreExecute() {
+            dialog.setMessage("Updating Server Info...");
+            dialog.show();
+        }
 
-    @Override
-    protected String doInBackground(Void... params) {
-        APIManager.get().pullAPI();
-        return null;
-    }
+        @Override
+        protected String doInBackground(Void... params) {
+            APIManager.get().pullAPI();
+            return null;
+        }
 
-    @Override
-    protected void onPostExecute(String result) {
-        dialog.dismiss();
-        serverList();
+        @Override
+        protected void onPostExecute(String result) {
+            dialog.dismiss();
+            serverList();
+        }
     }
-}
 }
 

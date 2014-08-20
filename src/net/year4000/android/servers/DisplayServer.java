@@ -16,7 +16,6 @@ import com.google.common.base.Joiner;
 import net.year4000.android.R;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class DisplayServer extends Activity {
     private String chosen;
@@ -94,7 +93,7 @@ public class DisplayServer extends Activity {
 
         }
 
-        tv.append(wordtoSpan);
+        tv.setText(wordtoSpan);
     }
 
     private class PostFetcher extends AsyncTask<Void, Void, String> {
