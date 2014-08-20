@@ -18,7 +18,30 @@ import net.year4000.android.R;
 
 public class DisplayServer extends Activity {
     private String chosen;
-    private ImmutableMap<String, String> colors;
+    private static final ImmutableMap<String, String> COLORS = ImmutableMap.<String, String>builder()
+            .put("§a", "#55ff55")
+            .put("§b", "#55ffff")
+            .put("§c", "#ff5555")
+            .put("§d", "#ff55ff")
+            .put("§e", "#ffff55")
+            .put("§f", "#ffffff")
+            .put("§0", "#000000")
+            .put("§1", "#0000aa")
+            .put("§2", "#00aa00")
+            .put("§3", "#00aaaa")
+            .put("§4", "#aa0000")
+            .put("§5", "#aa00aa")
+            .put("§6", "#ffaa00")
+            .put("§7", "#aaaaaa")
+            .put("§8", "#555555")
+            .put("§9", "#5555ff")
+            .put("§k", "#ffffff")
+            .put("§o", "#ffffff")
+            .put("§l", "#ffffff")
+            .put("§m", "#ffffff")
+            .put("§r", "#ffffff")
+            .build();
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,30 +75,6 @@ public class DisplayServer extends Activity {
     }
 
     public void formatDescription(TextView tv, String des) {
-        colors = ImmutableMap.<String, String>builder()
-            .put("§a", "#55ff55")
-            .put("§b", "#55ffff")
-            .put("§c", "#ff5555")
-            .put("§d", "#ff55ff")
-            .put("§e", "#ffff55")
-            .put("§f", "#ffffff")
-            .put("§0", "#000000")
-            .put("§1", "#0000aa")
-            .put("§2", "#00aa00")
-            .put("§3", "#00aaaa")
-            .put("§4", "#aa0000")
-            .put("§5", "#aa00aa")
-            .put("§6", "#ffaa00")
-            .put("§7", "#aaaaaa")
-            .put("§8", "#555555")
-            .put("§9", "#5555ff")
-            .put("§k", "#ffffff")
-            .put("§o", "#ffffff")
-            .put("§l", "#ffffff")
-            .put("§m", "#ffffff")
-            .put("§r", "#ffffff")
-            .build();
-
         SpannableStringBuilder wordtoSpan = new SpannableStringBuilder(des);
 
         for (int i = 0; i < des.length()-2; i++) {
@@ -83,8 +82,8 @@ public class DisplayServer extends Activity {
             int index = des.indexOf(key);
             int length = des.length();
 
-            if (colors.containsKey(key)) {
-                String value = colors.get(key);
+            if (COLORS.containsKey(key)) {
+                String value = COLORS.get(key);
                 wordtoSpan.setSpan(new ForegroundColorSpan(Color.parseColor(value)), index, length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 wordtoSpan.replace(i, i+2, "");
                 des = des.substring(0,i) + des.substring(i+2);
