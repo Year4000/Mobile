@@ -3,9 +3,12 @@ package net.year4000.android.servers;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Html;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.widget.TextView;
 
 import com.google.common.base.Joiner;
@@ -42,46 +45,56 @@ public class DisplayServer extends Activity {
                 }
                 else {
                     Server.Players players = server.getStatus().getPlayers();
-                    text.append(Html.fromHtml(formatDescription(server.getStatus().getDescription())) + "\n");
-                    text.append(String.format("Players (%d/%d) \n", players.getOnline(), players.getMax()));
-
+                    formatDescription(text, server.getStatus().getDescription());
+                    text.append("\n" + String.format("Players (%d/%d) \n", players.getOnline(), players.getMax()));
                     text.append(server.isSample() ? Joiner.on(", ").join(players.getPlayerNames()) : "No active players");
                 }
             }
         });
     }
 
-    public String formatDescription(String des) {
+    public void formatDescription(TextView tv, String des) {
         HashMap<String, String> colors = new HashMap<String, String>();
-        colors.put("§a", "</span><span style='color:#5f5;'>");
-        colors.put("§b", "</span><span style='color:#5ff;'>");
-        colors.put("§c", "</span><span style='color:#f55;'>");
-        colors.put("§d", "</span><span style='color:#f5f;'>");
-        colors.put("§e", "</span><span style='color:#ff5;'>");
-        colors.put("§f", "</span><span style='color:#fff;'>");
-        colors.put("§0", "</span><span style='color:#000;'>");
-        colors.put("§1", "</span><span style='color:#00a;'>");
-        colors.put("§2", "</span><span style='color:#0a0;'>");
-        colors.put("§3", "</span><span style='color:#0aa;'>");
-        colors.put("§4", "</span><span style='color:#a00;'>");
-        colors.put("§5", "</span><span style='color:#a0a;'>");
-        colors.put("§6", "</span><span style='color:#fa0;'>");
-        colors.put("§7", "</span><span style='color:#aaa;'>");
-        colors.put("§8", "</span><span style='color:#555;'>");
-        colors.put("§9", "</span><span style='color:#55f;'>");
-        colors.put("§k", "</span><span style='color:#fff;'>");
-        colors.put("§o", "</span><span style='color:#fff;'>");
-        colors.put("§l", "</span><span style='color:#fff;'>");
-        colors.put("§m", "</span><span style='color:#fff;'>");
-        colors.put("§r", "</span><span style='color:#fff;'>");
+        colors.put("§a", "#55ff55");
+        colors.put("§b", "#55ffff");
+        colors.put("§c", "#ff5555");
+        colors.put("§d", "#ff55ff");
+        colors.put("§e", "#ffff55");
+        colors.put("§f", "#ffffff");
+        colors.put("§0", "#000000");
+        colors.put("§1", "#0000aa");
+        colors.put("§2", "#00aa00");
+        colors.put("§3", "#00aaaa");
+        colors.put("§4", "#aa0000");
+        colors.put("§5", "#aa00aa");
+        colors.put("§6", "#ffaa00");
+        colors.put("§7", "#aaaaaa");
+        colors.put("§8", "#555555");
+        colors.put("§9", "#5555ff");
+        colors.put("§k", "#ffffff");
+        colors.put("§o", "#ffffff");
+        colors.put("§l", "#ffffff");
+        colors.put("§m", "#ffffff");
+        colors.put("§r", "#ffffff");
 
-        for (Map.Entry<String, String> entry : colors.entrySet()) {
-            String key = entry.getKey();
-            String value = entry.getValue();
-            des = des.replace(key, value);
+        SpannableStringBuilder wordtoSpan = new SpannableStringBuilder(des);
+
+        for (int i = 0; i < des.length()-2; i++) {
+            String key = des.substring(i, i+2);
+            int index = des.indexOf(key);
+            int length = des.length();
+
+            if (colors.containsKey(key)) {
+                String value = colors.get(key);
+                wordtoSpan.setSpan(new ForegroundColorSpan(Color.parseColor(value)), index, length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                wordtoSpan.replace(i, i+2, "");
+                des = des.substring(0,i) + des.substring(i+2);
+                i = (2 > i) ? 0 : i - 2;
+            }
+
         }
 
-        return "<span>" + des + "</span>";
+        tv.append(wordtoSpan);
     }
 
     private class PostFetcher extends AsyncTask<Void, Void, String> {
@@ -96,8 +109,8 @@ public class DisplayServer extends Activity {
 
         @Override
         protected void onPreExecute() {
-            dialog.setMessage("Updating Server Info...");
-            dialog.show();
+            //dialog.setMessage("Updating Server Info...");
+            //dialog.show();
         }
 
         @Override
@@ -108,7 +121,7 @@ public class DisplayServer extends Activity {
 
         @Override
         protected void onPostExecute(String result) {
-            dialog.dismiss();
+            //dialog.dismiss();
             serverList();
         }
     }
