@@ -28,7 +28,7 @@ public class NetworkDisplay extends Activity{
             @Override
             public void run() {
                 TextView text = (TextView)findViewById(R.id.netPlayers);
-                text.append(setTextView());
+                text.setText(setTextView());
             }
         });
     }
