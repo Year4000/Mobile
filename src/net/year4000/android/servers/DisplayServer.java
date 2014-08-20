@@ -13,13 +13,12 @@ import android.widget.TextView;
 
 import com.google.common.base.Joiner;
 
+import com.google.common.collect.ImmutableMap;
 import net.year4000.android.R;
-
-import java.util.HashMap;
 
 public class DisplayServer extends Activity {
     private String chosen;
-
+    private ImmutableMap<String, String> colors;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,28 +52,29 @@ public class DisplayServer extends Activity {
     }
 
     public void formatDescription(TextView tv, String des) {
-        HashMap<String, String> colors = new HashMap<String, String>();
-        colors.put("§a", "#55ff55");
-        colors.put("§b", "#55ffff");
-        colors.put("§c", "#ff5555");
-        colors.put("§d", "#ff55ff");
-        colors.put("§e", "#ffff55");
-        colors.put("§f", "#ffffff");
-        colors.put("§0", "#000000");
-        colors.put("§1", "#0000aa");
-        colors.put("§2", "#00aa00");
-        colors.put("§3", "#00aaaa");
-        colors.put("§4", "#aa0000");
-        colors.put("§5", "#aa00aa");
-        colors.put("§6", "#ffaa00");
-        colors.put("§7", "#aaaaaa");
-        colors.put("§8", "#555555");
-        colors.put("§9", "#5555ff");
-        colors.put("§k", "#ffffff");
-        colors.put("§o", "#ffffff");
-        colors.put("§l", "#ffffff");
-        colors.put("§m", "#ffffff");
-        colors.put("§r", "#ffffff");
+        colors = ImmutableMap.<String, String>builder()
+            .put("§a", "#55ff55")
+            .put("§b", "#55ffff")
+            .put("§c", "#ff5555")
+            .put("§d", "#ff55ff")
+            .put("§e", "#ffff55")
+            .put("§f", "#ffffff")
+            .put("§0", "#000000")
+            .put("§1", "#0000aa")
+            .put("§2", "#00aa00")
+            .put("§3", "#00aaaa")
+            .put("§4", "#aa0000")
+            .put("§5", "#aa00aa")
+            .put("§6", "#ffaa00")
+            .put("§7", "#aaaaaa")
+            .put("§8", "#555555")
+            .put("§9", "#5555ff")
+            .put("§k", "#ffffff")
+            .put("§o", "#ffffff")
+            .put("§l", "#ffffff")
+            .put("§m", "#ffffff")
+            .put("§r", "#ffffff")
+            .build();
 
         SpannableStringBuilder wordtoSpan = new SpannableStringBuilder(des);
 
