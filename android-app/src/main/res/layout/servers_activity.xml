@@ -1,0 +1,62 @@
+<android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipe">
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/bg"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp">
+
+            <!-- This is the left margin -->
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="13" />
+
+            <!-- This is the content -->
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/serversHeader"
+                    android:textAlignment="center"
+                    android:textColor="#ffffff"
+                    android:text="@string/serversHead"
+                    android:textSize="28sp"
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingBottom="20dp" />
+
+                <ExpandableListView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/serversListView"
+                    android:layout_gravity="center_horizontal"
+                    android:dividerHeight="3dp"
+                    android:layout_marginBottom="10dp"
+                    android:drawSelectorOnTop="false" />
+
+            </LinearLayout>
+
+            <!-- This is the right margin -->
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="13" />
+
+        </LinearLayout>
+    </ScrollView>
+</android.support.v4.widget.SwipeRefreshLayout>
