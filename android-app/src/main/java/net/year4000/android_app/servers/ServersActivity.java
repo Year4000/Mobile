@@ -9,6 +9,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.Menu;
 import android.widget.ExpandableListView;
+import android.widget.AbsListView;
+
 import net.year4000.android_app.R;
 
 import java.util.ArrayList;
@@ -16,31 +18,32 @@ import java.util.List;
 import java.util.Map;
 
 public class ServersActivity extends Activity {
-    /** Called when the activity is first created. */
+
     private ExpandListAdapter expAdapter;
     private List<ExpandListGroup> expListItems;
     private ExpandableListView expandList;
     private static final String TAG = "ServersActivity";
+    private SwipeRefreshLayout swipeView;
+    private PostFetcher fetcher;
 
+    /** Called when the activity is first created. */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.servers_activity);
-        PostFetcher fetcher = new PostFetcher(ServersActivity.this);
+        fetcher = new PostFetcher(ServersActivity.this);
         fetcher.execute();
-        final SwipeRefreshLayout swipeView = (SwipeRefreshLayout) findViewById(R.id.swipe);
+        swipeView = (SwipeRefreshLayout)findViewById(R.id.swipe);
         swipeView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 swipeView.setRefreshing(true);
-                Log.d("Swipe", "Refreshing Number");
                 ( new Handler()).postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         swipeView.setRefreshing(false);
-                        PostFetcher fetcher = new PostFetcher(ServersActivity.this);
+                        fetcher = new PostFetcher(ServersActivity.this);
                         fetcher.execute();
-
                     }
                 }, 3000);
             }
@@ -54,7 +57,7 @@ public class ServersActivity extends Activity {
 
         return true;
     }
-
+    /**runs on the thread*/
     private void serverList() {
         runOnUiThread(new Runnable() {
             @Override
@@ -62,6 +65,27 @@ public class ServersActivity extends Activity {
                 expandList = (ExpandableListView) findViewById(R.id.serversListView);
                 expAdapter = new ExpandListAdapter(ServersActivity.this, expListItems);
                 expandList.setAdapter(expAdapter);
+                setListScrollListener(expandList);
+
+            }
+        });
+    }
+    /**this only allows swipeRefresh if first child of list is visible*/
+    public void setListScrollListener(final ExpandableListView list) {
+        list.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) { }
+
+            @Override
+            public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+                if (firstVisibleItem == 0 && visibleItemCount > 0 && list.getChildAt(0).getTop() >= 0) {
+                    swipeView.setEnabled(true);
+                }
+                else {
+                    swipeView.setEnabled(false);
+                }
+
             }
         });
     }
