@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-//@AllArgsConstructor
 public class Server {
     /** The name of the server */
     private String name;
@@ -28,14 +27,12 @@ public class Server {
     }
 
     @Data
-    //@AllArgsConstructor
     public class Group {
         private String name;
         private String display;
     }
 
     @Data
-    //@AllArgsConstructor
     public class StatusResponse {
         private String description;
         private Players players;
@@ -44,7 +41,6 @@ public class Server {
     }
 
     @Data
-    //@AllArgsConstructor
     public class Players {
         private int max;
         private int online;
@@ -77,14 +73,12 @@ public class Server {
     }
 
     @Data
-    //@AllArgsConstructor
     public class Player {
         private String name;
         private String id;
     }
 
     @Data
-    //@AllArgsConstructor
     public class Version {
         private String name;
         private String protocol;

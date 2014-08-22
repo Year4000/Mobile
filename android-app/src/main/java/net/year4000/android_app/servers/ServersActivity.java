@@ -1,16 +1,16 @@
 package net.year4000.android_app.servers;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.Menu;
-import android.widget.ExpandableListView;
 import android.widget.AbsListView;
-
+import android.widget.ExpandableListView;
 import net.year4000.android_app.R;
 
 import java.util.ArrayList;
@@ -27,6 +27,7 @@ public class ServersActivity extends Activity {
     private PostFetcher fetcher;
 
     /** Called when the activity is first created. */
+    @TargetApi(Build.VERSION_CODES.CUPCAKE)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +40,7 @@ public class ServersActivity extends Activity {
             public void onRefresh() {
                 swipeView.setRefreshing(true);
                 ( new Handler()).postDelayed(new Runnable() {
+                    @TargetApi(Build.VERSION_CODES.CUPCAKE)
                     @Override
                     public void run() {
                         swipeView.setRefreshing(false);

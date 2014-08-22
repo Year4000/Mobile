@@ -1,8 +1,10 @@
 package net.year4000.android_app.servers;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
 import com.google.common.base.Joiner;
@@ -11,6 +13,7 @@ import net.year4000.android_app.R;
 import java.util.Map;
 
 public class NetworkDisplay extends Activity{
+    @TargetApi(Build.VERSION_CODES.CUPCAKE)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +57,7 @@ public class NetworkDisplay extends Activity{
         return 2 > samples.length() ? "No active players" : String.format("Players (%d/%d)\n%s", online, max, samples.substring(2));
     }
 
+    @TargetApi(Build.VERSION_CODES.CUPCAKE)
     private class PostFetcher extends AsyncTask<Void, Void, String> {
         private static final String TAG = "PostFetcher";
         private ProgressDialog dialog;
