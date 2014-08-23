@@ -2,10 +2,8 @@ package net.year4000.android_app.servers;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Spannable;
@@ -51,8 +49,7 @@ public class DisplayServer extends Activity {
         Intent intent = getIntent();
         chosen = intent.getStringExtra(ExpandListAdapter.EXTRA_NAME);
         head.setText(chosen);
-        PostFetcher fetcher = new PostFetcher(DisplayServer.this);
-        fetcher.execute();
+        serverList();
     }
 
     private void serverList() {
@@ -96,33 +93,4 @@ public class DisplayServer extends Activity {
         tv.setText(wordtoSpan);
     }
 
-    @TargetApi(Build.VERSION_CODES.CUPCAKE)
-    private class PostFetcher extends AsyncTask<Void, Void, String> {
-        private static final String TAG = "PostFetcher";
-        private ProgressDialog dialog;
-        private Activity context;
-
-        public PostFetcher(Activity mainActivity) {
-            this.context = mainActivity;
-            dialog = new ProgressDialog(context);
-        }
-
-        @Override
-        protected void onPreExecute() {
-            //dialog.setMessage("Updating Server Info...");
-            //dialog.show();
-        }
-
-        @Override
-        protected String doInBackground(Void... params) {
-            APIManager.get().pullAPI();
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            //dialog.dismiss();
-            serverList();
-        }
-    }
 }

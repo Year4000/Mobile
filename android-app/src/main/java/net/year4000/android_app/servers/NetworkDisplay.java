@@ -2,8 +2,6 @@ package net.year4000.android_app.servers;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.ProgressDialog;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -20,8 +18,7 @@ public class NetworkDisplay extends Activity{
         setContentView(R.layout.display_network_info);
         TextView head = (TextView)findViewById(R.id.netInfoHead);
         head.setText("Year4000 Network");
-        PostFetcher fetcher = new PostFetcher(NetworkDisplay.this);
-        fetcher.execute();
+        serverList();
     }
 
     private void serverList() {
@@ -57,34 +54,5 @@ public class NetworkDisplay extends Activity{
         return 2 > samples.length() ? "No active players" : String.format("Players (%d/%d)\n%s", online, max, samples.substring(2));
     }
 
-    @TargetApi(Build.VERSION_CODES.CUPCAKE)
-    private class PostFetcher extends AsyncTask<Void, Void, String> {
-        private static final String TAG = "PostFetcher";
-        private ProgressDialog dialog;
-        private Activity context;
-
-        public PostFetcher(Activity mainActivity) {
-            this.context = mainActivity;
-            dialog = new ProgressDialog(context);
-        }
-
-        @Override
-        protected void onPreExecute() {
-            dialog.setMessage("Updating Server Info...");
-            dialog.show();
-        }
-
-        @Override
-        protected String doInBackground(Void... params) {
-            APIManager.get().pullAPI();
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            dialog.dismiss();
-            serverList();
-        }
-    }
 }
 
