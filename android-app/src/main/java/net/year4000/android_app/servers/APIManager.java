@@ -1,5 +1,7 @@
 package net.year4000.android_app.servers;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -17,6 +19,7 @@ import java.util.concurrent.ConcurrentSkipListMap;
 
 import lombok.Getter;
 
+@TargetApi(Build.VERSION_CODES.GINGERBREAD)
 @Getter
 public class APIManager {
     private static APIManager inst;
