@@ -15,7 +15,7 @@ import com.google.common.collect.ImmutableMap;
 import net.year4000.android_app.R;
 
 public class DisplayServer extends Activity {
-    private String chosen;
+    private String chosenServer;
     private static final ImmutableMap<String, String> COLORS = ImmutableMap.<String, String>builder()
             .put("§a", "#55ff55")
             .put("§b", "#55ffff")
@@ -45,10 +45,10 @@ public class DisplayServer extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display_server_info);
-        TextView head = (TextView)findViewById(R.id.servInfoHead);
+        TextView headerText = (TextView)findViewById(R.id.servInfoHead);
         Intent intent = getIntent();
-        chosen = intent.getStringExtra(ExpandListAdapter.EXTRA_NAME);
-        head.setText(chosen);
+        chosenServer = intent.getStringExtra(ExpandListAdapter.EXTRA_NAME);
+        headerText.setText(chosenServer);
         serverList();
     }
 
@@ -56,35 +56,35 @@ public class DisplayServer extends Activity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                Server server = APIManager.get().getServers().get(chosen);
+                Server server = APIManager.get().getServers().get(chosenServer);
 
-                TextView text = (TextView)findViewById(R.id.servPlayers);
+                TextView textView = (TextView)findViewById(R.id.servPlayers);
                 if (server == null || !server.isOnline()) {
-                    text.setText("Server Offline");
+                    textView.setText("Server Offline");
                 }
                 else {
                     Server.Players players = server.getStatus().getPlayers();
-                    formatDescription(text, server.getStatus().getDescription());
-                    text.append("\n" + String.format("Players (%d/%d) \n", players.getOnline(), players.getMax()));
-                    text.append(server.isSample() ? Joiner.on(", ").join(players.getPlayerNames()) : "No active players");
+                    formatDescription(textView, server.getStatus().getDescription());
+                    textView.append("\n" + String.format("Players (%d/%d) \n", players.getOnline(), players.getMax()));
+                    textView.append(server.isSample() ? Joiner.on(", ").join(players.getPlayerNames()) : "No active players");
                 }
             }
         });
     }
 
-    public void formatDescription(TextView tv, String des) {
-        SpannableStringBuilder wordtoSpan = new SpannableStringBuilder(des);
+    public void formatDescription(TextView tv, String description) {
+        SpannableStringBuilder wordtoSpan = new SpannableStringBuilder(description);
 
-        for (int i = 0; i < des.length()-2; i++) {
-            String key = des.substring(i, i+2);
-            int index = des.indexOf(key);
-            int length = des.length();
+        for (int i = 0; i < description.length()-2; i++) {
+            String key = description.substring(i, i+2);
+            int index = description.indexOf(key);
+            int length = description.length();
 
             if (COLORS.containsKey(key)) {
                 String value = COLORS.get(key);
                 wordtoSpan.setSpan(new ForegroundColorSpan(Color.parseColor(value)), index, length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 wordtoSpan.replace(i, i+2, "");
-                des = des.substring(0,i) + des.substring(i+2);
+                description = description.substring(0,i) + description.substring(i+2);
                 i = (2 > i) ? 0 : i - 2;
             }
 

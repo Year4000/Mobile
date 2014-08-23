@@ -24,12 +24,12 @@ import java.util.Map;
 
 public class ServersActivity extends Activity {
 
-    private ExpandListAdapter expAdapter;
-    private List<ExpandListGroup> expListItems;
-    private ExpandableListView expandList;
+    private ExpandListAdapter expandListAdapter;
+    private List<ExpandListGroup> expandListItems;
+    private ExpandableListView expandListView;
     private static final String TAG = "ServersActivity";
     private SwipeRefreshLayout swipeView;
-    private FetcherFragment fetcher;
+    private FetcherFragment fetcherFragment;
 
     /** Called when the activity is first created. */
     @TargetApi(Build.VERSION_CODES.CUPCAKE)
@@ -37,9 +37,10 @@ public class ServersActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.servers_activity);
-        fetcher = new FetcherFragment();
-        setFragment(fetcher);
+        fetcherFragment = new FetcherFragment();
+        setFragment(fetcherFragment);
         swipeView = (SwipeRefreshLayout)findViewById(R.id.swipe);
+
         swipeView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -49,15 +50,16 @@ public class ServersActivity extends Activity {
                     @Override
                     public void run() {
                         swipeView.setRefreshing(false);
-                        fetcher = new FetcherFragment();
-                        setFragment(fetcher);
+                        fetcherFragment = new FetcherFragment();
+                        setFragment(fetcherFragment);
                     }
                 }, 3000);
             }
         });
+
     }
 
-    /** Set up and start the fetcher fragment */
+    /** Set up and start the fetcherFragment */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public void setFragment(Fragment frag)
     {
@@ -81,10 +83,10 @@ public class ServersActivity extends Activity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                expandList = (ExpandableListView) findViewById(R.id.serversListView);
-                expAdapter = new ExpandListAdapter(ServersActivity.this, expListItems);
-                expandList.setAdapter(expAdapter);
-                setListScrollListener(expandList);
+                expandListView = (ExpandableListView) findViewById(R.id.serversListView);
+                expandListAdapter = new ExpandListAdapter(ServersActivity.this, expandListItems);
+                expandListView.setAdapter(expandListAdapter);
+                setListScrollListener(expandListView);
             }
         });
     }
@@ -158,7 +160,7 @@ public class ServersActivity extends Activity {
             @Override
             protected String doInBackground(Void... params) {
                 APIManager.get().pullAPI();
-                expListItems = setStandardGroups();
+                expandListItems = setStandardGroups();
                 return null;
             }
 

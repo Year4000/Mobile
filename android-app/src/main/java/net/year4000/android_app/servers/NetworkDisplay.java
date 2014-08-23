@@ -16,8 +16,8 @@ public class NetworkDisplay extends Activity{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display_network_info);
-        TextView head = (TextView)findViewById(R.id.netInfoHead);
-        head.setText("Year4000 Network");
+        TextView headerText = (TextView)findViewById(R.id.netInfoHead);
+        headerText.setText("Year4000 Network");
         serverList();
     }
 
@@ -25,15 +25,15 @@ public class NetworkDisplay extends Activity{
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                TextView text = (TextView)findViewById(R.id.netPlayers);
-                text.setText(setTextView());
+                TextView textView = (TextView)findViewById(R.id.netPlayers);
+                textView.setText(setTextView());
             }
         });
     }
 
     public String setTextView() {
         Map<String, Server> servers = APIManager.get().getServers();
-        StringBuilder samplesBuild = new StringBuilder();
+        StringBuilder samplesBuilder = new StringBuilder();
         String samples;
         int max = 0;
         int online = 0;
@@ -45,11 +45,11 @@ public class NetworkDisplay extends Activity{
             }
 
             if (server.isSample()) {
-                samplesBuild.append(", ").append(Joiner.on(", ").join(server.getStatus().getPlayers().getPlayerNames()));
+                samplesBuilder.append(", ").append(Joiner.on(", ").join(server.getStatus().getPlayers().getPlayerNames()));
             }
         }
 
-        samples = samplesBuild.toString();
+        samples = samplesBuilder.toString();
 
         return 2 > samples.length() ? "No active players" : String.format("Players (%d/%d)\n%s", online, max, samples.substring(2));
     }
