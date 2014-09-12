@@ -1,5 +1,39 @@
+# gradle generated files
 .gradle
-/local.properties
+
+# Local configuration file (sdk path, etc)
+local.properties
+project.properties
+build.properties
+gradle.properties
+git.properties
+build.xml
+
+# IDE files
 .idea/
-.DS_Store
 *.iml
+
+.DS_Store
+
+# built application files
+*.apk
+*.ap_
+
+# files for the dex VM
+*.dex
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+build/
+
+# out files
+out/
+target/
+
+# temp files
+*~
+*.tmp
