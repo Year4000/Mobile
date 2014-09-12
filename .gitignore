@@ -1,5 +1,28 @@
-.gradle
-/local.properties
-.idea/
+# OS Configuration
 .DS_Store
+
+# Files for the dex VM
+*.dex
+
+# Java Class Files
+*.class
+
+# Local Configuration
+local.properties
+git.properties
+proguard-rules.txt
+.gradle
+
+# Generated Files
+*.apk
+*.ap_
+bin/
+gen/
+out/
+build/
+
+# IDE / Temp Files
+.idea/
 *.iml
+*~
+*.tmp
