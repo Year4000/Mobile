@@ -1,4 +1,4 @@
-package net.year4000.android_app.servers;
+package net.year4000.mobile.android.servers;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -6,7 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.widget.TextView;
 import com.google.common.base.Joiner;
-import net.year4000.android_app.R;
+import net.year4000.mobile.R;
 
 import java.util.Map;
 

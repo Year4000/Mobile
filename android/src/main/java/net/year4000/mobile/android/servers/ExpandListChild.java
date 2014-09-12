@@ -1,4 +1,4 @@
-package net.year4000.android_app.servers;
+package net.year4000.mobile.android.servers;
 
 import lombok.AccessLevel;
 import lombok.Data;

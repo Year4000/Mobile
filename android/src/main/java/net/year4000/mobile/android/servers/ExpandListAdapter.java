@@ -1,4 +1,4 @@
-package net.year4000.android_app.servers;
+package net.year4000.mobile.android.servers;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
-import net.year4000.android_app.R;
+import net.year4000.mobile.R;
 
 import java.util.List;
 import java.util.Map;
