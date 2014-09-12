@@ -18,6 +18,14 @@ android {
     compileSdkVersion 20
     buildToolsVersion '20.0.0'
 
+    sourceSets {
+        main {
+            java.srcDirs 'src/main/java'
+            res.srcDirs 'src/main/resources'
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+        }
+    }
+
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 20
