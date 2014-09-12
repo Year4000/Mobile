@@ -1,4 +1,4 @@
-package net.year4000.android_app;
+package net.year4000.android;
 
 import android.app.Activity;
 import android.os.Bundle;
