@@ -1,4 +1,4 @@
-package net.year4000.mobile.servers;
+package net.year4000.mobile.android.servers;
 
 import android.annotation.TargetApi;
 import android.app.Activity;

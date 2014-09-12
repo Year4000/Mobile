@@ -1,9 +1,11 @@
-package net.year4000.mobile;
+package net.year4000.mobile.android;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import net.year4000.mobile.R;
 
 
 public class MainActivity extends Activity {
