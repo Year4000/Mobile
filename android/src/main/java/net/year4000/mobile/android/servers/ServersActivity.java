@@ -38,7 +38,7 @@ public class ServersActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.servers_activity);
-        fetcherFragment = new FetcherFragment(loadType.START);
+        fetcherFragment = new FetcherFragment(LoadType.START);
         setFragment(fetcherFragment);
         swipeView = (SwipeRefreshLayout)findViewById(R.id.swipe);
         swipeView.setColorSchemeColors(Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW);
@@ -52,7 +52,7 @@ public class ServersActivity extends Activity {
                     @Override
                     public void run() {
                         swipeView.setRefreshing(false);
-                        fetcherFragment = new FetcherFragment(loadType.RELOAD);
+                        fetcherFragment = new FetcherFragment(LoadType.RELOAD);
                         setFragment(fetcherFragment);
                     }
                 }, 3000);
@@ -125,7 +125,7 @@ public class ServersActivity extends Activity {
     }
 
     /** used to show progress dialog only on start up */
-    public enum loadType {
+    public enum LoadType {
         START, RELOAD
     }
 
@@ -136,10 +136,10 @@ public class ServersActivity extends Activity {
         public static final String FETCHER_FRAG_TAG = "FETCHER_FRAG";
         private ProgressDialog progressDialog;
         private boolean isTaskRunning = false;
-        public loadType load_type;
+        public LoadType loadType;
 
-        public FetcherFragment(loadType load_type) {
-            this.load_type = load_type;
+        public FetcherFragment(LoadType loadType) {
+            this.loadType = loadType;
         }
 
         @Override
@@ -164,14 +164,8 @@ public class ServersActivity extends Activity {
             @Override
             protected void onPreExecute() {
                 isTaskRunning = true;
-                switch(load_type) {
-                    case START:
-                        progressDialog = ProgressDialog.show(getActivity(), "Loading Server Info...", "Please wait! This will only take a moment.");
-                        break;
-                    case RELOAD:
-                        break;
-                    default:
-                        break;
+                if (loadType == LoadType.START) {
+                    progressDialog = ProgressDialog.show(getActivity(), "Loading Server Info...", "Please wait! This will only take a moment.");
                 }
             }
 
