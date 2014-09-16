@@ -31,8 +31,6 @@ public class ServersActivity extends Activity {
     private static final String TAG = "ServersActivity";
     private SwipeRefreshLayout swipeView;
     private FetcherFragment fetcherFragment;
-    private final String IS_START = "START";
-    private final String IS_RELOAD = "RELOAD";
 
     /** Called when the activity is first created. */
     @TargetApi(Build.VERSION_CODES.CUPCAKE)
@@ -40,7 +38,7 @@ public class ServersActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.servers_activity);
-        fetcherFragment = new FetcherFragment(IS_START);
+        fetcherFragment = new FetcherFragment(loadType.START);
         setFragment(fetcherFragment);
         swipeView = (SwipeRefreshLayout)findViewById(R.id.swipe);
         swipeView.setColorSchemeColors(Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW);
@@ -54,7 +52,7 @@ public class ServersActivity extends Activity {
                     @Override
                     public void run() {
                         swipeView.setRefreshing(false);
-                        fetcherFragment = new FetcherFragment(IS_RELOAD);
+                        fetcherFragment = new FetcherFragment(loadType.RELOAD);
                         setFragment(fetcherFragment);
                     }
                 }, 3000);
@@ -126,6 +124,11 @@ public class ServersActivity extends Activity {
         return list;
     }
 
+    /** used to show progress dialog only on start up */
+    public enum loadType {
+        START, RELOAD
+    }
+
     /** fragment the async to prevent crash on app disruption */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public class FetcherFragment extends Fragment  {
@@ -133,9 +136,10 @@ public class ServersActivity extends Activity {
         public static final String FETCHER_FRAG_TAG = "FETCHER_FRAG";
         private ProgressDialog progressDialog;
         private boolean isTaskRunning = false;
-        public final String SHOW_DIALOG;
-        public FetcherFragment(String context_status) {
-            SHOW_DIALOG = context_status;
+        public loadType load_type;
+
+        public FetcherFragment(loadType load_type) {
+            this.load_type = load_type;
         }
 
         @Override
@@ -160,8 +164,14 @@ public class ServersActivity extends Activity {
             @Override
             protected void onPreExecute() {
                 isTaskRunning = true;
-                if (SHOW_DIALOG.equals(IS_START)) {
-                    progressDialog = ProgressDialog.show(getActivity(), "Loading Server Info...", "Please wait! This will only take a moment.");
+                switch(load_type) {
+                    case START:
+                        progressDialog = ProgressDialog.show(getActivity(), "Loading Server Info...", "Please wait! This will only take a moment.");
+                        break;
+                    case RELOAD:
+                        break;
+                    default:
+                        break;
                 }
             }
 
