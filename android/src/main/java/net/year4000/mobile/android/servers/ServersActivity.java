@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -31,6 +32,7 @@ public class ServersActivity extends Activity {
     private static final String TAG = "ServersActivity";
     private SwipeRefreshLayout swipeView;
     private FetcherFragment fetcherFragment;
+    private Context context;
 
     /** Called when the activity is first created. */
     @TargetApi(Build.VERSION_CODES.CUPCAKE)
@@ -38,6 +40,7 @@ public class ServersActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.servers_activity);
+        context = getApplicationContext();
         fetcherFragment = new FetcherFragment(LoadType.START);
         setFragment(fetcherFragment);
         swipeView = (SwipeRefreshLayout)findViewById(R.id.swipe);
@@ -172,6 +175,7 @@ public class ServersActivity extends Activity {
             @Override
             protected String doInBackground(Void... params) {
                 APIManager.get().pullAPI();
+                HeadsManager.get(context);
                 expandListItems = setStandardGroups();
                 return null;
             }
