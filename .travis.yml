@@ -1,6 +1,4 @@
-language: java
+language: android
 notifications:
   email: false
 install: true
-script:
-  - gradle
