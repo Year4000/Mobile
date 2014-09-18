@@ -1,4 +1,6 @@
-language: android
+language: java
 notifications:
   email: false
 install: true
+script:
+  - ./gradlew
