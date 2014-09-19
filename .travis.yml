@@ -9,10 +9,12 @@ env:
 
 android:
   components:
+    - tools
     - build-tools-20.0.0
+    - android-20
 
 before_install:
-  - echo "sdk.dir=$ANDROID_HOME" > local.properties
+  - echo "sdk.dir=$sdk.dir" > local.properties
 
 install: true
 
