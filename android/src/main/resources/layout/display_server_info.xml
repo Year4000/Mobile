@@ -36,13 +36,26 @@
         <TextView
             android:text="Players (0/0)\nNo Active Players"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:dividerHeight="3dp"
             android:id="@+id/servPlayers"
             android:layout_gravity="center_horizontal"
             android:textSize="23sp"
             android:padding="10dp"
             android:textColor="#ffffff" />
+
+        <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/playersIconList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:stretchMode="columnWidth"
+            android:numColumns="10"
+            android:padding="5dp"
+            android:verticalSpacing="5dp"
+            android:horizontalSpacing="5dp"
+            />
+
 
     </LinearLayout>
 
