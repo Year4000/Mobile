@@ -2,11 +2,9 @@ package net.year4000.mobile.android.servers;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 
 public class HeadsGridAdapter extends BaseAdapter {
@@ -38,9 +36,7 @@ public class HeadsGridAdapter extends BaseAdapter {
     public View getView(int position, View view, ViewGroup parent) {
         ImageView headView;
         if (view == null) {
-            Log.e("LOADING_IMAGE_VIEW", "HERE");
             headView = new ImageView(context);
-            //headView.setLayoutParams(new GridView.LayoutParams(40, 40));
             headView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             headView.setPadding(5, 5, 5, 5);
             headView.setImageBitmap(data[position]);
