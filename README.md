@@ -1,4 +1,4 @@
-Year4000 Mobile
+Year4000 Mobile ![Travis Status](https://travis-ci.org/Year4000/Mobile.png)
 ===============
 
 > Y4K Mobile is currently in heavy development
