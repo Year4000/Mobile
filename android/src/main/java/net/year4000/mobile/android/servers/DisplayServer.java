@@ -105,7 +105,7 @@ public class DisplayServer extends Activity {
     private Bitmap[] getHeadsArray(List<String> playerNames) {
         List<Bitmap> playersList= new ArrayList<Bitmap>();
         for (String name : playerNames) {
-            Bitmap player = HeadsManager.get(DisplayServer.this).getImageBitmap(DisplayServer.this, name);
+            Bitmap player = HeadsManager.get(DisplayServer.this).getImageBitmap(name);
             playersList.add(player);
         }
         Bitmap[] playersArray = new Bitmap[playersList.size()];

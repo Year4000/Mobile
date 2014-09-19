@@ -22,7 +22,7 @@ import lombok.Getter;
 public class HeadsManager {
     private static HeadsManager inst;
     private Context context;
-    private String url;
+    private final String URL = "https://www.year4000.net/avatar/%s/80/";
     private Bitmap playersHead = null;
     private List<Bitmap> playersHeadList = new ArrayList<Bitmap>();
     private List<String> playersNames = new ArrayList<String>();
@@ -32,7 +32,7 @@ public class HeadsManager {
     public HeadsManager(Context context) {
         this.context = context;
         cw = new ContextWrapper(context.getApplicationContext());
-        // path to /data/data/yourapp/app_data/imageDir
+        // path to /data/data/net.year4000.mobile/app_headsDir
         headsDir = cw.getDir("headsDir", Context.MODE_PRIVATE);
         if(!headsDir.exists()) {
             try {
@@ -69,11 +69,11 @@ public class HeadsManager {
     /** Download all players heads that are not already saved to internal storage */
     private void pullHeads() {
         for (String player : playersNames) {
-            url = "https://www.year4000.net/avatar/" + player + "/40/";
+            String playerURL = String.format(URL, player);
             URL urlValue = null;
 
             try {
-                urlValue = new URL(url);
+                urlValue = new URL(playerURL);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
@@ -100,19 +100,24 @@ public class HeadsManager {
             fileOutputStream = new FileOutputStream(head);
             // Use the compress method on the BitMap object to write image to the OutputStream
             bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
-            fileOutputStream.close();
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            if (fileOutputStream != null) {
+                try {
+                    fileOutputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
     /** Allow for image to be uploaded to image views */
-    public Bitmap getImageBitmap(Context context, String name){
+    public Bitmap getImageBitmap(String name){
         try{
             File file = new File(headsDir, name);
-            Bitmap bitmap = BitmapFactory.decodeStream(new FileInputStream(file));
-
-            return bitmap;
+            return BitmapFactory.decodeStream(new FileInputStream(file));
         } catch (Exception e) {
             e.printStackTrace();
         }
