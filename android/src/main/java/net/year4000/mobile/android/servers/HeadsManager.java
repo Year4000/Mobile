@@ -109,9 +109,9 @@ public class HeadsManager {
     /** Allow for image to be uploaded to image views */
     public Bitmap getImageBitmap(Context context, String name){
         try{
-            FileInputStream fileInputStream = context.openFileInput(name);
-            Bitmap bitmap = BitmapFactory.decodeStream(fileInputStream);
-            fileInputStream.close();
+            File file = new File(headsDir, name);
+            Bitmap bitmap = BitmapFactory.decodeStream(new FileInputStream(file));
+
             return bitmap;
         } catch (Exception e) {
             e.printStackTrace();
