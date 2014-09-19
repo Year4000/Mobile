@@ -1,7 +1,8 @@
 language: android
+
 notifications:
   email: false
-install: true
+
 env:
   matrix:
     - ANDROID_TARGET=android-19 ANDROID_ABI=armeabi-v7a
@@ -9,5 +10,10 @@ env:
 android:
   components:
     - build-tools-20.0.0
+
+before_install:
+  - echo "sdk.dir=$ANDROID_HOME" > local.properties
+
+install: true
 
 script: ./gradlew connectedAndroidTest
