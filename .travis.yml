@@ -19,6 +19,4 @@ before_install:
 
 install: true
 
-before_script:
-
 script: ./gradlew connectedAndroidTest
