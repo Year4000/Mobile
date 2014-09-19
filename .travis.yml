@@ -13,9 +13,6 @@ android:
     - build-tools-20.0.0
     - android-20
 
-before_install:
-  - echo "sdk.dir=$sdk.dir" > local.properties
-
 install: true
 
 script: ./gradlew connectedAndroidTest
