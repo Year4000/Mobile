@@ -3,16 +3,21 @@ package net.year4000.mobile.android.servers;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
+import android.widget.GridView;
 import android.widget.TextView;
 import com.google.common.base.Joiner;
 import com.google.common.collect.ImmutableMap;
 import net.year4000.mobile.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DisplayServer extends Activity {
     private String chosenServer;
@@ -57,8 +62,9 @@ public class DisplayServer extends Activity {
             @Override
             public void run() {
                 Server server = APIManager.get().getServers().get(chosenServer);
-
                 TextView textView = (TextView)findViewById(R.id.servPlayers);
+                GridView gridview = (GridView) findViewById(R.id.playersIconList);
+
                 if (server == null || !server.isOnline()) {
                     textView.setText("Server Offline");
                 }
@@ -67,6 +73,9 @@ public class DisplayServer extends Activity {
                     formatDescription(textView, server.getStatus().getDescription());
                     textView.append("\n" + String.format("Players (%d/%d) \n", players.getOnline(), players.getMax()));
                     textView.append(server.isSample() ? Joiner.on(", ").join(players.getPlayerNames()) : "No active players");
+                    Bitmap[] headsArray = getHeadsArray(players.getPlayerNames());
+                    final HeadsGridAdapter gridadapter = new HeadsGridAdapter(DisplayServer.this, headsArray);
+                    gridview.setAdapter(gridadapter);
                 }
             }
         });
@@ -91,6 +100,18 @@ public class DisplayServer extends Activity {
         }
 
         tv.setText(wordtoSpan);
+    }
+
+    private Bitmap[] getHeadsArray(List<String> playerNames) {
+        List<Bitmap> playersList= new ArrayList<Bitmap>();
+        for (String name : playerNames) {
+            Bitmap player = HeadsManager.get(DisplayServer.this).getImageBitmap(DisplayServer.this, name);
+            playersList.add(player);
+        }
+        Bitmap[] playersArray = new Bitmap[playersList.size()];
+        playersList.toArray(playersArray);
+
+        return playersArray;
     }
 
 }
