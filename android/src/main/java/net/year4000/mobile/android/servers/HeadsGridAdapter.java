@@ -37,8 +37,8 @@ public class HeadsGridAdapter extends BaseAdapter {
         ImageView headView;
         if (view == null) {
             headView = new ImageView(context);
-            headView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            headView.setPadding(5, 5, 5, 5);
+            //headView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            headView.setPadding(5, 10, 5, 5);
             headView.setImageBitmap(data[position]);
         } else {
             headView = (ImageView) view;
