@@ -51,8 +51,6 @@ public class NetworkDisplay extends Activity{
     }
 
     private String setTextView() {
-        StringBuilder samplesBuilder = new StringBuilder();
-        String samples;
         int max = 0;
         int online = 0;
 
@@ -61,15 +59,9 @@ public class NetworkDisplay extends Activity{
                 max += server.getStatus().getPlayers().getMax();
                 online += server.getStatus().getPlayers().getTrueOnline();
             }
-
-            if (server.isSample()) {
-                samplesBuilder.append(", ").append(Joiner.on(", ").join(server.getStatus().getPlayers().getPlayerNames()));
-            }
         }
 
-        samples = samplesBuilder.toString();
-
-        return 2 > samples.length() ? "No active players" : String.format("Players (%d/%d)", online, max);
+        return 0 >= online ? "No active players" : String.format("Players (%d/%d)", online, max);
     }
 
     private Bitmap[] getHeadsArray(List<String> playerNames) {
