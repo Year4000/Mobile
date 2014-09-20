@@ -40,7 +40,7 @@
             android:dividerHeight="3dp"
             android:id="@+id/netPlayers"
             android:layout_gravity="center_horizontal"
-            android:textSize="23sp"
+            android:textSize="28sp"
             android:padding="10dp"
             android:textColor="#ffffff" />
 
