@@ -2,15 +2,20 @@ package net.year4000.mobile.android.servers;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
+import android.widget.GridView;
 import android.widget.TextView;
 import com.google.common.base.Joiner;
 import net.year4000.mobile.R;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class NetworkDisplay extends Activity{
+    private Map<String, Server> servers = APIManager.get().getServers();
     @TargetApi(Build.VERSION_CODES.CUPCAKE)
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,12 +32,25 @@ public class NetworkDisplay extends Activity{
             public void run() {
                 TextView textView = (TextView)findViewById(R.id.netPlayers);
                 textView.setText(setTextView());
+                getGridView();
             }
         });
     }
 
-    public String setTextView() {
-        Map<String, Server> servers = APIManager.get().getServers();
+    public void getGridView(){
+        GridView gridView = (GridView) findViewById(R.id.playersIconList);
+        List<String> players = new ArrayList<String>();
+        for (Server server : servers.values()) {
+            if (server.isSample()) {
+                players.addAll(server.getStatus().getPlayers().getPlayerNames());
+            }
+        }
+        Bitmap[] headsArray = getHeadsArray(players);
+        final HeadsGridAdapter gridAdapter = new HeadsGridAdapter(NetworkDisplay.this, headsArray);
+        gridView.setAdapter(gridAdapter);
+    }
+
+    private String setTextView() {
         StringBuilder samplesBuilder = new StringBuilder();
         String samples;
         int max = 0;
@@ -51,8 +69,21 @@ public class NetworkDisplay extends Activity{
 
         samples = samplesBuilder.toString();
 
-        return 2 > samples.length() ? "No active players" : String.format("Players (%d/%d)\n%s", online, max, samples.substring(2));
+        return 2 > samples.length() ? "No active players" : String.format("Players (%d/%d)", online, max);
     }
+
+    private Bitmap[] getHeadsArray(List<String> playerNames) {
+        List<Bitmap> playersList= new ArrayList<Bitmap>();
+        for (String name : playerNames) {
+            Bitmap player = HeadsManager.get(NetworkDisplay.this).getImageBitmap(name);
+            playersList.add(player);
+        }
+        Bitmap[] playersArray = new Bitmap[playersList.size()];
+        playersList.toArray(playersArray);
+
+        return playersArray;
+    }
+
 
 }
 
