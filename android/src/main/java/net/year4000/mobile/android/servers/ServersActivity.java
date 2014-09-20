@@ -174,8 +174,14 @@ public class ServersActivity extends Activity {
 
             @Override
             protected String doInBackground(Void... params) {
-                APIManager.get().pullAPI();
-                HeadsManager.get(context);
+                if (loadType == LoadType.START) {
+                    APIManager.get();
+                    HeadsManager.get(context);
+                }
+                else {
+                    APIManager.get().pullAPI();
+                    HeadsManager.get(context).pullData();
+                }
                 expandListItems = setStandardGroups();
                 return null;
             }

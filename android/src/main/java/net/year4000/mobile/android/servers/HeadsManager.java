@@ -41,8 +41,8 @@ public class HeadsManager {
                 e.printStackTrace();
             }
         }
-        getPlayerNames();
-        pullHeads();
+
+        pullData();
     }
 
     /** Get Instance */
@@ -52,6 +52,12 @@ public class HeadsManager {
         }
 
         return inst;
+    }
+
+    /** Pull heads from server */
+    public void pullData() {
+        getPlayerNames();
+        pullHeads();
     }
 
     /** Get the names of all players active */
