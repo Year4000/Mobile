@@ -44,7 +44,7 @@ public class ServersActivity extends Activity {
         fetcherFragment = new FetcherFragment(LoadType.START);
         setFragment(fetcherFragment);
         swipeView = (SwipeRefreshLayout)findViewById(R.id.swipe);
-        swipeView.setColorSchemeColors(Color.BLUE, Color.GREEN, Color.RED, Color.YELLOW);
+        swipeView.setColorSchemeColors(Color.BLUE, Color.WHITE, Color.BLUE, Color.WHITE);
 
         swipeView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -174,8 +174,14 @@ public class ServersActivity extends Activity {
 
             @Override
             protected String doInBackground(Void... params) {
-                APIManager.get().pullAPI();
-                HeadsManager.get(context);
+                if (loadType == LoadType.START) {
+                    APIManager.get();
+                    HeadsManager.get(context);
+                }
+                else {
+                    APIManager.get().pullAPI();
+                    HeadsManager.get(context).pullData();
+                }
                 expandListItems = setStandardGroups();
                 return null;
             }
