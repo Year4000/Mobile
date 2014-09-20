@@ -44,7 +44,7 @@ public class ServersActivity extends Activity {
         fetcherFragment = new FetcherFragment(LoadType.START);
         setFragment(fetcherFragment);
         swipeView = (SwipeRefreshLayout)findViewById(R.id.swipe);
-        swipeView.setColorSchemeColors(Color.BLUE, Color.WHITE, Color.BLUE, Color.WHITE);
+        swipeView.setColorSchemeColors(Color.rgb(0, 114, 188), Color.WHITE, Color.rgb(0, 114, 188), Color.WHITE);
 
         swipeView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
