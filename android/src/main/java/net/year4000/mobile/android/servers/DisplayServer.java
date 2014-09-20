@@ -72,10 +72,15 @@ public class DisplayServer extends Activity {
                     Server.Players players = server.getStatus().getPlayers();
                     formatDescription(textView, server.getStatus().getDescription());
                     textView.append("\n" + String.format("Players (%d/%d) \n", players.getOnline(), players.getMax()));
-                    textView.append(server.isSample() ? Joiner.on(", ").join(players.getPlayerNames()) : "No active players");
-                    Bitmap[] headsArray = getHeadsArray(players.getPlayerNames());
-                    final HeadsGridAdapter gridadapter = new HeadsGridAdapter(DisplayServer.this, headsArray);
-                    gridview.setAdapter(gridadapter);
+                                        
+                    if (server.isSample()) {
+                        Bitmap[] headsArray = getHeadsArray(players.getPlayerNames());
+                        final HeadsGridAdapter gridadapter = new HeadsGridAdapter(DisplayServer.this, headsArray);
+                        gridview.setAdapter(gridadapter);
+                    }
+                    else {
+                        textView.append("\nNo active players");
+                    }
                 }
             }
         });

@@ -34,13 +34,13 @@
             android:layout_gravity="center_horizontal" />
 
         <TextView
-            android:text="Players (0/0)\nNo Active Players"
+            android:text="Players (0/0)"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:dividerHeight="3dp"
             android:id="@+id/servPlayers"
             android:layout_gravity="center_horizontal"
-            android:textSize="23sp"
+            android:textSize="28sp"
             android:padding="10dp"
             android:textColor="#ffffff" />
 
@@ -55,7 +55,6 @@
             android:verticalSpacing="5dp"
             android:horizontalSpacing="5dp"
             />
-
 
     </LinearLayout>
 
