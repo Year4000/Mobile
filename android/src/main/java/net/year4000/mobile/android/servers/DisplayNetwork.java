@@ -7,14 +7,14 @@ import android.os.Build;
 import android.os.Bundle;
 import android.widget.GridView;
 import android.widget.TextView;
-import com.google.common.base.Joiner;
+
 import net.year4000.mobile.R;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class NetworkDisplay extends Activity{
+public class DisplayNetwork extends Activity{
     private Map<String, Server> servers = APIManager.get().getServers();
     @TargetApi(Build.VERSION_CODES.CUPCAKE)
     @Override
@@ -46,7 +46,7 @@ public class NetworkDisplay extends Activity{
             }
         }
         Bitmap[] headsArray = getHeadsArray(players);
-        final HeadsGridAdapter gridAdapter = new HeadsGridAdapter(NetworkDisplay.this, headsArray);
+        final HeadsGridAdapter gridAdapter = new HeadsGridAdapter(DisplayNetwork.this, headsArray);
         gridView.setAdapter(gridAdapter);
     }
 
@@ -67,7 +67,7 @@ public class NetworkDisplay extends Activity{
     private Bitmap[] getHeadsArray(List<String> playerNames) {
         List<Bitmap> playersList= new ArrayList<Bitmap>();
         for (String name : playerNames) {
-            Bitmap player = HeadsManager.get(NetworkDisplay.this).getImageBitmap(name);
+            Bitmap player = HeadsManager.get(DisplayNetwork.this).getImageBitmap(name);
             playersList.add(player);
         }
         Bitmap[] playersArray = new Bitmap[playersList.size()];

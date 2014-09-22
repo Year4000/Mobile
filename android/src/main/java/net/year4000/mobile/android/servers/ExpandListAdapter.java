@@ -102,7 +102,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
             tvGroup.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(context, NetworkDisplay.class);
+                    Intent i = new Intent(context, DisplayNetwork.class);
                     context.startActivity(i);
                 }
             });
@@ -112,7 +112,7 @@ public class ExpandListAdapter extends BaseExpandableListAdapter {
             tvPlayers.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(context, NetworkDisplay.class);
+                    Intent i = new Intent(context, DisplayNetwork.class);
                     context.startActivity(i);
                 }
             });

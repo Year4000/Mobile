@@ -12,7 +12,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".android.servers.DisplayServer" android:label="@string/app_header"/>
-        <activity android:name=".android.servers.NetworkDisplay" android:label="@string/app_header"/>
+        <activity android:name=".android.servers.DisplayNetwork" android:label="@string/app_header"/>
     </application>
 </manifest>
 
