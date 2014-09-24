@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.DisplayMetrics;
 import android.util.Log;
 
 import java.io.File;
@@ -22,7 +23,7 @@ import lombok.Getter;
 public class HeadsManager {
     private static HeadsManager inst;
     private Context context;
-    private final String URL = "https://www.year4000.net/avatar/%s/80/";
+    private final String URL = "https://www.year4000.net/avatar/%s/%d/";
     private Bitmap playersHead = null;
     private List<Bitmap> playersHeadList = new ArrayList<Bitmap>();
     private List<String> playersNames = new ArrayList<String>();
@@ -75,7 +76,7 @@ public class HeadsManager {
     /** Download all players heads that are not already saved to internal storage */
     private void pullHeads() {
         for (String player : playersNames) {
-            String playerURL = String.format(URL, player);
+            String playerURL = String.format(URL, player, headSize());
             URL urlValue = null;
 
             try {
@@ -117,6 +118,37 @@ public class HeadsManager {
                 }
             }
         }
+    }
+
+    /** Returns the size to download heads based off density scale of screen */
+    private int headSize() {
+        int size;
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        switch(metrics.densityDpi){
+            case DisplayMetrics.DENSITY_LOW:
+                size = 30;
+                break;
+            case DisplayMetrics.DENSITY_MEDIUM:
+                size = 40;
+                break;
+            case DisplayMetrics.DENSITY_HIGH:
+                size = 60;
+                break;
+            case DisplayMetrics.DENSITY_XHIGH:
+                size = 80;
+                break;
+            case DisplayMetrics.DENSITY_XXHIGH:
+                size = 120;
+                break;
+            case DisplayMetrics.DENSITY_XXXHIGH:
+                size = 160;
+                break;
+            default:
+                size = 40;
+                break;
+        }
+
+        return size;
     }
 
     /** Allow for image to be uploaded to image views */

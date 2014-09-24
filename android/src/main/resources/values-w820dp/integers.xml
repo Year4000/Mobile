@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!-- heads grid columns number for landscape view-->
-    <item name="head_grid_cols" type="integer">10</item>
-</resources>
