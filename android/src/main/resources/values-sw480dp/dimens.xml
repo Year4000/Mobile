@@ -1,6 +1,8 @@
 <resources>
     <dimen name="activity_default_padding">24dp</dimen>
     <dimen name="activity_default_margin">24dp</dimen>
+    <dimen name="activity_horizontal_padding_land">48dp</dimen>
+    <dimen name="activity_horizontal_margin_land">48dp</dimen>
     <dimen name="head_grid_col_width">48dp</dimen>
     <dimen name="servers_activity_heading">28sp</dimen>
 </resources>

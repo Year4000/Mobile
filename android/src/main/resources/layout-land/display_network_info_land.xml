@@ -34,7 +34,7 @@
             android:dividerHeight="3dp"
             android:id="@+id/netPlayers"
             android:layout_gravity="center_horizontal"
-            android:textSize="28sp"
+            android:textSize="35sp"
             android:textColor="#ffffff" />
 
         </LinearLayout>

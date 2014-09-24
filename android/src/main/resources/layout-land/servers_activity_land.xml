@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/serversHeader"
                 android:textColor="#ffffff"
-                android:text="@string/servers_head"
+                android:text="@string/serversHead"
                 android:textSize="@dimen/servers_activity_heading"
                 android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
