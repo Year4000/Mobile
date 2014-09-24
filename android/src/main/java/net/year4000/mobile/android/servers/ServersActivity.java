@@ -54,9 +54,9 @@ public class ServersActivity extends Activity {
                     @TargetApi(Build.VERSION_CODES.CUPCAKE)
                     @Override
                     public void run() {
-                        swipeView.setRefreshing(false);
                         fetcherFragment = new FetcherFragment(LoadType.RELOAD);
                         setFragment(fetcherFragment);
+                        swipeView.setRefreshing(false);
                     }
                 }, 3000);
             }
