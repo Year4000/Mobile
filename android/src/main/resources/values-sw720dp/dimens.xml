@@ -5,4 +5,8 @@
     <dimen name="activity_horizontal_margin_land">72dp</dimen>
     <dimen name="head_grid_col_width">62dp</dimen>
     <dimen name="servers_activity_heading">37sp</dimen>
+    <dimen name="network_head_sp">45sp</dimen>
+    <dimen name="network_player_sp">38sp</dimen>
+    <dimen name="network_head_sp_land">40sp</dimen>
+    <dimen name="network_player_sp_land">33sp</dimen>
 </resources>

@@ -2,6 +2,12 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_default_padding">16dp</dimen>
     <dimen name="activity_default_margin">16dp</dimen>
+    <dimen name="activity_horizontal_padding_land">32dp</dimen>
+    <dimen name="activity_horizontal_margin_land">32dp</dimen>
     <dimen name="head_grid_col_width">40dp</dimen>
     <dimen name="servers_activity_heading">23sp</dimen>
+    <dimen name="network_head_sp">35sp</dimen>
+    <dimen name="network_player_sp">28sp</dimen>
+    <dimen name="network_head_sp_land">30sp</dimen>
+    <dimen name="network_player_sp_land">23sp</dimen>
 </resources>

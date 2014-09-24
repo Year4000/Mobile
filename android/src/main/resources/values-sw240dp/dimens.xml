@@ -1,5 +1,12 @@
 <resources>
     <dimen name="activity_default_padding">12dp</dimen>
     <dimen name="activity_default_margin">12dp</dimen>
+    <dimen name="activity_horizontal_padding_land">24dp</dimen>
+    <dimen name="activity_horizontal_margin_land">24dp</dimen>
     <dimen name="head_grid_col_width">33dp</dimen>
+    <dimen name="servers_activity_heading">18sp</dimen>
+    <dimen name="network_head_sp">28sp</dimen>
+    <dimen name="network_player_sp">20sp</dimen>
+    <dimen name="network_head_sp_land">23sp</dimen>
+    <dimen name="network_player_sp_land">18sp</dimen>
 </resources>

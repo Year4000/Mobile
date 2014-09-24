@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:text="@string/network_display_head"
             android:textColor="#ffffff"
-            android:textSize="30sp"
+            android:textSize="@dimen/network_head_sp_land"
             android:layout_gravity="center_horizontal" />
 
         <TextView
@@ -34,7 +34,7 @@
             android:dividerHeight="3dp"
             android:id="@+id/netPlayers"
             android:gravity="center_vertical|right"
-            android:textSize="23sp"
+            android:textSize="@dimen/network_player_sp_land"
             android:textColor="#ffffff" />
 
         </LinearLayout>

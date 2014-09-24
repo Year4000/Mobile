@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:text="@string/network_display_head"
             android:textColor="#ffffff"
-            android:textSize="35sp"
+            android:textSize="@dimen/network_head_sp"
             android:layout_gravity="center_horizontal" />
 
         <TextView
@@ -25,7 +25,7 @@
             android:dividerHeight="3dp"
             android:id="@+id/netPlayers"
             android:layout_gravity="center_horizontal"
-            android:textSize="28sp"
+            android:textSize="@dimen/network_player_sp"
             android:padding="5dp"
             android:textColor="#ffffff" />
 
