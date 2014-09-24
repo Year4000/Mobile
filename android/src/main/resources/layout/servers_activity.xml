@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--this is needed to set up the async fragment-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:id="@+id/swipeContainer">
+
+    <!--this is the support for the pull down to refresh-->
+    <android.support.v4.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/swipe">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:id="@+id/swipeLayout"
+            android:background="@drawable/bg"
+            android:orientation="vertical"
+            android:padding="@dimen/activity_default_padding">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/serversHeader"
+                android:textColor="#ffffff"
+                android:text="@string/servers_head"
+                android:textSize="@dimen/servers_activity_heading"
+                android:layout_gravity="center_horizontal"
+                android:paddingBottom="@dimen/activity_default_padding" />
+
+            <ExpandableListView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/serversListView"
+                android:layout_gravity="center_horizontal"
+                android:dividerHeight="3dp"
+                android:drawSelectorOnTop="false" />
+
+        </LinearLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>

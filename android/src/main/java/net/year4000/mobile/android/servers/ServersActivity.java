@@ -6,6 +6,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -39,7 +40,12 @@ public class ServersActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.servers_activity);
+        if (getResources().getConfiguration().orientation ==
+                Configuration.ORIENTATION_PORTRAIT) {
+            setContentView(R.layout.servers_activity);
+        } else {
+            setContentView(R.layout.servers_activity_land);
+        }
         context = getApplicationContext();
         fetcherFragment = new FetcherFragment(LoadType.START);
         setFragment(fetcherFragment);
@@ -195,6 +201,12 @@ public class ServersActivity extends Activity {
                 isTaskRunning = false;
             }
 
+        }
+
+        @Override
+        public void onDestroy() {
+            super.onDestroy();
+            isTaskRunning = false;
         }
 
         @Override

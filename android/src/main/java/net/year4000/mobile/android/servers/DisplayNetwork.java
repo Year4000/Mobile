@@ -2,6 +2,7 @@ package net.year4000.mobile.android.servers;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,7 +21,12 @@ public class DisplayNetwork extends Activity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.display_network_info);
+        if (getResources().getConfiguration().orientation ==
+                Configuration.ORIENTATION_PORTRAIT) {
+            setContentView(R.layout.display_network_info);
+        } else {
+            setContentView(R.layout.display_network_info_land);
+        }
         TextView headerText = (TextView)findViewById(R.id.netInfoHead);
         headerText.setText("Year4000 Network");
         serverList();
