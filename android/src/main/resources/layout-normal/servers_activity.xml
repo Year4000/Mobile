@@ -40,7 +40,7 @@
                     android:textAlignment="center"
                     android:textColor="#ffffff"
                     android:text="@string/serversHead"
-                    android:textSize="28sp"
+                    android:textSize="@dimen/servers_activity_heading"
                     android:layout_marginTop="20dp"
                     android:layout_gravity="center_horizontal"
                     android:paddingBottom="20dp" />

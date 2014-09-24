@@ -1,3 +1,4 @@
 <resources>
     <dimen name="head_grid_col_width">62dp</dimen>
+    <dimen name="servers_activity_heading">37sp</dimen>
 </resources>
