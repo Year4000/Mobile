@@ -3,6 +3,7 @@ package net.year4000.mobile.android.servers;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
@@ -49,7 +50,12 @@ public class DisplayServer extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.display_server_info);
+        if (getResources().getConfiguration().orientation ==
+                Configuration.ORIENTATION_PORTRAIT) {
+            setContentView(R.layout.display_server_info);
+        } else {
+            setContentView(R.layout.display_server_info_land);
+        }
         TextView headerText = (TextView)findViewById(R.id.servInfoHead);
         Intent intent = getIntent();
         chosenServer = intent.getStringExtra(ExpandListAdapter.EXTRA_NAME);

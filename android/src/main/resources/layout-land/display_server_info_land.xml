@@ -5,33 +5,26 @@
     android:layout_height="fill_parent"
     android:layout_weight="1"
     android:background="@drawable/bg"
-    android:orientation="horizontal"
-    android:paddingBottom="5dp">
+    android:orientation="vertical"
+    android:paddingTop="@dimen/activity_default_padding"
+    android:paddingBottom="@dimen/activity_default_padding"
+    android:paddingLeft="@dimen/activity_horizontal_padding_land"
+    android:paddingRight="@dimen/activity_horizontal_padding_land">
 
-    <!-- This is the left margin -->
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="13" />
-
-    <!-- The content -->
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:padding="10dp"
-        android:orientation="vertical"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <!-- The title -->
         <TextView
             android:id="@+id/servInfoHead"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="fill_parent"
+            android:gravity="center_vertical|left"
             android:text="Server Name"
             android:textColor="#ffffff"
-            android:layout_margin="10dp"
-            android:textSize="35sp"
-            android:layout_gravity="center_horizontal" />
+            android:textSize="@dimen/server_head_sp_land" />
 
         <TextView
             android:text="Players (0/0)"
@@ -39,10 +32,16 @@
             android:layout_height="wrap_content"
             android:dividerHeight="3dp"
             android:id="@+id/servPlayers"
-            android:layout_gravity="center_horizontal"
-            android:textSize="28sp"
-            android:padding="10dp"
+            android:gravity="center_vertical|right"
+            android:textSize="@dimen/server_player_sp_land"
             android:textColor="#ffffff" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <GridView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/playersIconList"
@@ -58,11 +57,5 @@
             />
 
     </LinearLayout>
-
-    <!-- This is the right margin -->
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="13" />
 
 </LinearLayout>

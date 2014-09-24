@@ -9,4 +9,8 @@
     <dimen name="network_player_sp">32sp</dimen>
     <dimen name="network_head_sp_land">35sp</dimen>
     <dimen name="network_player_sp_land">28sp</dimen>
+    <dimen name="server_head_sp">40sp</dimen>
+    <dimen name="server_player_sp">32sp</dimen>
+    <dimen name="server_head_sp_land">35sp</dimen>
+    <dimen name="server_player_sp_land">28sp</dimen>
 </resources>
