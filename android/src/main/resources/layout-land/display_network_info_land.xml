@@ -24,20 +24,25 @@
             android:layout_height="wrap_content"
             android:text="@string/network_display_head"
             android:textColor="#ffffff"
-            android:textSize="35sp"
+            android:textSize="30sp"
             android:layout_gravity="center_horizontal" />
 
         <TextView
             android:text="Players (0/0)\nNo Active Players"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:dividerHeight="3dp"
             android:id="@+id/netPlayers"
-            android:layout_gravity="center_horizontal"
-            android:textSize="35sp"
+            android:gravity="center_vertical|right"
+            android:textSize="23sp"
             android:textColor="#ffffff" />
 
         </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <GridView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/playersIconList"
@@ -51,5 +56,5 @@
             android:verticalSpacing="5dp"
             android:horizontalSpacing="5dp"
             />
-
+    </LinearLayout>
 </LinearLayout>
