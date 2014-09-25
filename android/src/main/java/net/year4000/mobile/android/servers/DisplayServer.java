@@ -12,8 +12,9 @@ import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.google.common.base.Joiner;
+
 import com.google.common.collect.ImmutableMap;
 import net.year4000.mobile.R;
 
@@ -50,12 +51,14 @@ public class DisplayServer extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getResources().getConfiguration().orientation ==
                 Configuration.ORIENTATION_PORTRAIT) {
             setContentView(R.layout.display_server_info);
         } else {
             setContentView(R.layout.display_server_info_land);
         }
+
         TextView headerText = (TextView)findViewById(R.id.servInfoHead);
         Intent intent = getIntent();
         chosenServer = intent.getStringExtra(ExpandListAdapter.EXTRA_NAME);
@@ -68,16 +71,23 @@ public class DisplayServer extends Activity {
             @Override
             public void run() {
                 Server server = APIManager.get().getServers().get(chosenServer);
-                TextView textView = (TextView)findViewById(R.id.servPlayers);
+                ImageView favicon = (ImageView) findViewById(R.id.server_banner_favicon_view);
+                TextView playersCountView = (TextView) findViewById(R.id.servPlayers);
+                TextView descriptionView = (TextView) findViewById(R.id.servMapDescription);
                 GridView gridview = (GridView) findViewById(R.id.playersIconList);
+                Bitmap mapImage = server.getStatus().getFaviconAsBitmap();
+
+                if (favicon != null && mapImage != null) {
+                    favicon.setImageBitmap(mapImage);
+                }
 
                 if (server == null || !server.isOnline()) {
-                    textView.setText("Server Offline");
+                    playersCountView.setText("Server Offline");
                 }
                 else {
                     Server.Players players = server.getStatus().getPlayers();
-                    formatDescription(textView, server.getStatus().getDescription());
-                    textView.append("\n" + String.format("Players (%d/%d) \n", players.getOnline(), players.getMax()));
+                    formatDescription(descriptionView, server.getStatus().getDescription());
+                    playersCountView.setText(String.format("Players (%d/%d)", players.getOnline(), players.getMax()));
                                         
                     if (server.isSample()) {
                         Bitmap[] headsArray = getHeadsArray(players.getPlayerNames());
@@ -85,7 +95,7 @@ public class DisplayServer extends Activity {
                         gridview.setAdapter(gridadapter);
                     }
                     else {
-                        textView.append("\nNo active players");
+                        playersCountView.append("\nNo active players");
                     }
                 }
             }
