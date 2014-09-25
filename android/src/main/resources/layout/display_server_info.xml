@@ -39,6 +39,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/server_banner_favicon_view"
                 android:layout_gravity="center_vertical"
+                android:layout_margin="3dp"
                 android:minHeight="40dp"
                 android:minWidth="40dp"/>
 
