@@ -1,5 +1,10 @@
 package net.year4000.mobile.android.servers;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+import android.util.Log;
+
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -38,6 +43,15 @@ public class Server {
         private Players players;
         private Version version;
         private String favicon;
+
+        /** decode Base64 to bitmap */
+        public Bitmap getFaviconAsBitmap() {
+            String faviconSubString = favicon.substring(favicon.indexOf(",") + 1);
+            Log.e("FAVICON STRING", faviconSubString);
+            byte[] decodedString = Base64.decode(faviconSubString, Base64.DEFAULT);
+
+            return BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        }
     }
 
     @Data
