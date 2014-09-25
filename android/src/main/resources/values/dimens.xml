@@ -7,11 +7,13 @@
     <dimen name="head_grid_col_width">40dp</dimen>
     <dimen name="servers_activity_heading">23sp</dimen>
     <dimen name="network_head_sp">35sp</dimen>
-    <dimen name="network_player_sp">28sp</dimen>
+    <dimen name="network_player_sp">25sp</dimen>
     <dimen name="network_head_sp_land">30sp</dimen>
     <dimen name="network_player_sp_land">23sp</dimen>
     <dimen name="server_head_sp">35sp</dimen>
-    <dimen name="server_player_sp">28sp</dimen>
+    <dimen name="server_players_sp">25sp</dimen>
     <dimen name="server_head_sp_land">30sp</dimen>
-    <dimen name="server_player_sp_land">23sp</dimen>
+    <dimen name="server_players_sp_land">23sp</dimen>
+    <dimen name="server_description_sp">20sp</dimen>
+    <dimen name="server_description_sp_land">18sp</dimen>
 </resources>
