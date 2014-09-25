@@ -5,35 +5,43 @@
     android:layout_height="fill_parent"
     android:layout_weight="1"
     android:background="@drawable/bg"
-    android:orientation="vertical"
     android:paddingTop="@dimen/activity_default_padding"
-    android:paddingBottom="@dimen/activity_default_padding"
-    android:paddingLeft="@dimen/activity_horizontal_padding_land"
-    android:paddingRight="@dimen/activity_horizontal_padding_land">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:background="#CC1e6dc8"
+        android:gravity="center"
+        android:padding="1dp"
         android:orientation="horizontal">
 
         <!-- The title -->
         <TextView
             android:id="@+id/netInfoHead"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:paddingRight="3dp"
             android:text="@string/network_display_head"
             android:textColor="#ffffff"
             android:textSize="@dimen/network_head_sp_land"
-            android:layout_gravity="center_horizontal" />
+            android:gravity="center_vertical|right" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_launcher" />
 
         <TextView
             android:text="Players (0/0)\nNo Active Players"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:paddingLeft="3dp"
             android:dividerHeight="3dp"
             android:id="@+id/netPlayers"
-            android:gravity="center_vertical|right"
+            android:gravity="center_vertical|left"
             android:textSize="@dimen/network_player_sp_land"
             android:textColor="#ffffff" />
 
@@ -42,7 +50,10 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/activity_default_padding"
+        android:paddingLeft="@dimen/activity_horizontal_padding_land"
+        android:paddingRight="@dimen/activity_horizontal_padding_land">
 
         <GridView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/playersIconList"
