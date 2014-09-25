@@ -75,20 +75,21 @@ public class DisplayServer extends Activity {
                 TextView playersCountView = (TextView) findViewById(R.id.servPlayers);
                 TextView descriptionView = (TextView) findViewById(R.id.servMapDescription);
                 GridView gridview = (GridView) findViewById(R.id.playersIconList);
-                Bitmap mapImage = server.getStatus().getFaviconAsBitmap();
-
-                if (favicon != null && mapImage != null) {
-                    favicon.setImageBitmap(mapImage);
-                }
 
                 if (server == null || !server.isOnline()) {
-                    playersCountView.setText("Server Offline");
+                    playersCountView.setText("No Activity");
+                    descriptionView.setText("Server Offline");
+                    favicon.setImageResource(R.drawable.ic_launcher);
                 }
                 else {
                     Server.Players players = server.getStatus().getPlayers();
                     formatDescription(descriptionView, server.getStatus().getDescription());
                     playersCountView.setText(String.format("Players (%d/%d)", players.getOnline(), players.getMax()));
-                                        
+                    Bitmap mapImage = server.getStatus().getFaviconAsBitmap();
+
+                    if (favicon != null && mapImage != null) {
+                        favicon.setImageBitmap(mapImage);
+                    }
                     if (server.isSample()) {
                         Bitmap[] headsArray = getHeadsArray(players.getPlayerNames());
                         final HeadsGridAdapter gridadapter = new HeadsGridAdapter(DisplayServer.this, headsArray);
