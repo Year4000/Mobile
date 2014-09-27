@@ -13,17 +13,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="#CC1e6dc8"
-        android:gravity="center"
-        android:paddingTop="1dp"
-        android:paddingBottom="3dp">
-
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:paddingRight="@dimen/activity_default_padding"
+        android:paddingLeft="@dimen/activity_default_padding">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_launcher"
             android:layout_gravity="center_vertical"
-            android:layout_margin="3dp"
             android:minHeight="80dp"
             android:minWidth="80dp"/>
 
@@ -33,9 +32,7 @@
             android:orientation="vertical"
             android:gravity="center"
             android:layout_gravity="center_horizontal"
-            android:paddingRight="@dimen/activity_default_padding"
             android:paddingLeft="@dimen/activity_default_padding">
-
 
             <!-- The title -->
             <TextView
@@ -55,7 +52,6 @@
                 android:id="@+id/netPlayers"
                 android:layout_gravity="center_horizontal"
                 android:textSize="@dimen/network_player_sp"
-                android:padding="5dp"
                 android:textColor="#ffffff" />
 
         </LinearLayout>
