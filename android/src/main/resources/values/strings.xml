@@ -3,5 +3,6 @@
     <string name="app_header">Year4000 Mobile</string>
     <string name="app_name">Y4K Mobile</string>
     <string name="serversHead">View the servers that we run</string>
-    <string name="network_display_head">Year4000 Network</string>
+    <string name="network_display_head_one">Year4000</string>
+    <string name="network_display_head_two">Network</string>
 </resources>
