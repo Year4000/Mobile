@@ -27,8 +27,6 @@ public class DisplayNetwork extends Activity{
         } else {
             setContentView(R.layout.display_network_info_land);
         }
-        TextView headerText = (TextView)findViewById(R.id.netInfoHead);
-        headerText.setText("Year4000 Network");
         serverList();
     }
 
