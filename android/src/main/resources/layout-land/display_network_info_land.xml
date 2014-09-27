@@ -6,6 +6,7 @@
     android:layout_weight="1"
     android:background="@drawable/bg"
     android:paddingTop="@dimen/activity_default_padding"
+    android:paddingBottom="@dimen/activity_default_padding"
     android:orientation="vertical">
 
     <LinearLayout
@@ -23,7 +24,7 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:paddingRight="3dp"
-            android:text="@string/network_display_head"
+            android:text="@string/network_display_head_one"
             android:textColor="#ffffff"
             android:textSize="@dimen/network_head_sp_land"
             android:gravity="center_vertical|right" />
@@ -34,15 +35,15 @@
             android:src="@drawable/ic_launcher" />
 
         <TextView
-            android:text="Players (0/0)\nNo Active Players"
+            android:text="@string/network_display_head_two"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:paddingLeft="3dp"
             android:dividerHeight="3dp"
-            android:id="@+id/netPlayers"
+            android:id="@+id/netInfoHeadTwo"
             android:gravity="center_vertical|left"
-            android:textSize="@dimen/network_player_sp_land"
+            android:textSize="@dimen/network_head_sp_land"
             android:textColor="#ffffff" />
 
     </LinearLayout>
@@ -51,15 +52,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/activity_default_padding"
+        android:paddingTop="@dimen/activity_default_padding"
         android:paddingLeft="@dimen/activity_horizontal_padding_land"
         android:paddingRight="@dimen/activity_horizontal_padding_land">
+
+        <TextView
+            android:text="Players (0/0)"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:dividerHeight="3dp"
+            android:id="@+id/netPlayers"
+            android:background="#aa575757"
+            android:textSize="@dimen/server_players_sp_land"
+            android:textColor="#ffffff" />
 
         <GridView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/playersIconList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:background="#5a575757"
             android:stretchMode="columnWidth"
             android:columnWidth="@dimen/head_grid_col_width"
             android:numColumns="auto_fit"
