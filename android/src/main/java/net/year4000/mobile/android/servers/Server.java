@@ -47,7 +47,6 @@ public class Server {
         /** decode Base64 to bitmap */
         public Bitmap getFaviconAsBitmap() {
             String faviconSubString = favicon.substring(favicon.indexOf(",") + 1);
-            Log.e("FAVICON STRING", faviconSubString);
             byte[] decodedString = Base64.decode(faviconSubString, Base64.DEFAULT);
 
             return BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
