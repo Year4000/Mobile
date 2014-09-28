@@ -23,6 +23,8 @@ import java.util.List;
 
 public class DisplayServer extends Activity {
     private String chosenServer;
+    private String[] nameArray;
+    private Bitmap[] headsArray;
     private static final ImmutableMap<String, String> COLORS = ImmutableMap.<String, String>builder()
             .put("§a", "#55ff55")
             .put("§b", "#55ffff")
@@ -91,8 +93,8 @@ public class DisplayServer extends Activity {
                         favicon.setImageBitmap(mapImage);
                     }
                     if (server.isSample()) {
-                        Bitmap[] headsArray = getHeadsArray(players.getPlayerNames());
-                        final HeadsGridAdapter gridadapter = new HeadsGridAdapter(DisplayServer.this, headsArray);
+                        setPlayersArrays(players.getPlayerNames());
+                        final HeadsGridAdapter gridadapter = new HeadsGridAdapter(DisplayServer.this, headsArray, nameArray);
                         gridview.setAdapter(gridadapter);
                     }
                     else {
@@ -124,16 +126,18 @@ public class DisplayServer extends Activity {
         tv.setText(wordtoSpan);
     }
 
-    private Bitmap[] getHeadsArray(List<String> playerNames) {
-        List<Bitmap> playersList= new ArrayList<Bitmap>();
+    private void setPlayersArrays(List<String> playerNames) {
+        List<Bitmap> playersHeadList = new ArrayList<Bitmap>();
+        List<String> playersNameList = new ArrayList<String>();
         for (String name : playerNames) {
             Bitmap player = HeadsManager.get(DisplayServer.this).getImageBitmap(name);
-            playersList.add(player);
+            playersHeadList.add(player);
+            playersNameList.add(name);
         }
-        Bitmap[] playersArray = new Bitmap[playersList.size()];
-        playersList.toArray(playersArray);
-
-        return playersArray;
+        headsArray = new Bitmap[playersHeadList.size()];
+        nameArray = new String[playersNameList.size()];
+        playersHeadList.toArray(headsArray);
+        playersNameList.toArray(nameArray);
     }
 
 }
