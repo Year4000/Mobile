@@ -48,7 +48,6 @@ public class HeadsGridAdapter extends BaseAdapter {
         if (view == null) {
             playerInfo = new TextView(context);
             headView = new ImageView(context);
-            headView.setPadding(5, 10, 5, 5);
             headView.setImageBitmap(data[position]);
             headView.setClickable(true);
 
