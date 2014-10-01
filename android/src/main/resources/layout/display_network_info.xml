@@ -81,7 +81,7 @@
             android:id="@+id/playersIconList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="@dimen/activity_default_padding"
+            android:padding="@dimen/activity_default_padding"
             android:gravity="center"
             android:background="#5a575757"
             android:stretchMode="columnWidth"
