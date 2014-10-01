@@ -27,7 +27,7 @@
     </compatible-screens>
 
 
-    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:allowBackup="true">
+    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:allowBackup="true" android:name=".android.Year4000">
         <activity android:name=".android.servers.ServersActivity" android:label="@string/app_header">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
