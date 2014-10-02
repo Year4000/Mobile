@@ -5,7 +5,6 @@ import android.content.ContextWrapper;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.DisplayMetrics;
-import android.util.Log;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,10 +13,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 import lombok.Getter;
 
@@ -31,8 +28,6 @@ public class HeadsManager {
     private List<String> playersNames = new ArrayList<String>();
     private ContextWrapper cw;
     private File headsDir;
-    // max age of head file before re-downloading (change params as see fit).
-    private long maxAge = TimeUnit.MILLISECONDS.convert(7, TimeUnit.DAYS);
 
     public HeadsManager(Context context) {
         this.context = context;
@@ -96,14 +91,6 @@ public class HeadsManager {
                     if (!head.exists()) {
                         playersHead = BitmapFactory.decodeStream(urlValue.openConnection().getInputStream());
                         saveToInternalStorage(playersHead, head);
-                    } else {
-                        Date lastModifiedDate = new Date(head.lastModified());
-                        Date currentDate = new Date();
-                        long headsAge = currentDate.getTime() - lastModifiedDate.getTime();
-                        if (headsAge >= maxAge) {
-                            playersHead = BitmapFactory.decodeStream(urlValue.openConnection().getInputStream());
-                            saveToInternalStorage(playersHead, head);
-                        }
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
