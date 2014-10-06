@@ -55,14 +55,12 @@ public class ServersActivity extends Activity {
         swipeView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                swipeView.setRefreshing(true);
                 (new Handler()).postDelayed(new Runnable() {
                     @TargetApi(Build.VERSION_CODES.CUPCAKE)
                     @Override
                     public void run() {
                         fetcherFragment = new FetcherFragment(LoadType.RELOAD);
                         setFragment(fetcherFragment);
-                        swipeView.setRefreshing(false);
                     }
                 }, 3000);
             }
@@ -174,7 +172,11 @@ public class ServersActivity extends Activity {
             protected void onPreExecute() {
                 isTaskRunning = true;
                 if (loadType == LoadType.START) {
-                    progressDialog = ProgressDialog.show(getActivity(), "Loading Server Info...", "Please wait! This will only take a moment.");
+                    progressDialog = new ProgressDialog(getActivity());
+                    progressDialog.setMessage("Loading Server Info...");
+                    progressDialog.show();
+                } else {
+                    swipeView.setRefreshing(true);
                 }
             }
 
@@ -197,6 +199,11 @@ public class ServersActivity extends Activity {
                 if (progressDialog != null) {
                     progressDialog.dismiss();
                 }
+
+                if (swipeView.isRefreshing()) {
+                    swipeView.setRefreshing(false);
+                }
+
                 serverList();
                 isTaskRunning = false;
             }
@@ -215,6 +222,11 @@ public class ServersActivity extends Activity {
             if (progressDialog != null && progressDialog.isShowing()) {
                 progressDialog.dismiss();
             }
+
+            if (swipeView.isRefreshing()) {
+                swipeView.setRefreshing(false);
+            }
+
             super.onDetach();
         }
     }
