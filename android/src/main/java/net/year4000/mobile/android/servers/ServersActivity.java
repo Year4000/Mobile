@@ -172,7 +172,7 @@ public class ServersActivity extends Activity {
             protected void onPreExecute() {
                 isTaskRunning = true;
                 if (loadType == LoadType.START) {
-                    progressDialog = new ProgressDialog(getActivity());
+                    progressDialog = new ProgressDialog(getActivity(), ProgressDialog.STYLE_HORIZONTAL);
                     progressDialog.setMessage("Loading Server Info...");
                     progressDialog.setCancelable(false);
                     progressDialog.setProgress(0);
