@@ -174,6 +174,9 @@ public class ServersActivity extends Activity {
                 if (loadType == LoadType.START) {
                     progressDialog = new ProgressDialog(getActivity());
                     progressDialog.setMessage("Loading Server Info...");
+                    progressDialog.setCancelable(false);
+                    progressDialog.setProgress(0);
+                    progressDialog.setIndeterminate(false);
                     progressDialog.show();
                 } else {
                     swipeView.setRefreshing(true);
@@ -184,6 +187,7 @@ public class ServersActivity extends Activity {
             protected String doInBackground(Void... params) {
                 if (loadType == LoadType.START) {
                     APIManager.get();
+                    publishProgress();
                     HeadsManager.get(context);
                 }
                 else {
@@ -192,6 +196,12 @@ public class ServersActivity extends Activity {
                 }
                 expandListItems = setStandardGroups();
                 return null;
+            }
+
+            @Override
+            public void onProgressUpdate(Void... params){
+                progressDialog.setProgress(1);
+                progressDialog.setMessage("Downloading Avatar Heads...");
             }
 
             @Override
