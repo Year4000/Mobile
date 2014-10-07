@@ -65,12 +65,7 @@ public class HeadsGridAdapter extends BaseAdapter {
                 if (v.getId() == headView.getId()) {
                     popupInit(headView);
                     playerInfo.setText(nameArray[position]);
-                    for (int i = 0; i < parent.getChildCount(); i++) {
-                        parent.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
-                    }
-
                     headView.setBackgroundColor(Color.parseColor("#1e6dc8"));
-                    playerInfoWindow.dismiss();
                     playerInfoWindow.showAsDropDown(headView, -50, 0);
                 } else {
                     playerInfoWindow.dismiss();
@@ -92,18 +87,29 @@ public class HeadsGridAdapter extends BaseAdapter {
         playerInfo.setPadding(5, 5, 5, 5);
         playerInfo.setTextSize(20);
         playerInfo.setClickable(true);
+
         playerInfo.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                headview.setBackgroundColor(Color.TRANSPARENT);
                 playerInfoWindow.dismiss();
                 return false;
             }
         });
+
         layoutOfPopup.setBackgroundColor(Color.parseColor("#aa000000"));
         layoutOfPopup.addView(playerInfo);
         playerInfoWindow = new PopupWindow(layoutOfPopup, LayoutParams.WRAP_CONTENT,
                 LayoutParams.WRAP_CONTENT);
         playerInfoWindow.setContentView(layoutOfPopup);
+        playerInfoWindow.setBackgroundDrawable(new ShapeDrawable());
+        playerInfoWindow.setOutsideTouchable(true);
+        playerInfoWindow.setTouchable(true);
+
+        playerInfoWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                headview.setBackgroundColor(Color.TRANSPARENT);
+            }
+        });
     }
 }
