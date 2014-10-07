@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -55,26 +56,19 @@ public class ServersActivity extends Activity {
         swipeView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                (new Handler()).postDelayed(new Runnable() {
-                    @TargetApi(Build.VERSION_CODES.CUPCAKE)
-                    @Override
-                    public void run() {
-                        fetcherFragment = new FetcherFragment(LoadType.RELOAD);
-                        setFragment(fetcherFragment);
-                    }
-                }, 3000);
+                fetcherFragment = new FetcherFragment(LoadType.RELOAD);
+                setFragment(fetcherFragment);
             }
         });
-
     }
 
     /** Set up and start the fetcherFragment */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public void setFragment(Fragment frag)
     {
-        FragmentManager fm = getFragmentManager();
-        if (fm.findFragmentByTag("FETCHER_FRAG") == null) {
-            fm.beginTransaction().add(R.id.swipeContainer, frag).commit();
+        FragmentManager fragmentManager = getFragmentManager();
+        if (fragmentManager.findFragmentByTag("FETCHER_FRAG") == null) {
+            fragmentManager.beginTransaction().add(R.id.swipeContainer, frag).commit();
         }
 
     }
@@ -112,7 +106,8 @@ public class ServersActivity extends Activity {
 
                 if (firstVisibleItem == 0 && visibleItemCount > 0 && list.getChildAt(0).getTop() >= 0) {
                     swipeView.setEnabled(true);
-                } else {
+                }
+                else {
                     swipeView.setEnabled(false);
                 }
 
@@ -161,7 +156,7 @@ public class ServersActivity extends Activity {
             return inflater.inflate(R.layout.servers_activity, container, false);
         }
 
-        /** async to communicate with API */
+        /** async to communicate with API and download avatars */
         @TargetApi(Build.VERSION_CODES.CUPCAKE)
         private class PostFetcher extends AsyncTask<Void, Void, String> {
             private static final String TAG = "PostFetcher";
@@ -178,7 +173,8 @@ public class ServersActivity extends Activity {
                     progressDialog.setProgress(0);
                     progressDialog.setIndeterminate(false);
                     progressDialog.show();
-                } else {
+                }
+                else {
                     swipeView.setRefreshing(true);
                 }
             }
