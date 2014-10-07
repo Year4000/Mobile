@@ -3,6 +3,10 @@ package net.year4000.mobile.android.servers;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -48,33 +52,32 @@ public class HeadsGridAdapter extends BaseAdapter {
         if (view == null) {
             playerInfo = new TextView(context);
             headView = new ImageView(context);
-            headView.setImageBitmap(data[position]);
-            headView.setClickable(true);
-
-
-            headView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (v.getId() == headView.getId()) {
-                        popupInit(headView);
-                        playerInfo.setText(nameArray[position]);
-                        for (int i = 0; i < parent.getChildCount(); i++) {
-                            parent.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
-                        }
-
-                        headView.setBackgroundColor(Color.parseColor("#1e6dc8"));
-                        playerInfoWindow.dismiss();
-                        playerInfoWindow.showAsDropDown(headView, 0, 0);
-                    }
-                    else {
-                        playerInfoWindow.dismiss();
-                    }
-                }
-            });
-
         } else {
             headView = (ImageView) view;
         }
+
+        headView.setImageBitmap(data[position]);
+        headView.setClickable(true);
+
+        headView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (v.getId() == headView.getId()) {
+                    popupInit(headView);
+                    playerInfo.setText(nameArray[position]);
+                    for (int i = 0; i < parent.getChildCount(); i++) {
+                        parent.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+                    }
+
+                    headView.setBackgroundColor(Color.parseColor("#1e6dc8"));
+                    playerInfoWindow.dismiss();
+                    playerInfoWindow.showAsDropDown(headView, -50, 0);
+                } else {
+                    playerInfoWindow.dismiss();
+                }
+                return false;
+            }
+        });
 
         return headView;
     }
@@ -89,11 +92,12 @@ public class HeadsGridAdapter extends BaseAdapter {
         playerInfo.setPadding(5, 5, 5, 5);
         playerInfo.setTextSize(20);
         playerInfo.setClickable(true);
-        playerInfo.setOnClickListener(new View.OnClickListener() {
+        playerInfo.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onTouch(View v, MotionEvent event) {
                 headview.setBackgroundColor(Color.TRANSPARENT);
                 playerInfoWindow.dismiss();
+                return false;
             }
         });
         layoutOfPopup.setBackgroundColor(Color.parseColor("#aa000000"));
