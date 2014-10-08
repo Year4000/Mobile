@@ -30,7 +30,6 @@
                 android:textColor="#ffffff"
                 android:text="@string/serversHead"
                 android:textSize="@dimen/servers_activity_heading"
-                android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
                 android:paddingBottom="@dimen/activity_default_padding" />
 
