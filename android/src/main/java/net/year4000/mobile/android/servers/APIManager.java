@@ -24,7 +24,7 @@ import lombok.Getter;
 public class APIManager {
     private static APIManager inst;
     public static final Gson GSON = new Gson();
-    private static final String API = "https://api.year4000.net/servers/";
+    private static final String API = "https://api.year4000.net/servers";
     private Map<String, Server> servers = new ConcurrentSkipListMap<String, Server>();
     private Map<String, String> groups = new HashMap<String, String>();
 
