@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_gravity="center|fill"
     android:background="#eee"
@@ -8,7 +8,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="#1e6dc8"
@@ -22,23 +22,27 @@
             android:id="@+id/servListGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             android:textColor="#ffffff"
-            android:textSize="25dip" />
+            android:textSize="25sp" />
 
         <TextView
             android:text="(0/0)"
             android:id="@+id/servListGroupPlayers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
+            android:layout_marginEnd="5dp"
             android:textColor="#ffffff"
             android:gravity="end"
-            android:textSize="25dip" />
+            android:textSize="25sp" />
 
-    </LinearLayout>
-</LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>
