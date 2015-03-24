@@ -1,74 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/bg"
-    android:orientation="vertical"
     android:paddingTop="@dimen/activity_default_padding">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/header_layout"
+        android:layout_alignParentTop="true"
         android:background="#CC1e6dc8"
         android:paddingLeft="@dimen/activity_default_padding"
         android:paddingRight="@dimen/activity_default_padding"
         android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:orientation="horizontal">
+        android:paddingBottom="5dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/server_banner_favicon_view"
-            android:layout_gravity="center_vertical"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:minHeight="80dp"
             android:minWidth="80dp"/>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <!-- The title -->
+        <TextView
+            android:id="@+id/servInfoHead"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center_vertical"
-            android:paddingLeft="@dimen/activity_default_padding">
+            android:text="Server Name"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/server_head_sp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/server_banner_favicon_view"
+            android:layout_toEndOf="@+id/server_banner_favicon_view" />
 
-            <!-- The title -->
-            <TextView
-                android:id="@+id/servInfoHead"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Server Name"
-                android:textColor="#ffffff"
-                android:textSize="@dimen/server_head_sp"
-                android:layout_gravity="center_vertical" />
+        <TextView
+            android:id="@+id/servMapDescription"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Now Playing"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/server_description_sp"
+            android:layout_below="@+id/servInfoHead"
+            android:layout_toRightOf="@+id/server_banner_favicon_view"
+            android:layout_toEndOf="@+id/server_banner_favicon_view" />
 
-            <TextView
-                android:id="@+id/servMapDescription"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Now Playing"
-                android:textColor="#ffffff"
-                android:textSize="@dimen/server_description_sp"
-                android:layout_gravity="center_vertical" />
+    </RelativeLayout>
 
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
+        android:layout_below="@+id/header_layout"
         android:padding="@dimen/activity_default_padding">
 
         <TextView
+            android:id="@+id/servPlayers"
             android:text="Players (0/0)"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:background="#aa575757"
             android:gravity="center"
             android:dividerHeight="3dp"
-            android:id="@+id/servPlayers"
             android:textSize="@dimen/server_players_sp"
             android:textColor="#ffffff" />
 
@@ -77,6 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/activity_default_padding"
+            android:layout_below="@+id/servPlayers"
             android:background="#5a575757"
             android:gravity="center"
             android:stretchMode="columnWidth"
@@ -86,5 +85,5 @@
             android:horizontalSpacing="5dp"
             />
 
-    </LinearLayout>
-</LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>
