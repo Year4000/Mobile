@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--this is needed to set up the async fragment-->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
               android:id="@+id/swipeContainer">
@@ -11,13 +11,11 @@
             android:layout_height="match_parent"
             android:id="@+id/swipe">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="1"
             android:id="@+id/swipeLayout"
             android:background="@drawable/bg"
-            android:orientation="vertical"
             android:padding="@dimen/activity_default_padding">
 
             <TextView
@@ -27,17 +25,19 @@
                 android:textColor="#ffffff"
                 android:text="@string/serversHead"
                 android:textSize="@dimen/servers_activity_heading"
-                android:layout_gravity="center_horizontal"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
                 android:paddingBottom="@dimen/activity_default_padding" />
 
             <ExpandableListView
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/serversListView"
-                android:layout_gravity="center_horizontal"
+                android:layout_below="@+id/serversHeader"
+                android:layout_centerHorizontal="true"
                 android:dividerHeight="3dp"
                 android:drawSelectorOnTop="false" />
 
-        </LinearLayout>
+        </RelativeLayout>
     </android.support.v4.widget.SwipeRefreshLayout>
-</LinearLayout>
+</RelativeLayout>
