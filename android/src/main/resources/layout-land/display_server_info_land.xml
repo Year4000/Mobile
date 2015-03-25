@@ -1,60 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:layout_weight="1"
     android:background="@drawable/bg"
-    android:orientation="vertical"
     android:paddingTop="@dimen/activity_default_padding">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/header_layout"
         android:background="#CC1e6dc8"
-        android:gravity="center"
-        android:padding="1dp"
-        android:orientation="horizontal">
+        android:layout_alignParentTop="true"
+        android:padding="1dp">
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/server_banner_favicon_view"
+                android:layout_margin="3dp"
+                android:layout_centerInParent="true"
+                android:minWidth="40dp"
+                android:minHeight="40dp"/>
 
         <!-- The title -->
         <TextView
             android:id="@+id/servInfoHead"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_vertical|right"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/server_banner_favicon_view"
+            android:layout_toStartOf="@+id/server_banner_favicon_view"
+            android:gravity="end"
             android:paddingRight="5dp"
+            android:paddingLeft="5dp"
             android:text="Server Name"
             android:textColor="#ffffff"
             android:textSize="@dimen/server_head_sp_land" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/server_banner_favicon_view"
-            android:layout_margin="3dp"
-            android:minWidth="40dp"
-            android:minHeight="40dp"/>
-
         <TextView
             android:id="@+id/servMapDescription"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:text="Now Playing"
             android:textColor="#ffffff"
-            android:layout_weight="1"
             android:paddingLeft="5dp"
-            android:gravity="center_vertical|left"
-            android:textSize="@dimen/server_description_sp_land"
-            android:layout_gravity="center_horizontal" />
+            android:paddingRight="5dp"
+            android:layout_toRightOf="@+id/server_banner_favicon_view"
+            android:layout_toEndOf="@+id/server_banner_favicon_view"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/server_description_sp_land" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
+        android:layout_below="@+id/header_layout"
         android:paddingTop="@dimen/activity_default_padding"
         android:paddingBottom="@dimen/activity_default_padding"
         android:paddingLeft="@dimen/activity_horizontal_padding_land"
@@ -75,6 +77,7 @@
             android:id="@+id/playersIconList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/servPlayers"
             android:gravity="center"
             android:background="#5a575757"
             android:stretchMode="columnWidth"
@@ -82,9 +85,8 @@
             android:numColumns="auto_fit"
             android:padding="5dp"
             android:verticalSpacing="5dp"
-            android:horizontalSpacing="5dp"
-            />
+            android:horizontalSpacing="5dp" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>
