@@ -28,12 +28,14 @@
 
 
     <application android:label="@string/app_name" android:icon="@drawable/ic_launcher" android:allowBackup="true" android:name=".android.Year4000">
-        <activity android:name=".android.servers.ServersActivity" android:label="@string/app_header">
+        <activity android:name=".android.MainActivity" android:label="@string/app_header">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".android.SettingsActivity" android:label="@string/app_header"/>
+        <activity android:name=".android.servers.ServersActivity" android:label="@string/app_header"/>
         <activity android:name=".android.servers.DisplayServer" android:label="@string/app_header"/>
         <activity android:name=".android.servers.DisplayNetwork" android:label="@string/app_header"/>
     </application>
