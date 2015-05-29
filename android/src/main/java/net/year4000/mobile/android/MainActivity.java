@@ -67,6 +67,7 @@ public class MainActivity extends FragmentActivity {
         return false;
     }
 
+    /** Initializes all main activity buttons. */
     private void initializeButtons() {
         news = (TextView) findViewById(R.id.news_button);
         news.setOnClickListener(new View.OnClickListener() {
@@ -115,6 +116,7 @@ public class MainActivity extends FragmentActivity {
 
     }
 
+    /** Resets all navigation buttons to inactive colors. */
     private void resetButtonColors() {
         news.setBackgroundColor(Color.parseColor("#1e6dc8"));
         news.setTextColor(Color.WHITE);
@@ -126,7 +128,7 @@ public class MainActivity extends FragmentActivity {
         settings.setTextColor(Color.WHITE);
     }
 
-    /** Switch UI to the given fragment */
+    /** Switch UI to the given fragment. */
     void switchToFragment(Fragment newFrag) {
         getSupportFragmentManager().beginTransaction().replace(R.id.content, newFrag)
                 .commitAllowingStateLoss();
