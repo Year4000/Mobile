@@ -15,6 +15,7 @@ import lombok.Getter;
 import net.year4000.mobile.R;
 import net.year4000.mobile.android.news.NewsFragment;
 import net.year4000.mobile.android.servers.ServersActivity;
+import net.year4000.mobile.android.shop.ShopFragment;
 
 @Getter
 public class MainActivity extends FragmentActivity {
@@ -25,6 +26,7 @@ public class MainActivity extends FragmentActivity {
     private Fragment newsFragment;
     private Fragment serversFragment;
     private Fragment settingsFragment;
+    private Fragment shopFragment;
     private Fragment currentFragment;
 
     @Override
@@ -39,6 +41,7 @@ public class MainActivity extends FragmentActivity {
 
         newsFragment = new NewsFragment();
         settingsFragment = new SettingsFragment();
+        shopFragment = new ShopFragment();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.content, newsFragment)
                 .commitAllowingStateLoss();
@@ -106,7 +109,7 @@ public class MainActivity extends FragmentActivity {
                 resetButtonColors();
                 shop.setBackgroundColor(Color.WHITE);
                 shop.setTextColor(Color.parseColor("#1e6dc8"));
-                //switchToFragment(shopFragment);
+                switchToFragment(shopFragment);
             }
         });
 
