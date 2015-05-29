@@ -11,6 +11,7 @@ import lombok.Getter;
 
 @Getter
 public class Year4000 extends Application {
+    public static Context appContext;
     // max age of head file before re-downloading (change params as see fit).
     private long maxAge = TimeUnit.MILLISECONDS.convert(7, TimeUnit.DAYS);
     private File headsDir;
@@ -18,6 +19,7 @@ public class Year4000 extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        appContext = getApplicationContext();
         deleteOldHeads();
     }
 
