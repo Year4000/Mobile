@@ -1,34 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+        android:background="@drawable/bg">
 
-        <!-- Temp place holders, until UI implemented -->
-        <LinearLayout
-                android:layout_width="wrap_content"
+        <RelativeLayout
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_centerInParent="true">
+                android:id="@+id/action_bar"
+                android:background="#CC1e6dc8"
+                android:paddingTop="3dp"
+                android:layout_marginTop="@dimen/activity_default_margin"
+                android:paddingBottom="3dp"
+                android:paddingRight="@dimen/activity_default_padding"
+                android:paddingLeft="@dimen/activity_default_padding">
 
-                <TextView
+                <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/servers_button"
-                        android:text="Servers"
+                        android:id="@+id/action_bar_image"
+                        android:src="@drawable/ic_launcher"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:minHeight="80dp"
+                        android:minWidth="80dp"/>
+
+                <!-- The title -->
+                <TextView
+                        android:id="@+id/action_bar_title"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/app_name"
+                        android:textColor="#ffffff"
                         android:textSize="@dimen/server_head_sp"
-                        android:padding="@dimen/activity_default_margin"
-                        android:layout_margin="@dimen/activity_default_margin"/>
+                        android:layout_toRightOf="@+id/action_bar_image"
+                        android:layout_toEndOf="@+id/action_bar_image" />
 
                 <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/settings_button"
-                        android:text="Settings"
-                        android:textSize="@dimen/server_head_sp"
-                        android:padding="@dimen/activity_default_margin"
-                        android:layout_margin="@dimen/activity_default_margin"/>
+                        android:id="@+id/netInfoHeadTwo"
+                        android:paddingLeft="3dp"
+                        android:paddingRight="3dp"
+                        android:layout_toRightOf="@+id/action_bar_image"
+                        android:layout_toEndOf="@+id/action_bar_image"
+                        android:layout_below="@+id/action_bar_title"
+                        android:text="@string/news"
+                        android:textSize="@dimen/network_head_sp"
+                        android:textColor="#ffffff" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/navigation_container"
+                android:layout_marginLeft="@dimen/activity_default_margin"
+                android:layout_marginStart="@dimen/activity_default_margin"
+                android:layout_marginTop="@dimen/activity_default_margin"
+                android:layout_marginRight="@dimen/activity_default_margin"
+                android:layout_marginEnd="@dimen/activity_default_margin"
+                android:layout_below="@+id/action_bar"
+                android:background="#ffffffff">
+
+                <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_marginBottom="1dp"
+                        android:background="#AA575757">
+
+                        <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/news_button"
+                                android:layout_weight="1"
+                                android:text="@string/news"
+                                android:background="#ffffff"
+                                android:textColor="#1e6dc8"
+                                android:gravity="center"
+                                android:padding="@dimen/activity_half_margin"
+                                android:layout_marginLeft="1dp"
+                                android:layout_marginStart="1dp"/>
+
+                        <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/servers_button"
+                                android:layout_weight="1"
+                                android:text="@string/servers"
+                                android:textColor="#ffffff"
+                                android:background="#1e6dc8"
+                                android:gravity="center"
+                                android:padding="@dimen/activity_half_margin"
+                                android:layout_marginLeft="1dp"
+                                android:layout_marginStart="1dp"/>
+
+                        <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/shop_button"
+                                android:layout_weight="1"
+                                android:text="@string/shop"
+                                android:textColor="#ffffff"
+                                android:background="#1e6dc8"
+                                android:gravity="center"
+                                android:padding="@dimen/activity_half_margin"
+                                android:layout_marginLeft="1dp"
+                                android:layout_marginStart="1dp"/>
+
+                        <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/settings_button"
+                                android:layout_weight="1"
+                                android:text="@string/settings"
+                                android:textColor="#ffffff"
+                                android:background="#1e6dc8"
+                                android:gravity="center"
+                                android:padding="@dimen/activity_half_margin"
+                                android:layout_marginLeft="1dp"
+                                android:layout_marginStart="1dp"/>
+
+                </LinearLayout>
 
         </LinearLayout>
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/content_container"
+                android:layout_below="@+id/navigation_container"
+                android:orientation="vertical"
+                android:layout_marginLeft="@dimen/activity_default_margin"
+                android:layout_marginStart="@dimen/activity_default_margin"
+                android:layout_marginBottom="@dimen/activity_default_margin"
+                android:layout_marginRight="@dimen/activity_default_margin"
+                android:layout_marginEnd="@dimen/activity_default_margin">
+
+                <RelativeLayout android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                        android:id="@+id/content">
+
+                </RelativeLayout>
+
+        </RelativeLayout>
 
 </RelativeLayout>
