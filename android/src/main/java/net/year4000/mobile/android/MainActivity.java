@@ -1,33 +1,50 @@
 package net.year4000.mobile.android;
 
-import android.content.Intent;
+import android.annotation.TargetApi;
+import android.app.FragmentManager;
+import android.app.ProgressDialog;
 import android.content.res.Configuration;
 import android.graphics.Color;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.view.*;
 
-import android.view.View;
+import android.widget.AbsListView;
+import android.widget.ExpandableListView;
 import android.widget.TextView;
 import lombok.Getter;
+import lombok.Setter;
 import net.year4000.mobile.R;
 import net.year4000.mobile.android.news.NewsFragment;
-import net.year4000.mobile.android.servers.ServersActivity;
+import net.year4000.mobile.android.servers.*;
 import net.year4000.mobile.android.shop.ShopFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 @Getter
+@Setter
 public class MainActivity extends FragmentActivity {
     private TextView servers;
     private TextView settings;
     private TextView news;
     private TextView shop;
-    private Fragment newsFragment;
-    private Fragment serversFragment;
-    private Fragment settingsFragment;
-    private Fragment shopFragment;
+    private NewsFragment newsFragment;
+    private ServersFragment serversFragment;
+    private SettingsFragment settingsFragment;
+    private ShopFragment shopFragment;
     private Fragment currentFragment;
+
+    private ExpandListAdapter expandListAdapter;
+    private List<ExpandListGroup> expandListItems;
+    private ExpandableListView expandListView;
+    private SwipeRefreshLayout swipeView;
+    private FetcherFragment fetcherFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +59,7 @@ public class MainActivity extends FragmentActivity {
         newsFragment = new NewsFragment();
         settingsFragment = new SettingsFragment();
         shopFragment = new ShopFragment();
+        serversFragment = new ServersFragment();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.content, newsFragment)
                 .commitAllowingStateLoss();
@@ -51,21 +69,6 @@ public class MainActivity extends FragmentActivity {
 
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return false;
-    }
 
     /** Initializes all main activity buttons. */
     private void initializeButtons() {
@@ -87,8 +90,7 @@ public class MainActivity extends FragmentActivity {
                 resetButtonColors();
                 servers.setBackgroundColor(Color.WHITE);
                 servers.setTextColor(Color.parseColor("#1e6dc8"));
-                Intent intent = new Intent(MainActivity.this, ServersActivity.class);
-                startActivity(intent);
+                switchToFragment(serversFragment);
             }
         });
 
@@ -116,6 +118,22 @@ public class MainActivity extends FragmentActivity {
 
     }
 
+    public void initializeSwipeView(SwipeRefreshLayout swipe) {
+        fetcherFragment = new FetcherFragment(LoadType.START);
+        setFragment(fetcherFragment);
+
+        swipeView = swipe;
+        swipeView.setColorSchemeColors(Color.rgb(0, 114, 188), Color.WHITE, Color.rgb(0, 114, 188), Color.WHITE);
+        swipeView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                fetcherFragment = new FetcherFragment(LoadType.RELOAD);
+                setFragment(fetcherFragment);
+            }
+        });
+
+    }
+
     /** Resets all navigation buttons to inactive colors. */
     private void resetButtonColors() {
         news.setBackgroundColor(Color.parseColor("#1e6dc8"));
@@ -133,6 +151,175 @@ public class MainActivity extends FragmentActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.content, newFrag)
                 .commitAllowingStateLoss();
         currentFragment = newFrag;
+    }
+
+
+
+    /** Set up and start the fetcherFragment */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public void setFragment(android.app.Fragment frag)
+    {
+        FragmentManager fragmentManager = getFragmentManager();
+        if (fragmentManager.findFragmentByTag("FETCHER_FRAG") == null) {
+            fragmentManager.beginTransaction().add(R.id.swipeContainer, frag).commit();
+        }
+
+    }
+
+    /** runs on the thread */
+    private void serverList() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                expandListView = (ExpandableListView) findViewById(R.id.serversListView);
+                expandListAdapter = new ExpandListAdapter(MainActivity.this, expandListItems);
+                expandListView.setAdapter(expandListAdapter);
+                setListScrollListener(expandListView);
+            }
+        });
+    }
+
+    /** this only allows swipeRefresh if first child of list is visible */
+    public void setListScrollListener(final ExpandableListView list) {
+        list.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
+            }
+
+            @Override
+            public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+                if (firstVisibleItem == 0 && visibleItemCount > 0 && list.getChildAt(0).getTop() >= 0) {
+                    swipeView.setEnabled(true);
+                }
+                else {
+                    swipeView.setEnabled(false);
+                }
+
+            }
+        });
+    }
+
+    public List<ExpandListGroup> setStandardGroups() {
+        List<ExpandListGroup> list = new ArrayList<ExpandListGroup>();
+        Map<String, String> servers = APIManager.get().getGroups();
+
+        for (Map.Entry<String, String> entry : servers.entrySet()) {
+            list.add(new ExpandListGroup(entry));
+        }
+
+        return list;
+    }
+
+    /** used to show progress dialog only on start up */
+    public enum LoadType {
+        START, RELOAD
+    }
+
+    /** fragment the async to prevent crash on app disruption */
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
+    public class FetcherFragment extends android.app.Fragment {
+
+        public static final String FETCHER_FRAG_TAG = "FETCHER_FRAG";
+        private ProgressDialog progressDialog;
+        private boolean isTaskRunning = false;
+        public LoadType loadType;
+
+        public FetcherFragment(LoadType loadType) {
+            this.loadType = loadType;
+        }
+
+        @Override
+        public void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setRetainInstance(true);
+            new PostFetcher().execute();
+        }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+            return inflater.inflate(R.layout.fragment_servers, container, false);
+        }
+
+        /** async to communicate with API and download avatars */
+        @TargetApi(Build.VERSION_CODES.CUPCAKE)
+        private class PostFetcher extends AsyncTask<Void, Void, String> {
+            private static final String TAG = "PostFetcher";
+
+            public PostFetcher() {}
+
+            @Override
+            protected void onPreExecute() {
+                isTaskRunning = true;
+                if (loadType == LoadType.START) {
+                    progressDialog = new ProgressDialog(getActivity(), ProgressDialog.STYLE_HORIZONTAL);
+                    progressDialog.setMessage("Loading Server Info...");
+                    progressDialog.setCancelable(false);
+                    progressDialog.setProgress(0);
+                    progressDialog.setIndeterminate(false);
+                    progressDialog.show();
+                }
+                else {
+                    swipeView.setRefreshing(true);
+                }
+            }
+
+            @Override
+            protected String doInBackground(Void... params) {
+                if (loadType == LoadType.START) {
+                    APIManager.get();
+                    publishProgress();
+                    HeadsManager.get(MainActivity.this);
+                }
+                else {
+                    APIManager.get().pullAPI();
+                    HeadsManager.get(MainActivity.this).pullData();
+                }
+                expandListItems = setStandardGroups();
+                return null;
+            }
+
+            @Override
+            public void onProgressUpdate(Void... params){
+                progressDialog.setProgress(1);
+                progressDialog.setMessage("Downloading Avatar Heads...");
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                if (progressDialog != null) {
+                    progressDialog.dismiss();
+                }
+
+                if (swipeView.isRefreshing()) {
+                    swipeView.setRefreshing(false);
+                }
+
+                serverList();
+                isTaskRunning = false;
+            }
+
+        }
+
+        @Override
+        public void onDestroy() {
+            super.onDestroy();
+            isTaskRunning = false;
+        }
+
+        @Override
+        public void onDetach() {
+            // prevent Activity has leaked window com.android.internal.policy... exception
+            if (progressDialog != null && progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
+
+            if (swipeView.isRefreshing()) {
+                swipeView.setRefreshing(false);
+            }
+
+            super.onDetach();
+        }
     }
 }
 
