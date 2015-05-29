@@ -2,236 +2,36 @@ package net.year4000.mobile.android.servers;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.res.Configuration;
-import android.graphics.Color;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
-import android.widget.ExpandableListView;
 import net.year4000.mobile.R;
+import net.year4000.mobile.android.MainActivity;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
-public class ServersFragment extends Activity {
-
-    private ExpandListAdapter expandListAdapter;
-    private List<ExpandListGroup> expandListItems;
-    private ExpandableListView expandListView;
-    private static final String TAG = "ServersFragment";
+public class ServersFragment extends android.support.v4.app.Fragment {
     private SwipeRefreshLayout swipeView;
-    private FetcherFragment fetcherFragment;
-    private Context context;
 
     /** Called when the activity is first created. */
     @TargetApi(Build.VERSION_CODES.CUPCAKE)
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getResources().getConfiguration().orientation ==
-                Configuration.ORIENTATION_PORTRAIT) {
-            setContentView(R.layout.servers_activity);
-        } else {
-            setContentView(R.layout.servers_activity_land);
-        }
-        context = getApplicationContext();
-        fetcherFragment = new FetcherFragment(LoadType.START);
-        setFragment(fetcherFragment);
-        swipeView = (SwipeRefreshLayout)findViewById(R.id.swipe);
-        swipeView.setColorSchemeColors(Color.rgb(0, 114, 188), Color.WHITE, Color.rgb(0, 114, 188), Color.WHITE);
-
-        swipeView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                fetcherFragment = new FetcherFragment(LoadType.RELOAD);
-                setFragment(fetcherFragment);
-            }
-        });
-    }
-
-    /** Set up and start the fetcherFragment */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public void setFragment(Fragment frag)
-    {
-        FragmentManager fragmentManager = getFragmentManager();
-        if (fragmentManager.findFragmentByTag("FETCHER_FRAG") == null) {
-            fragmentManager.beginTransaction().add(R.id.swipeContainer, frag).commit();
-        }
 
     }
 
+    /** When fragment view is created */
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        final View layout = inflater.inflate(R.layout.fragment_servers, container, false);
+        final Activity activity = getActivity();
 
-        return true;
+        swipeView = (SwipeRefreshLayout) layout.findViewById(R.id.swipe);
+        ((MainActivity) activity).initializeSwipeView(swipeView);
+
+        return layout;
     }
 
-    /** runs on the thread */
-    private void serverList() {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                expandListView = (ExpandableListView) findViewById(R.id.serversListView);
-                expandListAdapter = new ExpandListAdapter(ServersFragment.this, expandListItems);
-                expandListView.setAdapter(expandListAdapter);
-                setListScrollListener(expandListView);
-            }
-        });
-    }
-
-    /** this only allows swipeRefresh if first child of list is visible */
-    public void setListScrollListener(final ExpandableListView list) {
-        list.setOnScrollListener(new AbsListView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(AbsListView absListView, int i) {
-            }
-
-            @Override
-            public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-
-                if (firstVisibleItem == 0 && visibleItemCount > 0 && list.getChildAt(0).getTop() >= 0) {
-                    swipeView.setEnabled(true);
-                }
-                else {
-                    swipeView.setEnabled(false);
-                }
-
-            }
-        });
-    }
-
-    public List<ExpandListGroup> setStandardGroups() {
-        List<ExpandListGroup> list = new ArrayList<ExpandListGroup>();
-        Map<String, String> servers = APIManager.get().getGroups();
-
-        for (Map.Entry<String, String> entry : servers.entrySet()) {
-            list.add(new ExpandListGroup(entry));
-        }
-
-        return list;
-    }
-
-    /** used to show progress dialog only on start up */
-    public enum LoadType {
-        START, RELOAD
-    }
-
-    /** fragment the async to prevent crash on app disruption */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public class FetcherFragment extends Fragment  {
-
-        public static final String FETCHER_FRAG_TAG = "FETCHER_FRAG";
-        private ProgressDialog progressDialog;
-        private boolean isTaskRunning = false;
-        public LoadType loadType;
-
-        public FetcherFragment(LoadType loadType) {
-            this.loadType = loadType;
-        }
-
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setRetainInstance(true);
-            new PostFetcher().execute();
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.servers_activity, container, false);
-        }
-
-        /** async to communicate with API and download avatars */
-        @TargetApi(Build.VERSION_CODES.CUPCAKE)
-        private class PostFetcher extends AsyncTask<Void, Void, String> {
-            private static final String TAG = "PostFetcher";
-
-            public PostFetcher() {}
-
-            @Override
-            protected void onPreExecute() {
-                isTaskRunning = true;
-                if (loadType == LoadType.START) {
-                    progressDialog = new ProgressDialog(getActivity(), ProgressDialog.STYLE_HORIZONTAL);
-                    progressDialog.setMessage("Loading Server Info...");
-                    progressDialog.setCancelable(false);
-                    progressDialog.setProgress(0);
-                    progressDialog.setIndeterminate(false);
-                    progressDialog.show();
-                }
-                else {
-                    swipeView.setRefreshing(true);
-                }
-            }
-
-            @Override
-            protected String doInBackground(Void... params) {
-                if (loadType == LoadType.START) {
-                    APIManager.get();
-                    publishProgress();
-                    HeadsManager.get(context);
-                }
-                else {
-                    APIManager.get().pullAPI();
-                    HeadsManager.get(context).pullData();
-                }
-                expandListItems = setStandardGroups();
-                return null;
-            }
-
-            @Override
-            public void onProgressUpdate(Void... params){
-                progressDialog.setProgress(1);
-                progressDialog.setMessage("Downloading Avatar Heads...");
-            }
-
-            @Override
-            protected void onPostExecute(String result) {
-                if (progressDialog != null) {
-                    progressDialog.dismiss();
-                }
-
-                if (swipeView.isRefreshing()) {
-                    swipeView.setRefreshing(false);
-                }
-
-                serverList();
-                isTaskRunning = false;
-            }
-
-        }
-
-        @Override
-        public void onDestroy() {
-            super.onDestroy();
-            isTaskRunning = false;
-        }
-
-        @Override
-        public void onDetach() {
-            // prevent Activity has leaked window com.android.internal.policy... exception
-            if (progressDialog != null && progressDialog.isShowing()) {
-                progressDialog.dismiss();
-            }
-
-            if (swipeView.isRefreshing()) {
-                swipeView.setRefreshing(false);
-            }
-
-            super.onDetach();
-        }
-    }
 }
