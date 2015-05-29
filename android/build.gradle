@@ -18,8 +18,8 @@ def gitHash() {
 
 // Android configuration
 android {
-    compileSdkVersion 20
-    buildToolsVersion '20.0.0'
+    compileSdkVersion 21
+    buildToolsVersion '21.1.2'
 
     sourceSets {
         main {
@@ -47,7 +47,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.0.0'
+        classpath 'com.android.tools.build:gradle:1.1.1'
     }
 }
 
@@ -56,7 +56,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:20.0.0'
+    compile 'com.android.support:appcompat-v7:22.2.0'
     provided 'org.projectlombok:lombok:1.14.4'
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.google.guava:guava:17.0'
