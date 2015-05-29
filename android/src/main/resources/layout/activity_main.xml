@@ -40,13 +40,13 @@
                 <TextView
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:id="@+id/netInfoHeadTwo"
+                        android:id="@+id/tag_line"
                         android:paddingLeft="3dp"
                         android:paddingRight="3dp"
                         android:layout_toRightOf="@+id/action_bar_image"
                         android:layout_toEndOf="@+id/action_bar_image"
                         android:layout_below="@+id/action_bar_title"
-                        android:text="@string/news"
+                        android:text="@string/mobile"
                         android:textSize="@dimen/network_head_sp"
                         android:textColor="#ffffff" />
 
@@ -122,7 +122,9 @@
                                 android:gravity="center"
                                 android:padding="@dimen/activity_half_margin"
                                 android:layout_marginLeft="1dp"
-                                android:layout_marginStart="1dp"/>
+                                android:layout_marginStart="1dp"
+                                android:layout_marginRight="1dp"
+                                android:layout_marginEnd="1dp"/>
 
                 </LinearLayout>
 
