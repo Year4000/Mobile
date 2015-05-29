@@ -2,6 +2,7 @@ package net.year4000.mobile.android;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -19,8 +20,11 @@ import net.year4000.mobile.android.servers.ServersActivity;
 public class MainActivity extends FragmentActivity {
     private TextView servers;
     private TextView settings;
+    private TextView news;
+    private TextView shop;
     private Fragment newsFragment;
     private Fragment serversFragment;
+    private Fragment settingsFragment;
     private Fragment currentFragment;
 
     @Override
@@ -34,7 +38,7 @@ public class MainActivity extends FragmentActivity {
         }
 
         newsFragment = new NewsFragment();
-        //serversFragment = new ServersFragment();
+        settingsFragment = new SettingsFragment();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.content, newsFragment)
                 .commitAllowingStateLoss();
@@ -61,10 +65,24 @@ public class MainActivity extends FragmentActivity {
     }
 
     private void initializeButtons() {
+        news = (TextView) findViewById(R.id.news_button);
+        news.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetButtonColors();
+                news.setBackgroundColor(Color.WHITE);
+                news.setTextColor(Color.parseColor("#1e6dc8"));
+                switchToFragment(newsFragment);
+            }
+        });
+
         servers = (TextView) findViewById(R.id.servers_button);
         servers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                resetButtonColors();
+                servers.setBackgroundColor(Color.WHITE);
+                servers.setTextColor(Color.parseColor("#1e6dc8"));
                 Intent intent = new Intent(MainActivity.this, ServersActivity.class);
                 startActivity(intent);
             }
@@ -74,11 +92,35 @@ public class MainActivity extends FragmentActivity {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-                startActivity(intent);
+                resetButtonColors();
+                settings.setBackgroundColor(Color.WHITE);
+                settings.setTextColor(Color.parseColor("#1e6dc8"));
+                switchToFragment(settingsFragment);
             }
         });
 
+        shop = (TextView) findViewById(R.id.shop_button);
+        shop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetButtonColors();
+                shop.setBackgroundColor(Color.WHITE);
+                shop.setTextColor(Color.parseColor("#1e6dc8"));
+                //switchToFragment(shopFragment);
+            }
+        });
+
+    }
+
+    private void resetButtonColors() {
+        news.setBackgroundColor(Color.parseColor("#1e6dc8"));
+        news.setTextColor(Color.WHITE);
+        servers.setBackgroundColor(Color.parseColor("#1e6dc8"));
+        servers.setTextColor(Color.WHITE);
+        shop.setBackgroundColor(Color.parseColor("#1e6dc8"));
+        shop.setTextColor(Color.WHITE);
+        settings.setBackgroundColor(Color.parseColor("#1e6dc8"));
+        settings.setTextColor(Color.WHITE);
     }
 
     /** Switch UI to the given fragment */
