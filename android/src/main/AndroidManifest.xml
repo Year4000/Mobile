@@ -40,7 +40,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".android.SettingsActivity" android:label="@string/app_header"/>
         <activity android:name=".android.servers.ServersActivity" android:label="@string/app_header"/>
         <activity android:name=".android.servers.DisplayServer" android:label="@string/app_header"/>
         <activity android:name=".android.servers.DisplayNetwork" android:label="@string/app_header"/>
