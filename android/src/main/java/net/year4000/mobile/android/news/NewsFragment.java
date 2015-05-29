@@ -46,7 +46,7 @@ public class NewsFragment extends Fragment {
         listView.setAdapter(getListAdapter(listContents));
     }
 
-    /** Creates the list of store list items */
+    /** Creates the list of blog list items */
     private List<NewsBlogItem> getListItems() {
         List<NewsBlogItem> listItems = new ArrayList<>();
 
@@ -66,7 +66,7 @@ public class NewsFragment extends Fragment {
 
     }
 
-    /** Returns adapter for store list view */
+    /** Returns adapter for blog list view */
     private ArrayAdapter<NewsBlogItem> getListAdapter(final NewsBlogItem item[]) {
 
         return new ArrayAdapter<NewsBlogItem>(context, R.layout.news_list_item, item) {
