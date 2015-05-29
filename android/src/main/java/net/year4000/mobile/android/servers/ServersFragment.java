@@ -11,9 +11,7 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -26,12 +24,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ServersActivity extends Activity {
+public class ServersFragment extends Activity {
 
     private ExpandListAdapter expandListAdapter;
     private List<ExpandListGroup> expandListItems;
     private ExpandableListView expandListView;
-    private static final String TAG = "ServersActivity";
+    private static final String TAG = "ServersFragment";
     private SwipeRefreshLayout swipeView;
     private FetcherFragment fetcherFragment;
     private Context context;
@@ -87,7 +85,7 @@ public class ServersActivity extends Activity {
             @Override
             public void run() {
                 expandListView = (ExpandableListView) findViewById(R.id.serversListView);
-                expandListAdapter = new ExpandListAdapter(ServersActivity.this, expandListItems);
+                expandListAdapter = new ExpandListAdapter(ServersFragment.this, expandListItems);
                 expandListView.setAdapter(expandListAdapter);
                 setListScrollListener(expandListView);
             }
