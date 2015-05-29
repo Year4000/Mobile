@@ -11,29 +11,32 @@
             android:layout_height="match_parent"
             android:id="@+id/swipe">
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/swipeLayout"
-            android:background="@drawable/bg"
-            android:padding="@dimen/activity_default_padding">
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        xmlns:tools="http://schemas.android.com/tools"
+                        tools:context=".MainActivity"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/news_container"
+                        android:background="#5a575757"
+                        android:gravity="center_horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/serversHeader"
-                android:textColor="#ffffff"
-                android:text="@string/serversHead"
-                android:textSize="@dimen/servers_activity_heading"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:paddingBottom="@dimen/activity_default_padding" />
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:background="#aa575757"
+                    android:id="@+id/servers_head"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/serversHead"
+                    android:textSize="@dimen/network_player_sp"
+                    android:textColor="#ffffff" />
 
             <ExpandableListView
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/serversListView"
-                android:layout_below="@+id/serversHeader"
+                android:layout_below="@+id/servers_head"
+                android:layout_margin="@dimen/activity_default_margin"
                 android:layout_centerHorizontal="true"
                 android:dividerHeight="3dp"
                 android:drawSelectorOnTop="false" />
