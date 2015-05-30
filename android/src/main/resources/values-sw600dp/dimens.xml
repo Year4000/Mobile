@@ -16,5 +16,6 @@
     <dimen name="server_players_sp_land">28sp</dimen>
     <dimen name="server_description_sp">25sp</dimen>
     <dimen name="server_description_sp_land">23sp</dimen>
+    <dimen name="navigation_sp">23sp</dimen>
     <dimen name="favicon_size">150dp</dimen>
 </resources>
