@@ -69,7 +69,6 @@ public class MainActivity extends FragmentActivity {
 
     }
 
-
     /** Initializes all main activity buttons. */
     private void initializeButtons() {
         news = (TextView) findViewById(R.id.news_button);
@@ -118,6 +117,7 @@ public class MainActivity extends FragmentActivity {
 
     }
 
+    /** Initializes the swipe view */
     public void initializeSwipeView(SwipeRefreshLayout swipe) {
         fetcherFragment = new FetcherFragment(LoadType.START);
         setFragment(fetcherFragment);
@@ -152,8 +152,6 @@ public class MainActivity extends FragmentActivity {
                 .commitAllowingStateLoss();
         currentFragment = newFrag;
     }
-
-
 
     /** Set up and start the fetcherFragment */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
@@ -234,11 +232,6 @@ public class MainActivity extends FragmentActivity {
             super.onCreate(savedInstanceState);
             setRetainInstance(true);
             new PostFetcher().execute();
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.fragment_servers, container, false);
         }
 
         /** async to communicate with API and download avatars */
