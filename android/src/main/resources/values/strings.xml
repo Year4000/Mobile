@@ -8,6 +8,9 @@
     <string name="mobile">Mobile</string>
     <string name="news_feed">News Feed</string>
     <string name="shop">Shop</string>
+    <string name="forums">Forums</string>
+    <string name="profile">Profile</string>
+    <string name="account">Account</string>
     <string name="shop_head">Year4000 Store</string>
     <string name="close_menu">Close Menu</string>
     <string name="app_settings">Application Settings</string>
