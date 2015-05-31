@@ -122,14 +122,11 @@ public class MainActivity extends FragmentActivity {
 
     /** Sets navigation buttons standardized OnClickListener */
     private void setStandardOnClickListener(final TextView textView, final Fragment fragment) {
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resetButtonColors();
-                textView.setBackgroundColor(Color.WHITE);
-                textView.setTextColor(Color.parseColor("#1e6dc8"));
-                switchToFragment(fragment);
-            }
+        textView.setOnClickListener(v -> {
+            resetButtonColors();
+            textView.setBackgroundColor(Color.WHITE);
+            textView.setTextColor(Color.parseColor("#1e6dc8"));
+            switchToFragment(fragment);
         });
     }
 
@@ -140,12 +137,9 @@ public class MainActivity extends FragmentActivity {
 
         swipeView = swipe;
         swipeView.setColorSchemeColors(Color.rgb(0, 114, 188), Color.WHITE, Color.rgb(0, 114, 188), Color.WHITE);
-        swipeView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                fetcherFragment = new FetcherFragment(LoadType.RELOAD);
-                setFragment(fetcherFragment);
-            }
+        swipeView.setOnRefreshListener(() -> {
+            fetcherFragment = new FetcherFragment(LoadType.RELOAD);
+            setFragment(fetcherFragment);
         });
 
     }
@@ -178,14 +172,11 @@ public class MainActivity extends FragmentActivity {
 
     /** runs on the thread */
     private void serverList() {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                expandListView = (ExpandableListView) findViewById(R.id.serversListView);
-                expandListAdapter = new ExpandListAdapter(MainActivity.this, expandListItems);
-                expandListView.setAdapter(expandListAdapter);
-                setListScrollListener(expandListView);
-            }
+        runOnUiThread(() -> {
+            expandListView = (ExpandableListView) findViewById(R.id.serversListView);
+            expandListAdapter = new ExpandListAdapter(MainActivity.this, expandListItems);
+            expandListView.setAdapter(expandListAdapter);
+            setListScrollListener(expandListView);
         });
     }
 
