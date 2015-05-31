@@ -13,6 +13,7 @@
     <string name="profile">Profile</string>
     <string name="profile_head">My Profile</string>
     <string name="account">Account</string>
+    <string name="account_head">My Account</string>
     <string name="shop_head">Year4000 Store</string>
     <string name="close_menu">Close Menu</string>
     <string name="app_settings">Application Settings</string>
