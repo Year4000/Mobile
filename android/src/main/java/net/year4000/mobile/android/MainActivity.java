@@ -21,8 +21,10 @@ import lombok.Setter;
 import net.year4000.mobile.R;
 import net.year4000.mobile.android.forums.ForumsFragment;
 import net.year4000.mobile.android.news.NewsFragment;
+import net.year4000.mobile.android.profiles.ProfileFragment;
 import net.year4000.mobile.android.servers.*;
 import net.year4000.mobile.android.shop.ShopFragment;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,11 +38,14 @@ public class MainActivity extends FragmentActivity {
     private TextView news;
     private TextView shop;
     private TextView forums;
+    private TextView profile;
+    private List<TextView> navigationButtons;
     private NewsFragment newsFragment;
     private ServersFragment serversFragment;
     private SettingsFragment settingsFragment;
     private ShopFragment shopFragment;
     private ForumsFragment forumsFragment;
+    private ProfileFragment profileFragment;
     private Fragment currentFragment;
 
     private ExpandListAdapter expandListAdapter;
@@ -64,6 +69,7 @@ public class MainActivity extends FragmentActivity {
         shopFragment = new ShopFragment();
         serversFragment = new ServersFragment();
         forumsFragment = new ForumsFragment();
+        profileFragment = new ProfileFragment();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.content, newsFragment)
                 .commitAllowingStateLoss();
@@ -75,61 +81,45 @@ public class MainActivity extends FragmentActivity {
 
     /** Initializes all main activity buttons. */
     private void initializeButtons() {
+        navigationButtons = new ArrayList<>();
+
         news = (TextView) findViewById(R.id.news_button);
-        news.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resetButtonColors();
-                news.setBackgroundColor(Color.WHITE);
-                news.setTextColor(Color.parseColor("#1e6dc8"));
-                switchToFragment(newsFragment);
-            }
-        });
+        setStandardOnClickListener(news, newsFragment);
+        navigationButtons.add(news);
 
         servers = (TextView) findViewById(R.id.servers_button);
-        servers.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resetButtonColors();
-                servers.setBackgroundColor(Color.WHITE);
-                servers.setTextColor(Color.parseColor("#1e6dc8"));
-                switchToFragment(serversFragment);
-            }
-        });
+        setStandardOnClickListener(servers, serversFragment);
+        navigationButtons.add(servers);
 
         settings = (TextView) findViewById(R.id.settings_button);
-        settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resetButtonColors();
-                settings.setBackgroundColor(Color.WHITE);
-                settings.setTextColor(Color.parseColor("#1e6dc8"));
-                switchToFragment(settingsFragment);
-            }
-        });
+        setStandardOnClickListener(settings, settingsFragment);
+        navigationButtons.add(settings);
 
         shop = (TextView) findViewById(R.id.shop_button);
-        shop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                resetButtonColors();
-                shop.setBackgroundColor(Color.WHITE);
-                shop.setTextColor(Color.parseColor("#1e6dc8"));
-                switchToFragment(shopFragment);
-            }
-        });
+        setStandardOnClickListener(shop, shopFragment);
+        navigationButtons.add(shop);
 
         forums = (TextView) findViewById(R.id.forums_button);
-        forums.setOnClickListener(new View.OnClickListener() {
+        setStandardOnClickListener(forums, forumsFragment);
+        navigationButtons.add(forums);
+
+        profile = (TextView) findViewById(R.id.profile_button);
+        setStandardOnClickListener(profile, profileFragment);
+        navigationButtons.add(profile);
+
+    }
+
+    /** Sets navigation buttons standardized OnClickListener */
+    private void setStandardOnClickListener(final TextView textView, final Fragment fragment) {
+        textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 resetButtonColors();
-                forums.setBackgroundColor(Color.WHITE);
-                forums.setTextColor(Color.parseColor("#1e6dc8"));
-                switchToFragment(forumsFragment);
+                textView.setBackgroundColor(Color.WHITE);
+                textView.setTextColor(Color.parseColor("#1e6dc8"));
+                switchToFragment(fragment);
             }
         });
-
     }
 
     /** Initializes the swipe view */
@@ -151,16 +141,10 @@ public class MainActivity extends FragmentActivity {
 
     /** Resets all navigation buttons to inactive colors. */
     private void resetButtonColors() {
-        news.setBackgroundColor(Color.parseColor("#1e6dc8"));
-        news.setTextColor(Color.WHITE);
-        servers.setBackgroundColor(Color.parseColor("#1e6dc8"));
-        servers.setTextColor(Color.WHITE);
-        shop.setBackgroundColor(Color.parseColor("#1e6dc8"));
-        shop.setTextColor(Color.WHITE);
-        settings.setBackgroundColor(Color.parseColor("#1e6dc8"));
-        settings.setTextColor(Color.WHITE);
-        forums.setBackgroundColor(Color.parseColor("#1e6dc8"));
-        forums.setTextColor(Color.WHITE);
+        for (TextView textView : navigationButtons) {
+            textView.setBackgroundColor(Color.parseColor("#1e6dc8"));
+            textView.setTextColor(Color.WHITE);
+        }
     }
 
     /** Switch UI to the given fragment. */
