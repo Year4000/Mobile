@@ -19,6 +19,7 @@ import android.widget.TextView;
 import lombok.Getter;
 import lombok.Setter;
 import net.year4000.mobile.R;
+import net.year4000.mobile.android.account.AccountFragment;
 import net.year4000.mobile.android.forums.ForumsFragment;
 import net.year4000.mobile.android.news.NewsFragment;
 import net.year4000.mobile.android.profiles.ProfileFragment;
@@ -39,6 +40,7 @@ public class MainActivity extends FragmentActivity {
     private TextView shop;
     private TextView forums;
     private TextView profile;
+    private TextView account;
     private List<TextView> navigationButtons;
     private NewsFragment newsFragment;
     private ServersFragment serversFragment;
@@ -46,6 +48,7 @@ public class MainActivity extends FragmentActivity {
     private ShopFragment shopFragment;
     private ForumsFragment forumsFragment;
     private ProfileFragment profileFragment;
+    private AccountFragment accountFragment;
     private Fragment currentFragment;
 
     private ExpandListAdapter expandListAdapter;
@@ -64,19 +67,23 @@ public class MainActivity extends FragmentActivity {
             setContentView(R.layout.activity_main_land);
         }
 
+        initializeFragments();
+        initializeButtons();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.content, newsFragment)
+                .commitAllowingStateLoss();
+        currentFragment = newsFragment;
+    }
+
+    /** Initializes all the fragments associated with MainActivity */
+    private void initializeFragments() {
         newsFragment = new NewsFragment();
         settingsFragment = new SettingsFragment();
         shopFragment = new ShopFragment();
         serversFragment = new ServersFragment();
         forumsFragment = new ForumsFragment();
         profileFragment = new ProfileFragment();
-
-        getSupportFragmentManager().beginTransaction().replace(R.id.content, newsFragment)
-                .commitAllowingStateLoss();
-        currentFragment = newsFragment;
-
-        initializeButtons();
-
+        accountFragment = new AccountFragment();
     }
 
     /** Initializes all main activity buttons. */
@@ -106,6 +113,10 @@ public class MainActivity extends FragmentActivity {
         profile = (TextView) findViewById(R.id.profile_button);
         setStandardOnClickListener(profile, profileFragment);
         navigationButtons.add(profile);
+
+        account = (TextView) findViewById(R.id.account_button);
+        setStandardOnClickListener(account, accountFragment);
+        navigationButtons.add(account);
 
     }
 
