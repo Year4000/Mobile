@@ -19,6 +19,7 @@ import android.widget.TextView;
 import lombok.Getter;
 import lombok.Setter;
 import net.year4000.mobile.R;
+import net.year4000.mobile.android.forums.ForumsFragment;
 import net.year4000.mobile.android.news.NewsFragment;
 import net.year4000.mobile.android.servers.*;
 import net.year4000.mobile.android.shop.ShopFragment;
@@ -34,10 +35,12 @@ public class MainActivity extends FragmentActivity {
     private TextView settings;
     private TextView news;
     private TextView shop;
+    private TextView forums;
     private NewsFragment newsFragment;
     private ServersFragment serversFragment;
     private SettingsFragment settingsFragment;
     private ShopFragment shopFragment;
+    private ForumsFragment forumsFragment;
     private Fragment currentFragment;
 
     private ExpandListAdapter expandListAdapter;
@@ -60,6 +63,7 @@ public class MainActivity extends FragmentActivity {
         settingsFragment = new SettingsFragment();
         shopFragment = new ShopFragment();
         serversFragment = new ServersFragment();
+        forumsFragment = new ForumsFragment();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.content, newsFragment)
                 .commitAllowingStateLoss();
@@ -115,6 +119,17 @@ public class MainActivity extends FragmentActivity {
             }
         });
 
+        forums = (TextView) findViewById(R.id.forums_button);
+        forums.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resetButtonColors();
+                forums.setBackgroundColor(Color.WHITE);
+                forums.setTextColor(Color.parseColor("#1e6dc8"));
+                switchToFragment(forumsFragment);
+            }
+        });
+
     }
 
     /** Initializes the swipe view */
@@ -144,6 +159,8 @@ public class MainActivity extends FragmentActivity {
         shop.setTextColor(Color.WHITE);
         settings.setBackgroundColor(Color.parseColor("#1e6dc8"));
         settings.setTextColor(Color.WHITE);
+        forums.setBackgroundColor(Color.parseColor("#1e6dc8"));
+        forums.setTextColor(Color.WHITE);
     }
 
     /** Switch UI to the given fragment. */
