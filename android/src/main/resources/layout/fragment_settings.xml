@@ -19,10 +19,118 @@
             android:textSize="@dimen/network_player_sp"
             android:textColor="#ffffff" />
 
-    <TextView
-            android:layout_width="wrap_content"
+    <ScrollView
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/settings"/>
+            android:layout_below="@+id/settings_head">
+
+        <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/version"
+                    android:background="#ffffff"
+                    android:padding="1dp"
+                    android:layout_marginTop="@dimen/activity_default_margin"
+                    android:layout_marginLeft="@dimen/activity_default_margin"
+                    android:layout_marginStart="@dimen/activity_default_margin"
+                    android:layout_marginEnd="@dimen/activity_default_margin"
+                    android:layout_marginRight="@dimen/activity_default_margin"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="#1e6dc8"
+                        android:text="@string/app_version"
+                        android:textColor="#ffffff"
+                        android:padding="@dimen/activity_default_margin"/>
+
+                <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/version_number"
+                        android:gravity="center"
+                        android:text="@string/unknown_version"
+                        android:textColor="#1e6dc8"
+                        android:padding="@dimen/activity_default_margin"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/data"
+                    android:background="#ffffff"
+                    android:padding="1dp"
+                    android:layout_below="@+id/version"
+                    android:layout_marginTop="@dimen/activity_default_margin"
+                    android:layout_marginLeft="@dimen/activity_default_margin"
+                    android:layout_marginStart="@dimen/activity_default_margin"
+                    android:layout_marginEnd="@dimen/activity_default_margin"
+                    android:layout_marginRight="@dimen/activity_default_margin"
+                    android:orientation="vertical">
+
+                <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:background="#1e6dc8"
+                        android:text="@string/data_management"
+                        android:textColor="#ffffff"
+                        android:padding="@dimen/activity_default_margin"/>
+
+                <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/activity_default_margin"
+                        android:layout_marginStart="@dimen/activity_default_margin"
+                        android:layout_marginTop="@dimen/activity_default_margin"
+                        android:layout_marginRight="@dimen/activity_default_margin"
+                        android:layout_marginEnd="@dimen/activity_default_margin"
+                        android:padding="@dimen/activity_half_margin">
+
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/avatar_cache_time"
+                            android:gravity="center"
+                            android:layout_gravity="center"
+                            android:text="@string/set_avatar_time"
+                            android:textColor="#1e6dc8"
+                            android:layout_marginRight="@dimen/activity_half_margin"
+                            android:layout_marginEnd="@dimen/activity_half_margin"/>
+
+                    <Spinner
+                            android:id="@+id/avatar_cache_spinner"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:theme="@style/Theme.ColoredSpinners"
+                            android:entries="@array/avatar_cache_times_array"
+                            android:prompt="@string/set_avatar_time" />
+
+                </LinearLayout>
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/clear_avatar_cache"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:text="@string/clear_avatar"
+                        android:textColor="#ffffff"
+                        android:background="#1e6dc8"
+                        android:padding="@dimen/activity_half_margin"
+                        android:layout_margin="@dimen/activity_default_margin"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
