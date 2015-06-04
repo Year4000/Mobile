@@ -2,6 +2,12 @@
 <resources>
     <string name="app_header">Year4000 Mobile</string>
     <string name="app_name">Year4000</string>
+    <string name="app_version">Application Version</string>
+    <string name="set_avatar_time">Avatar Cache Time:</string>
+    <string name="clear_avatar">Clear Avatar Cache</string>
+    <string name="no_avatars">No Avatar Data</string>
+    <string name="cleared_avatar">Avatar cache has been cleared</string>
+    <string name="data_management">Data Management</string>
     <string name="settings">Settings</string>
     <string name="servers">Servers</string>
     <string name="news">News</string>
@@ -20,4 +26,11 @@
     <string name="serversHead">View the servers that we run</string>
     <string name="network_display_head_one">Year4000</string>
     <string name="network_display_head_two">Network</string>
+    <string name="unknown_version">Unknown Version</string>
+
+    <string-array name="avatar_cache_times_array">
+        <item>Daily</item>
+        <item>Weekly</item>
+        <item>Monthly</item>
+    </string-array>
 </resources>
