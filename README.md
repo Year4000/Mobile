@@ -9,15 +9,15 @@ It contains features from the website and places it in the power of your hand.
 Features
 ========
 
-- View server status
+- **WIP** View server status
 - **WIP** Year4000's news blog
 - **WIP** Account Profiles
 - **WIP** Forums
 - **WIP** In-Game <-> Mobile messaging system
 
 
-Compiling
-=========
+Compiling Instructions
+======================
 
 **Instructions use Android Studio, but any IDE supporting Android and gradle will work.**
 
@@ -29,7 +29,7 @@ Compiling
 
 4. Select \<path to repo\>/Mobile and import.
 
-5. Open File -> Project structure -> SDK -> JDK Location and change to \<path to\>/JDK_8
+5. Open: File -> Project structure -> SDK -> JDK Location - and change to \<path to\>/JDK_8
 
 6. Connect device via USB, or launch emulator.
 
