@@ -35,6 +35,14 @@ Developer Environment Instructions
 
 7. Run module android.
 
+Compile Instructions
+====================
+
+* Download and install Java JDK 8.
+* Download [Android SDK](https://developer.android.com/sdk/installing/index.html?pkg=tools)
+* Export the path of Andiroid SDK to the enviroment `ANDRIOD_HOME`
+* Build the project with on Linux/BSD/OSX `./gradlew` or on Windows `gradlew.bat`
+
 Issues
 ======
 
