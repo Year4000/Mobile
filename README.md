@@ -27,9 +27,9 @@ Compiling
 
 3. Open Android Studio, select 'Import project'.
 
-4. Select <path to repo>/Mobile and import.
+4. Select \<path to repo\>/Mobile and import.
 
-5. Open File -> Project structure -> SDK -> JDK Location and change to <path to>/JDK_8
+5. Open File -> Project structure -> SDK -> JDK Location and change to \<path to\>/JDK_8
 
 6. Connect device via USB, or launch emulator.
 
