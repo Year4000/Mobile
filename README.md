@@ -16,8 +16,8 @@ Features
 - **WIP** In-Game <-> Mobile messaging system
 
 
-Compiling Instructions
-======================
+Developer Environment Instructions
+==================================
 
 **Instructions use Android Studio, but any IDE supporting Android and gradle will work.**
 
